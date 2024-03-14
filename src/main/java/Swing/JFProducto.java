@@ -1,6 +1,7 @@
-package Clases;
+package Swing;
 
 
+import Swing.JFEmpleado;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

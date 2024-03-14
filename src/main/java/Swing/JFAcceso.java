@@ -1,4 +1,4 @@
-package Clases;
+package Swing;
 
 
 import java.awt.Color;

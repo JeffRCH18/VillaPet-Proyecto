@@ -1,6 +1,7 @@
-package Clases;
+package Swing;
 
 
+import Swing.JFEmpleado;
 import javax.swing.JOptionPane;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
