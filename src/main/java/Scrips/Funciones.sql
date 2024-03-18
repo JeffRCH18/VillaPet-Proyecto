@@ -3,7 +3,7 @@
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 --Contar la cantidad de ventas realizadas por una sucursal
-CREATE OR REPLACE FUNCTION VentasporSucursal(IDSucursal IN NUMBER) 
+create or replace FUNCTION VentasporSucursal(IDSucursal IN NUMBER) 
 RETURN NUMBER 
 IS
     conteo NUMBER;
@@ -12,12 +12,13 @@ BEGIN
     INTO conteo
     FROM Tab_Venta
     WHERE ID_Sucursal = IDSucursal;
-    
+
     RETURN conteo;
 EXCEPTION
     WHEN NO_DATA_FOUND THEN
         RETURN NULL;
 END VentasporSucursal;
+
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 --Calcular el total de ventas realizadas en un día específico
@@ -39,7 +40,7 @@ END VentasporDia;
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 --Calcular total de ventas por categoría
-CREATE OR REPLACE FUNCTION VentasporCategoria(IDCategoria IN NUMBER) 
+/*CREATE OR REPLACE FUNCTION VentasporCategoria(IDCategoria IN NUMBER) 
 RETURN NUMBER 
 IS
     total NUMBER;
@@ -54,7 +55,7 @@ BEGIN
 EXCEPTION
     WHEN NO_DATA_FOUND THEN
         RETURN NULL;
-END VentasporCategoria;
+END VentasporCategoria;*/
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 --Calcular la cantidad total de productos en stock

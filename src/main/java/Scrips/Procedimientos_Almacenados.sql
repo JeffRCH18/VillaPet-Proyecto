@@ -20,49 +20,60 @@ BEGIN
     FROM VISTA_CLIENTE;
 END;
 
---Tabla Empleado
 CREATE OR REPLACE PROCEDURE insert_emp(
-    p_ID,
-    p_IDPUESTO, 
-    p_NOMBRE_EMP,
-    p_APELLIDO_EMP, 
-    p_SALARIO)
+    p_ID IN NUMBER,
+    p_IDPUESTO IN NUMBER, 
+    p_IDROL IN NUMBER,
+    p_NOMBRE_EMP IN VARCHAR2,
+    p_APELLIDO_EMP IN VARCHAR2, 
+    p_CORREO IN VARCHAR2, 
+    p_CONTRASEÑA IN VARCHAR2,
+    p_SALARIO IN NUMBER)
 IS 
 BEGIN
     INSERT INTO TAB_EMPLEADO(
     ID_EMPLEADO, 
-    ID_PUESTO, 
+    ID_PUESTO,
+    ID_ROL, 
     NOMBRE_EMPLEADO, 
-    APELLIDO_EMPLEADO, 
+    APELLIDO,
+    CORREO, 
+    CONTRASEÑA, 
     SALARIO)
-    VALUES (p_ID, p_IDPUESTO, p_NOMBRE_EMP, p_APELLIDO_EMP, p_SALARIO);
+    VALUES (p_ID, p_IDPUESTO, p_IDROL, p_NOMBRE_EMP, p_APELLIDO_EMP, p_CORREO, p_CONTRASEÑA, p_SALARIO);
 EXCEPTION 
     WHEN NO_DATA_FOUND THEN
         DBMS_OUTPUT.PUT_LINE('No se pudo ingresar el empleado, intente de nuevo');
 END;
 
-CREATE OR REPLACE PROCEDURE delete_emp(p_IDEMP)
+CREATE OR REPLACE PROCEDURE delete_emp(p_IDEMP IN NUMBER)
 IS 
 BEGIN 
     DELETE FROM TAB_EMPLEADO 
     WHERE ID_EMPLEADO = p_IDEMP;
 EXCEPTION 
     WHEN NO_DATA_FOUND THEN 
-        DBMS_OUPUT.PUT_LINE('No se pudo borrar el empleado seleccionado');
+        DBMS_OUTPUT.PUT_LINE('No se pudo borrar el empleado seleccionado');
 END;
 
 CREATE OR REPLACE PROCEDURE udpate_emp(
-    p_IDEMP,
-    p_IDPUESTO, 
-    p_NOMBRE_EMP,
-    p_APELLIDO_EMP, 
-    p_SALARIO)
+    p_IDEMP IN NUMBER,
+    p_IDPUESTO IN NUMBER, 
+    p_IDROL IN NUMBER,
+    p_NOMBRE_EMP IN VARCHAR2,
+    p_APELLIDO_EMP IN VARCHAR2, 
+    p_CORREO IN VARCHAR2, 
+    p_CONTRASEÑA IN VARCHAR2, 
+    p_SALARIO IN NUMBER)
 IS 
 BEGIN
-    UDPATE TAB_EMPLEADO 
+    UPDATE TAB_EMPLEADO 
     SET ID_PUESTO = p_IDPUESTO,
+        ID_ROL = p_IDROL,
         NOMBRE_EMPLEADO = p_NOMBRE_EMP,
-        APELLIDO_EMPLEADO = p_APELLIDO_EMP,
+        APELLIDO = p_APELLIDO_EMP,
+        CORREO = p_CORREO,
+        CONTRASEÑA = p_CONTRASEÑA,
         SALARIO = p_SALARIO
     WHERE ID_EMPLEADO = p_IDEMP;
 EXCEPTION 
@@ -73,11 +84,11 @@ END;
 --Tabla Sucursal
 
 CREATE OR REPLACE PROCEDURE insert_sucursal(
-    p_ID,
-    p_CORREO, 
-    p_TELEFONO,
-    p_NOMBRE_SUCURSAL, 
-    p_DIRECCION_SUCURSAL)
+    p_ID IN NUMBER,
+    p_CORREO IN VARCHAR2, 
+    p_TELEFONO IN VARCHAR2, 
+    p_NOMBRE_SUCURSAL IN VARCHAR2,
+    p_DIRECCION_SUCURSAL IN VARCHAR2)
 IS 
 BEGIN
     INSERT INTO TAB_SUCURSAL(
@@ -88,176 +99,178 @@ BEGIN
     DIRECCION_SUCURSAL)
     VALUES (p_ID, p_CORREO, p_TELEFONO, p_NOMBRE_SUCURSAL, p_DIRECCION_SUCURSAL);
 EXCEPTION 
-    WHEN NO_DATA_FOUND THEN
+    WHEN OTHERS THEN
         DBMS_OUTPUT.PUT_LINE('No se pudo ingresar la sucursal, intente de nuevo');
 END;
 
-CREATE OR REPLACE PROCEDURE delete_sucursal(p_IDSU)
+CREATE OR REPLACE PROCEDURE delete_sucursal(p_IDSU IN NUMBER)
 IS 
 BEGIN 
     DELETE FROM TAB_SUCURSAL 
     WHERE ID_SUCURSAL = p_IDSU;
 EXCEPTION 
     WHEN NO_DATA_FOUND THEN 
-        DBMS_OUPUT.PUT_LINE('No se pudo borrar la sucursal seleccionada');
+        DBMS_OUTPUT.PUT_LINE('No se pudo borrar la sucursal seleccionada')
 END;
 
 --Tabala Proveedor 
 
 CREATE OR REPLACE PROCEDURE insert_proveedor(
-    p_ID,
-    p_ID_CUENTA, 
-    p_NOMBRE_PRO,
-    p_TELEFONO_PRO, 
-    p_DIRECCION_PRO)
+    p_ID IN NUMBER, 
+    p_NOMBRE_PRO IN VARCHAR2,
+    p_TELEFONO_PRO IN VARCHAR2, 
+    p_DIRECCION_PRO IN VARCHAR2)
 IS 
 BEGIN
     INSERT INTO TAB_PROVEEDOR(
-    ID_PROVEEDOR, 
-    ID_CUENTA, 
+    ID_PROVEEDOR,
     NOMBRE_PROVEEDOR, 
     TELEFONO_PROVEEDOR, 
     DIRECCION_PROVEEDOR)
-    VALUES (p_ID, p_ID_CUENTA, p_NOMBRE_PRO, p_TELEFONO_PRO, p_DIRECCION_PRO);
+    VALUES (p_ID, p_NOMBRE_PRO, p_TELEFONO_PRO, p_DIRECCION_PRO);
 EXCEPTION 
     WHEN NO_DATA_FOUND THEN
         DBMS_OUTPUT.PUT_LINE('No se pudo ingresar el proveedor, intente de nuevo');
 END;
 
-CREATE OR REPLACE PROCEDURE delete_proveedor(p_IDPRO)
+CREATE OR REPLACE PROCEDURE delete_proveedor(p_IDPRO IN NUMBER) -- Cambiado a IN NUMBER
 IS 
 BEGIN 
     DELETE FROM TAB_PROVEEDOR 
     WHERE ID_PROVEEDOR = p_IDPRO;
 EXCEPTION 
     WHEN NO_DATA_FOUND THEN 
-        DBMS_OUPUT.PUT_LINE('No se pudo borrar el proveedor seleccionado');
+        DBMS_OUTPUT.PUT_LINE('No se pudo borrar el proveedor seleccionado'); -- Corregido DBMS_OUTPUT
 END;
 
 --Tabla Cliente 
 
-CREATE OR REPLACE PROCEDURE insert_cliente(
-    p_ID,
-    p_NOMBRE_CLI, 
-    p_DIRECCION_CLI,
-    p_TELEFONO_CLI, 
-    p_CORREO_CLI)
-IS 
+CREATE OR REPLACE PROCEDURE insertar_cliente(
+    nombre_cliente IN VARCHAR2,
+    apellido IN VARCHAR2,
+    direccion_cliente IN VARCHAR2,
+    correo_cliente IN VARCHAR2,
+    telefono_cliente IN NUMBER
+)
+AS
 BEGIN
-    INSERT INTO TAB_CLIENTE(
-    ID_CLIENTE, 
-    NOMBRE_CLIENTE, 
-    DIRECCION_CLIENTE, 
-    TELEFONO_CLIENTE, 
-    CORREO_CLIENTE)
-    VALUES (p_ID, p_NOMBRE_CLI, p_DIRECCION_CLI, p_TELEFONO_CLI, p_CORRREO_CLI);
-EXCEPTION 
-    WHEN NO_DATA_FOUND THEN
-        DBMS_OUTPUT.PUT_LINE('No se pudo ingresar el cliente, intente de nuevo');
+    INSERT INTO Tab_Cliente (Nombre_Cliente, Apellido, Direccion_Cliente, Correo_Cliente, Telefono_Cliente)
+    VALUES (nombre_cliente, apellido, direccion_cliente, correo_cliente, telefono_cliente);
+    COMMIT;
 END;
 
-CREATE OR REPLACE PROCEDURE delete_cliente(p_IDCLI)
+CREATE OR REPLACE PROCEDURE LISTAR_CLIENTE(p_cursor OUT SYS_REFCURSOR)
+IS
+BEGIN
+  OPEN p_cursor FOR
+    SELECT ID_CLIENTE, NOMBRE_CLIENTE, APELLIDO, DIRECCION_CLIENTE, TELEFONO_CLIENTE, CORREO_CLIENTE
+    FROM VISTA_CLIENTE;
+END;
+
+CREATE OR REPLACE PROCEDURE delete_cliente(p_IDCLI IN NUMBER)
 IS 
 BEGIN 
     DELETE FROM TAB_CLIENTE
     WHERE ID_CLIENTE = p_IDCLI;
 EXCEPTION 
     WHEN NO_DATA_FOUND THEN 
-        DBMS_OUPUT.PUT_LINE('No se pudo borrar el cliente seleccionado');
+        DBMS_OUTPUT.PUT_LINE('No se pudo borrar el cliente seleccionado');
 END;
 
 --Tabla Producto
 
 CREATE OR REPLACE PROCEDURE insert_producto(
-    p_ID,
-    p_ID_CATEGORIA, 
-    p_ID_PROD,
-    p_DESCRIPCION, 
-    p_PRECIO,
-    p_STOCK)
+    p_ID IN NUMBER,
+    p_ID_CATEGORIA IN NUMBER, 
+    p_ID_PROV IN NUMBER, 
+    p_DESCRIPCION IN VARCHAR2, 
+    p_PRECIO IN NUMBER,
+    p_STOCK IN NUMBER)
 IS 
 BEGIN
     INSERT INTO TAB_PRODUCTO(
     ID_PRODUCTO, 
     ID_CATEGORIA, 
-    ID_PROVEEDOR, 
+    ID_PROVEEDOR,
     DESCRIPCION, 
     PRECIO,
     STOCK)
-    VALUES ( p_ID,
+    VALUES (
+    p_ID,
     p_ID_CATEGORIA, 
-    p_ID_PROD,
+    p_ID_PROV,
     p_DESCRIPCION, 
     p_PRECIO,
     p_STOCK);
 EXCEPTION 
-    WHEN NO_DATA_FOUND THEN
+    WHEN OTHERS THEN 
         DBMS_OUTPUT.PUT_LINE('No se pudo ingresar el producto, intente de nuevo');
 END;
 
-CREATE OR REPLACE PROCEDURE delete_producto(p_IDPRODUC)
+CREATE OR REPLACE PROCEDURE delete_producto(p_IDPRODUCTO IN NUMBER)
 IS 
 BEGIN 
     DELETE FROM TAB_PRODUCTO
-    WHERE ID_PRODUCTO = p_IDPRODUC;
+    WHERE ID_PRODUCTO = p_IDPRODUCTO;
 EXCEPTION 
     WHEN NO_DATA_FOUND THEN 
-        DBMS_OUPUT.PUT_LINE('No se pudo borrar el prodcuto seleccionado');
+        DBMS_OUTPUT.PUT_LINE('No se pudo borrar el producto seleccionado');
 END;
+
 
 --Tabla Servicios
 
 CREATE OR REPLACE PROCEDURE insert_servicios(
-    p_ID,
-    p_ID_EMP, 
-    p_NOMBRE_SERV,
-    p_DESCRIPCION_SERV)
+    p_ID IN NUMBER,
+    p_ID_EMP IN NUMBER, 
+    p_NOMBRE_SERV IN VARCHAR2,
+    p_DESCRIPCION_SERV IN VARCHAR2)
 IS 
 BEGIN
-    INSERT INTO TAB_SERVICIOS(
-    ID_SERVICIOS, 
+    INSERT INTO TAB_SERVICIO(
+    ID_SERVICIO, 
     ID_EMPLEADO, 
-    NOMBRE_SERVICIO, 
+    NOMBRE_SERVICIOS, 
     DESCRIPCION_SERVICIO)
-    VALUES (p_ID, p_ID_EMP, p_NOMBRE_SERV, p_DESCRIPCION_SERB)
+    VALUES (p_ID, p_ID_EMP, p_NOMBRE_SERV, p_DESCRIPCION_SERV);
 EXCEPTION 
     WHEN NO_DATA_FOUND THEN
         DBMS_OUTPUT.PUT_LINE('No se pudo ingresar el servicio, intente de nuevo');
 END;
 
-CREATE OR REPLACE PROCEDURE delete_servicio(p_IDSERV)
+CREATE OR REPLACE PROCEDURE delete_servicio(p_IDSERV IN NUMBER)
 IS 
 BEGIN 
-    DELETE FROM TAB_SERVICIOS
+    DELETE FROM TAB_SERVICIO
     WHERE ID_SERVICIO = p_IDSERV;
 EXCEPTION 
     WHEN NO_DATA_FOUND THEN 
-        DBMS_OUPUT.PUT_LINE('No se pudo borrar el servicio seleccionado');
+        DBMS_OUTPUT.PUT_LINE('No se pudo borrar el servicio seleccionado');
 END;
 
 --Tabla Puesto
 
 CREATE OR REPLACE PROCEDURE insert_puesto(
-    p_ID,
-    p_NOMBRE_P,
-    p_DESCRIPCION_P)
+    p_ID IN NUMBER,
+    p_DESCRIPCION_P IN VARCHAR2)
 IS 
 BEGIN
-    INSERT INTO TAB_PUESTO(ID_PUESTO, NOMBRE_PUESTO, DESCRIPCION_PUESTO)
-    VALUES
+    INSERT INTO TAB_PUESTO(ID_PUESTO, DESCRIPCION_PUESTO)
+    VALUES (p_ID, p_DESCRIPCION_P);
 EXCEPTION 
     WHEN NO_DATA_FOUND THEN
         DBMS_OUTPUT.PUT_LINE('No se pudo ingresar el puesto, intente de nuevo');
 END;
 
-CREATE OR REPLACE PROCEDURE delete_puesto(p_IDP)
+
+
+CREATE OR REPLACE PROCEDURE delete_puesto(p_IDP IN NUMBER)
 IS 
 BEGIN 
     DELETE FROM TAB_PUESTO
     WHERE ID_PUESTO = p_IDP;
 EXCEPTION 
     WHEN NO_DATA_FOUND THEN 
-        DBMS_OUPUT.PUT_LINE('No se pudo borrar el puesto seleccionado');
+        DBMS_OUTPUT.PUT_LINE('No se pudo borrar el puesto seleccionado');
 END;
-
 
