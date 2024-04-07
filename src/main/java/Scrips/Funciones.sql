@@ -39,34 +39,16 @@ EXCEPTION
 END VentasporDia;
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
---Calcular total de ventas por categoría
-/*CREATE OR REPLACE FUNCTION VentasporCategoria(IDCategoria IN NUMBER) 
-RETURN NUMBER 
-IS
-    total NUMBER;
-BEGIN
-    SELECT SUM(v.Monto_Venta)
-    INTO total
-    FROM Tab_Venta v
-    JOIN Tab_Producto p ON v.ID_Producto = p.ID_Producto
-    WHERE p.ID_Categoria = IDCategoria;
-    
-    RETURN total;
-EXCEPTION
-    WHEN NO_DATA_FOUND THEN
-        RETURN NULL;
-END VentasporCategoria;*/
------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
 --Calcular la cantidad total de productos en stock
-CREATE OR REPLACE FUNCTION ProductosenStock 
+CREATE OR REPLACE FUNCTION ProductosenStock(sucursal NUMBER)
 RETURN NUMBER 
 IS
     total_stock NUMBER;
 BEGIN
     SELECT SUM(Stock)
-    INTO v_total_stock
-    FROM Tab_Producto;
+    INTO total_stock
+    FROM Tab_Producto
+    WHERE ID_Sucursal = sucursal;
     
     RETURN total_stock;
 EXCEPTION
@@ -83,9 +65,9 @@ IS
 BEGIN
     lista_agotados := '';
     
-    FOR producto IN (SELECT Descripcion FROM Tab_Producto WHERE Stock = 0) 
+    FOR producto IN (SELECT Descripcion, ID_Sucursal FROM Tab_Producto WHERE Stock = 0) 
     LOOP
-        lista_agotados := lista_agotados || producto.Descripcion || ', ';
+        lista_agotados := lista_agotados || producto.Descripcion || '--> Sucursal: ' || producto.ID_Sucursal || '. ';
     END LOOP;
 
     RETURN lista_agotados;
@@ -119,7 +101,7 @@ RETURN NUMBER
 IS
     total NUMBER;
 BEGIN
-    SELECT SUM(Monto_Venta) INTO total
+    SELECT SUM(Monto) INTO total
     FROM Tab_Pago
     WHERE ID_Proveedor = IDProveedor;
     
@@ -147,4 +129,26 @@ EXCEPTION
 END PagosporPeriodo;
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+--Pruebas
+
+-- Contar la cantidad de ventas realizadas por una sucursal
+SELECT VentasporSucursal(01) AS Ventas_Sucursal_01 FROM DUAL;
+
+-- Calcular el total de ventas realizadas en un d�a espec�fico
+SELECT VentasporDia(TO_DATE('2024-04-07', 'YYYY-MM-DD')) AS Total_Ventas_Hoy FROM DUAL;
+
+-- Calcular la cantidad total de productos en stock
+SELECT ProductosenStock(1) AS Total_Productos_Stock FROM DUAL;
+
+-- Listar productos agotados
+SELECT ProductosAgotados() AS Productos_Agotados FROM DUAL;
+
+-- Contar la cantidad de empleados por sucursal
+SELECT EmpleadosporSucursal(01) AS Empleados_Sucursal_01 FROM DUAL;
+
+-- Calcular pagos realizados a un proveedor
+SELECT PagosaProveedor(03) AS Pagos_a_Proveedor_01 FROM DUAL;
+
+-- Calcular el total de pagos en un periodo de tiempo
+SELECT PagosporPeriodo(TO_DATE('2024-04-01', 'YYYY-MM-DD'), TO_DATE('2024-04-08', 'YYYY-MM-DD')) AS Total_Pagos_Periodo FROM DUAL;
 
