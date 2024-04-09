@@ -4,21 +4,23 @@ public class Empleado {
     private int ID_Empleado;
     private int ID_Puesto;
     private int ID_Rol;
+    private int ID_Sucursal;
     private String Nombre_Empleado;
     private String Apellido;
     private String Correo;
-    private String Contraseña;
+    private String Contrasena;
     private int Salario;
 
-    public Empleado(int ID_Empleado, int ID_Puesto, int ID_Rol, String Nombre_Empleado, String Apellido, String Correo, String Contraseña, int Salario) {
+    public Empleado(int ID_Empleado, int ID_Puesto, int ID_Rol, int ID_Sucursal, String Nombre_Empleado, String Apellido, String Correo, String Contrasena, int Salario) {
         this.ID_Empleado = ID_Empleado;
         this.ID_Puesto = ID_Puesto;
         this.ID_Rol = ID_Rol;
         this.Nombre_Empleado = Nombre_Empleado;
         this.Apellido = Apellido;
         this.Correo = Correo;
-        this.Contraseña = Contraseña;
+        this.Contrasena = Contrasena;
         this.Salario = Salario;
+        this.ID_Sucursal = ID_Sucursal;
     }
     
         public Empleado() {
@@ -73,12 +75,12 @@ public class Empleado {
         this.Correo = Correo;
     }
 
-    public String getContraseña() {
-        return Contraseña;
+    public String getContrasena() {
+        return Contrasena;
     }
 
-    public void setContraseña(String Contraseña) {
-        this.Contraseña = Contraseña;
+    public void setContrasena(String Contrasena) {
+        this.Contrasena = Contrasena;
     }
 
     public int getSalario() {
@@ -88,6 +90,12 @@ public class Empleado {
     public void setSalario(int Salario) {
         this.Salario = Salario;
     }
-        
     
+        public int getID_Sucursal() {
+        return ID_Sucursal;
+    }
+
+    public void setID_Sucursal(int ID_Sucursal) {
+        this.ID_Sucursal = ID_Sucursal;
+    }
 }

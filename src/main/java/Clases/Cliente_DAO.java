@@ -11,7 +11,7 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import oracle.jdbc.OracleTypes;
 public class Cliente_DAO extends Cliente{
-    /*Llamada del procedimiento almacenado que recibi 5 parametros*/
+/*Llamada del procedimiento almacenado que recibi 5 parametros*/
     private static final String PROCEDURE_INSERT_CLIENTE = "{CALL insertar_cliente(?, ?, ?, ?, ?)}";
     public void insertarCliente(String nombre, String apellido, String direccion, String correo, int telefono) {
         try (Connection connection = Conexion.obtenerConexion();
@@ -64,7 +64,34 @@ public class Cliente_DAO extends Cliente{
     /*Devuelve la lista de clientes recuperada de la DB*/
     return lista;
 }
-
+    private static final String PROCEDURE_DELETE_CLIENTE = "{CALL DELETE_CLIENTE(?)}";
+    public void eliminarCliente(int idCliente){
+        // Llamar al procedimiento almacenado para eliminar el cliente
+        try (Connection connection = Conexion.obtenerConexion()) {
+            CallableStatement statement = connection.prepareCall(PROCEDURE_DELETE_CLIENTE);
+            statement.setInt(1, idCliente);
+            statement.execute();
+        
+        } catch (SQLException e) {
+        System.out.println(e.toString());
+        }
+    }
+    
+    private static final String PROCEDURE_UPDATE_CLIENTE = "{CALL UPDATE_CLIENTE(?, ?, ?, ?, ?, ?)}";
+    public void actualizarCliente(int idCliente, String nombre, String apellido, String direccion, String telefono, String correo) {
+        try (Connection connection = Conexion.obtenerConexion()) {
+            CallableStatement statement = connection.prepareCall(PROCEDURE_UPDATE_CLIENTE);
+            statement.setInt(1, idCliente); // Primer parámetro: ID del cliente
+            statement.setString(2, nombre);
+            statement.setString(3, apellido);
+            statement.setString(4, direccion);
+            statement.setString(5, telefono);
+            statement.setString(6, correo);
+            statement.execute();
+        } catch (SQLException e) {
+            System.out.println(e.toString());
+        }
+    }
 
     
 }
