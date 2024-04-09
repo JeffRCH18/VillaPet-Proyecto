@@ -12,7 +12,7 @@ import javax.swing.JOptionPane;
 import oracle.jdbc.OracleTypes;
 
 public class EmpleadoDAO {
-private static final String PROCEDURE_INSERT_EMPLEADO = "{CALL insert_emp(?, ?, ?, ?, ?, ?, ?, ?)}";
+private static final String PROCEDURE_INSERT_EMPLEADO = "{CALL Insertar_Empleado_SP(?, ?, ?, ?, ?, ?, ?, ?)}";
     public void insertarEmpleado(int ID_Puesto,int ID_Rol, String Nombre_Empleado, String Apellido, String Correo, String Contrasena, int Salario, int ID_Sucursal) {
         try (Connection connection = Conexion.obtenerConexion();
             /*Se verifica la conexion y se prepara una consulta con los datos recibidos en el metodo desde la interfaz*/
@@ -34,7 +34,7 @@ private static final String PROCEDURE_INSERT_EMPLEADO = "{CALL insert_emp(?, ?, 
         }
     }
     
-    private static final String PROCEDURE_LIST_EMPLEADO = "{CALL LISTAR_EMPLEADO(?)}";
+    private static final String PROCEDURE_LIST_EMPLEADO = "{CALL Listar_Empleado_SP(?)}";
     /*Metodo que devuelve una lista de objetos*/
     public List<Empleado> ListarEmpleado (){
     /*Crea una lista vacía para almacenar los objetos */   
@@ -60,7 +60,7 @@ private static final String PROCEDURE_INSERT_EMPLEADO = "{CALL insert_emp(?, ?, 
             empleado.setNombre_Empleado(rs.getString("NOMBRE_EMPLEADO"));
             empleado.setApellido(rs.getString("APELLIDO"));
             empleado.setCorreo(rs.getString("CORREO"));
-            empleado.setContrasena(rs.getString("CONTRASEÑA"));
+            empleado.setContrasena(rs.getString("CONTRASENA"));
             empleado.setSalario(rs.getInt("SALARIO"));
             /*Agrega el objeto Cliente a la lista de clientes*/
             lista.add(empleado);
@@ -71,7 +71,7 @@ private static final String PROCEDURE_INSERT_EMPLEADO = "{CALL insert_emp(?, ?, 
     /*Devuelve la lista de clientes recuperada de la DB*/
     return lista;
 }
-    private static final String PROCEDURE_DELETE_EMPLEADO = "{CALL DELETE_EMP(?)}";
+    private static final String PROCEDURE_DELETE_EMPLEADO = "{CALL Eliminar_Empleado_SP(?)}";
     public void eliminarEmpleado(int ID_Empleado){
         //Llamar al procedimiento almacenado para eliminar el cliente
         try (Connection connection = Conexion.obtenerConexion()) {

@@ -1,11 +1,17 @@
-CREATE OR REPLACE VIEW VISTA_CLIENTE AS
+
+--Vistas Villa Pet
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+--Vista para lista los clientes
+CREATE OR REPLACE VIEW Clientes_VIEW AS
 SELECT ID_CLIENTE, NOMBRE_CLIENTE, APELLIDO, DIRECCION_CLIENTE, TELEFONO_CLIENTE, CORREO_CLIENTE
 FROM TAB_CLIENTE;
 
-SELECT * FROM VISTA_CLIENTE;
-
-// Vista para listar los empledos con su puesto y rol
-CREATE OR REPLACE VIEW VISTA_EMPLEADOS AS
+--SELECT * FROM VISTA_CLIENTE;
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+--Vista para listar los empledos con su puesto y rol
+CREATE OR REPLACE VIEW Empleados_VIEW AS
 SELECT
     ID_EMPLEADO,
     NOMBRE_EMPLEADO,
@@ -19,12 +25,10 @@ FROM
     JOIN Tab_Rol r ON e.ID_ROL = r.ID_ROL
     JOIN Tab_Puesto p ON e.ID_PUESTO = p.ID_PUESTO;
 
-
-//SELECT * FROM VISTA_EMPLEADOS;
-
-
-// Vista que muesta el total de ventas de cada cliente y su total
-CREATE OR REPLACE VIEW VISTA_VENTASCLIENTE AS
+--SELECT * FROM VISTA_EMPLEADOS;
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+--Vista que muesta el total de ventas de cada cliente y su total
+CREATE OR REPLACE VIEW VentasCliente_VIEW AS
 SELECT
     v.ID_CLIENTE,
     c.NOMBRE_CLIENTE,
@@ -37,13 +41,10 @@ FROM
 GROUP BY
     v.ID_CLIENTE, c.NOMBRE_CLIENTE, c.APELLIDO;
 
-//SELECT * FROM VISTA_VENTASCLIENTE;
-
-
-
-//Vista que genera el total de ventas por mes de cada sucursal
-
-CREATE OR REPLACE VIEW VISTA_VENTAS_MENSUALES_POR_SUCURSAL AS
+--SELECT * FROM VISTA_VENTASCLIENTE;
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+--Vista que genera el total de ventas por mes de cada sucursal
+CREATE OR REPLACE VIEW VentasMensualesporSucursal_VIEW AS
 SELECT
     TO_CHAR(FECHA, 'YYYY-MM') AS MES,
     ts.NOMBRE_SUCURSAL,
@@ -56,5 +57,5 @@ GROUP BY
 ORDER BY
     MES;
 
-//SELECT * FROM VISTA_VENTAS_MENSUALES_POR_SUCURSAL;
-v
+--SELECT * FROM VISTA_VENTAS_MENSUALES_POR_SUCURSAL;
+---------------------------------------------------------------------------------------------------------------------------------------------------------------

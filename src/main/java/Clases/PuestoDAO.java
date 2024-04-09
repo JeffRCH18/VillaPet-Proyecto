@@ -10,7 +10,7 @@ import java.util.List;
 import oracle.jdbc.OracleTypes;
 
 public class PuestoDAO {
-     private static final String PROCEDURE_LIST_PUESTO = "{CALL LISTAR_PUESTO(?)}";
+     private static final String PROCEDURE_LIST_PUESTO = "{CALL Listar_Puesto_SP(?)}";
     /*Metodo que devuelve una lista de objetos*/
     public List<Puesto> ListarPuesto() {
     /*Crea una lista vacía para almacenar los objetos */   

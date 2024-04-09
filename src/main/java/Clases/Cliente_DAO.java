@@ -12,7 +12,7 @@ import javax.swing.table.DefaultTableModel;
 import oracle.jdbc.OracleTypes;
 public class Cliente_DAO extends Cliente{
 /*Llamada del procedimiento almacenado que recibi 5 parametros*/
-    private static final String PROCEDURE_INSERT_CLIENTE = "{CALL insertar_cliente(?, ?, ?, ?, ?)}";
+    private static final String PROCEDURE_INSERT_CLIENTE = "{CALL Insertar_Cliente_SP(?, ?, ?, ?, ?)}";
     public void insertarCliente(String nombre, String apellido, String direccion, String correo, int telefono) {
         try (Connection connection = Conexion.obtenerConexion();
             /*Se verifica la conexion y se prepara una consulta con los datos recibidos en el metodo desde la interfaz*/
@@ -30,7 +30,7 @@ public class Cliente_DAO extends Cliente{
         }
     }
     /*Llamada del procedimiento almacenado que recibi 1 parametro*/
-    private static final String PROCEDURE_LIST_CLIENTE = "{CALL LISTAR_CLIENTE(?)}";
+    private static final String PROCEDURE_LIST_CLIENTE = "{CALL Listar_Cliente_SP(?)}";
     /*Metodo que devuelve una lista de objetos*/
     public List<Cliente> ListarCliente() {
     /*Crea una lista vacía para almacenar los objetos */   
@@ -64,7 +64,7 @@ public class Cliente_DAO extends Cliente{
     /*Devuelve la lista de clientes recuperada de la DB*/
     return lista;
 }
-    private static final String PROCEDURE_DELETE_CLIENTE = "{CALL DELETE_CLIENTE(?)}";
+    private static final String PROCEDURE_DELETE_CLIENTE = "{CALL Eliminar_Cliente_SP(?)}";
     public void eliminarCliente(int idCliente){
         // Llamar al procedimiento almacenado para eliminar el cliente
         try (Connection connection = Conexion.obtenerConexion()) {
@@ -77,7 +77,7 @@ public class Cliente_DAO extends Cliente{
         }
     }
     
-    private static final String PROCEDURE_UPDATE_CLIENTE = "{CALL UPDATE_CLIENTE(?, ?, ?, ?, ?, ?)}";
+    private static final String PROCEDURE_UPDATE_CLIENTE = "{CALL Actualizar_Cliente_SP(?, ?, ?, ?, ?, ?)}";
     public void actualizarCliente(int idCliente, String nombre, String apellido, String direccion, String telefono, String correo) {
         try (Connection connection = Conexion.obtenerConexion()) {
             CallableStatement statement = connection.prepareCall(PROCEDURE_UPDATE_CLIENTE);

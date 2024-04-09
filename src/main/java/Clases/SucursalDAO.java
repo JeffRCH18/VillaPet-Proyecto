@@ -12,7 +12,7 @@ import oracle.jdbc.OracleTypes;
 public class SucursalDAO {
      
     /*Llamada del procedimiento almacenado que recibi 1 parametro*/
-    private static final String PROCEDURE_LIST_SUCURSAL = "{CALL LISTAR_SUCURSAL(?)}";
+    private static final String PROCEDURE_LIST_SUCURSAL = "{CALL Listar_Sucursal_SP(?)}";
     /*Metodo que devuelve una lista de objetos*/
     public List<Sucursal> ListarSucursal() {
     /*Crea una lista vacía para almacenar los objetos */   

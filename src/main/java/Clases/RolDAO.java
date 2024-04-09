@@ -11,7 +11,7 @@ import javax.swing.JOptionPane;
 import oracle.jdbc.OracleTypes;
 
 public class RolDAO {
-    private static final String PROCEDURE_INSERT_ROL = "{CALL INSERT_ROL(?)}";
+    private static final String PROCEDURE_INSERT_ROL = "{CALL Insertar_Rol_SP(?)}";
     public void insertarRol(String nombre) {
         try (Connection connection = Conexion.obtenerConexion();
             /*Se verifica la conexion y se prepara una consulta con los datos recibidos en el metodo desde la interfaz*/
@@ -26,7 +26,7 @@ public class RolDAO {
         }
     }
     
-    private static final String PROCEDURE_LIST_ROLES = "{CALL LISTAR_ROL(?)}";
+    private static final String PROCEDURE_LIST_ROLES = "{CALL Listar_Rol_SP(?)}";
     /*Metodo que devuelve una lista de objetos*/
     public List<Rol> Listarrol() {
     /*Crea una lista vacía para almacenar los objetos */   
@@ -57,7 +57,7 @@ public class RolDAO {
     return lista;
     }
 
-    private static final String PROCEDURE_DELETE_ROL = "{CALL DELETE_ROL(?)}";
+    private static final String PROCEDURE_DELETE_ROL = "{CALL Eliminar_Rol_SP(?)}";
     public void eliminarRol(int idRol){
         // Llamar al procedimiento almacenado para eliminar el Rol
         try (Connection connection = Conexion.obtenerConexion()) {
@@ -70,7 +70,7 @@ public class RolDAO {
         }
     }
     
-    private static final String PROCEDURE_UPDATE_ROL = "{CALL UPDATE_ROL(?, ?)}";
+    private static final String PROCEDURE_UPDATE_ROL = "{CALL Actualizar_Rol_SP(?,?)}";
     public void actualizarCliente(int idRol, String nombre) {
         try (Connection connection = Conexion.obtenerConexion()) {
             CallableStatement statement = connection.prepareCall(PROCEDURE_UPDATE_ROL);
