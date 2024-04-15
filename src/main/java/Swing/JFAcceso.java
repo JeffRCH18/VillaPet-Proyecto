@@ -1,6 +1,5 @@
 package Swing;
 
-
 import java.awt.Color;
 import javax.swing.JOptionPane;
 
@@ -178,11 +177,13 @@ public class JFAcceso extends javax.swing.JFrame {
 
     private void txtUsuarioMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtUsuarioMousePressed
         // TODO add your handling code here:
-        if (txtUsuario.getText().equals("Ingrese el nombre de usuario")) {
+        if (txtUsuario.getText().equals("Ingrese el nombre de usuario"))
+        {
             txtUsuario.setText("");
             txtUsuario.setForeground(Color.BLACK);
         }
-        if (String.valueOf(txtContraseña.getPassword()).isEmpty()) {
+        if (String.valueOf(txtContraseña.getPassword()).isEmpty())
+        {
             txtContraseña.setText("*******");
             txtContraseña.setForeground(new Color(204, 204, 204));
         }
@@ -190,11 +191,13 @@ public class JFAcceso extends javax.swing.JFrame {
 
     private void txtContraseñaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtContraseñaMousePressed
         // TODO add your handling code here:
-        if (String.valueOf(txtContraseña.getPassword()).equals("*******")) {
+        if (String.valueOf(txtContraseña.getPassword()).equals("*******"))
+        {
             txtContraseña.setText("");
             txtContraseña.setForeground(Color.BLACK);
         }
-        if (txtUsuario.getText().isEmpty()) {
+        if (txtUsuario.getText().isEmpty())
+        {
             txtUsuario.setText("Ingrese el nombre de usuario");
             txtUsuario.setForeground(new Color(204, 204, 204));
         }
@@ -202,31 +205,53 @@ public class JFAcceso extends javax.swing.JFrame {
 
     private void btnIngresarAccesoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarAccesoActionPerformed
         // TODO add your handling code here:
+        // Nombre de usuario y la contraseña ingresados
+        String usuario = txtUsuario.getText();
+        String contrasena = new String(txtContraseña.getPassword());
+
+        // Verificar si el nombre de usuario y la contraseña son válidos
+        if (usuario.equals("Villapet@gmail.com") && contrasena.equals("12345678"))
+        {
+            this.setVisible(false);
+
+            JFPrincipal principal = new JFPrincipal();
+            principal.setVisible(true);
+        } else
+        {
+            JOptionPane.showMessageDialog(this, "Usuario o contraseña incorrectos", "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_btnIngresarAccesoActionPerformed
 
     /**
-         * @param args the command line arguments
-         */
+     * @param args the command line arguments
+     */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+        try
+        {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels())
+            {
+                if ("Nimbus".equals(info.getName()))
+                {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
             }
-        } catch (ClassNotFoundException ex) {
+        } catch (ClassNotFoundException ex)
+        {
             java.util.logging.Logger.getLogger(JFAcceso.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
+        } catch (InstantiationException ex)
+        {
             java.util.logging.Logger.getLogger(JFAcceso.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
+        } catch (IllegalAccessException ex)
+        {
             java.util.logging.Logger.getLogger(JFAcceso.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        } catch (javax.swing.UnsupportedLookAndFeelException ex)
+        {
             java.util.logging.Logger.getLogger(JFAcceso.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>

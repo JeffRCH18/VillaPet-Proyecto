@@ -14,15 +14,17 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.table.DefaultTableModel;
 
 public class JFEmpleado extends javax.swing.JFrame {
+
     RolDAO rolDAO = new RolDAO();
     PuestoDAO puestoDAO = new PuestoDAO();
     SucursalDAO sucursalDAO = new SucursalDAO();
     EmpleadoDAO empleadoDAO = new EmpleadoDAO();
     DefaultTableModel modelo;
+
     public JFEmpleado() {
         initComponents();
         listar();
-        llenarComboBoxRoles(); 
+        llenarComboBoxRoles();
         llenarComboBoxPuesto();
         llenarComboBoxSucursal();
     }
@@ -60,6 +62,7 @@ public class JFEmpleado extends javax.swing.JFrame {
         lblSalario3 = new javax.swing.JLabel();
         lblSalario4 = new javax.swing.JLabel();
         boxRol = new javax.swing.JComboBox<>();
+        btnRegresar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -221,148 +224,166 @@ public class JFEmpleado extends javax.swing.JFrame {
 
         boxRol.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
+        btnRegresar.setBackground(new java.awt.Color(204, 204, 204));
+        btnRegresar.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        btnRegresar.setForeground(new java.awt.Color(0, 0, 0));
+        btnRegresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/contents/regresar peq.png"))); // NOI18N
+        btnRegresar.setText("Regresar");
+        btnRegresar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnRegresar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnRegresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegresarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(223, 223, 223)
+                .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(102, 102, 102)
+                .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(73, 73, 73)
-                                .addComponent(lblmenuEmpleados))
+                                .addGap(30, 30, 30)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                        .addGap(6, 6, 6)
+                                        .addComponent(lblNombre)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(lblPuesto)
+                                            .addComponent(lblSalario1))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(txtSalario, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(txtApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(104, 104, 104)
-                                .addComponent(lblmenuEmpleados1))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(23, 23, 23)
+                                .addContainerGap()
+                                .addComponent(btnRegresar, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(39, 39, 39)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(lblSalario)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                .addGap(34, 34, 34)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(lblNombre)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
+                                        .addGap(31, 31, 31)
+                                        .addComponent(lblmenuEmpleados1))
+                                    .addComponent(lblmenuEmpleados)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addComponent(lblCorreo)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(lblPuesto)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(txtApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(lblSalario)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(txtContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(lblSalario1)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(txtSalario, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                                .addGap(22, 22, 22)
-                                                .addComponent(lblSalario2))
-                                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                                .addGap(8, 8, 8)
-                                                .addComponent(boxRol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                        .addGap(88, 88, 88)
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(boxPuesto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(lblSalario3))
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                                .addGap(86, 86, 86)
-                                                .addComponent(boxSucursal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                                .addGap(74, 74, 74)
-                                                .addComponent(lblSalario4, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
-                        .addGap(0, 254, Short.MAX_VALUE))
-                    .addComponent(jScrollPane2))
+                                        .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(93, 93, 93)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(boxRol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblSalario2))
+                        .addGap(93, 93, 93)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(boxPuesto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblSalario3))
+                        .addGap(81, 81, 81)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblSalario4, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(boxSucursal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(lblAcciones)
+                                .addGap(10, 10, 10))
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(btnActualizar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnRefrescar, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btnEliminar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnNuevo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(75, 75, 75))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(lblTitulo)
+                        .addGap(60, 60, 60))))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane2)
                 .addContainerGap())
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addGap(320, 626, Short.MAX_VALUE)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                            .addComponent(lblAcciones)
-                            .addGap(10, 10, 10))
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btnActualizar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnRefrescar, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(btnEliminar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnNuevo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGap(163, 163, 163))
-                .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGap(414, 414, 414)
-                            .addComponent(lblTitulo))
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGap(252, 252, 252)
-                            .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(87, 87, 87)
-                            .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGap(0, 16, Short.MAX_VALUE)))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addComponent(lblmenuEmpleados)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lblmenuEmpleados1)
-                .addGap(14, 14, 14)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblNombre)
-                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblCorreo)
-                    .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblPuesto)
-                    .addComponent(txtApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblSalario)
-                    .addComponent(txtContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblSalario1)
-                    .addComponent(txtSalario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblSalario2)
-                    .addComponent(lblSalario3)
-                    .addComponent(lblSalario4))
-                .addGap(11, 11, 11)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(boxPuesto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(boxSucursal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(boxRol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(166, 166, 166)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 377, Short.MAX_VALUE)
-                .addGap(44, 44, 44))
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel1Layout.createSequentialGroup()
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGap(91, 91, 91)
-                            .addComponent(lblAcciones)
-                            .addGap(18, 18, 18)
-                            .addComponent(btnNuevo)
-                            .addGap(29, 29, 29)
-                            .addComponent(btnEliminar)
-                            .addGap(29, 29, 29)
-                            .addComponent(btnActualizar)
-                            .addGap(29, 29, 29)
-                            .addComponent(btnRefrescar))
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGap(22, 22, 22)
-                            .addComponent(lblTitulo)
-                            .addGap(351, 351, 351)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(btnBuscar)
-                                .addComponent(btnLimpiar))))
-                    .addContainerGap(442, Short.MAX_VALUE)))
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(lblmenuEmpleados)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(lblmenuEmpleados1))
+                            .addComponent(btnRegresar))
+                        .addGap(40, 40, 40)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(lblNombre)
+                                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(lblPuesto)
+                                    .addComponent(txtApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(lblCorreo)
+                                    .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(lblSalario)
+                                    .addComponent(txtContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblSalario1)
+                            .addComponent(txtSalario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(24, 24, 24)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblSalario2)
+                            .addComponent(lblSalario3)
+                            .addComponent(lblSalario4))
+                        .addGap(11, 11, 11)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(boxPuesto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(boxSucursal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(boxRol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(91, 91, 91)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnBuscar)
+                            .addComponent(btnLimpiar)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(lblTitulo)
+                        .addGap(63, 63, 63)
+                        .addComponent(lblAcciones)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnNuevo)
+                        .addGap(29, 29, 29)
+                        .addComponent(btnEliminar)
+                        .addGap(29, 29, 29)
+                        .addComponent(btnActualizar)
+                        .addGap(29, 29, 29)
+                        .addComponent(btnRefrescar)))
+                .addGap(48, 48, 48)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -370,9 +391,9 @@ public class JFEmpleado extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(24, 24, 24)
+                .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(31, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -402,7 +423,7 @@ public class JFEmpleado extends javax.swing.JFrame {
         List<Rol> listaRoles = rolDAO.Listarrol();
         List<Puesto> listaPuesto = puestoDAO.ListarPuesto();
         List<Sucursal> listaSucursal = sucursalDAO.ListarSucursal();
-         // Se obtiene datos del empleado desde los campos de texto y combobox
+        // Se obtiene datos del empleado desde los campos de texto y combobox
         String nombre = txtNombre.getText();
         String apellido = txtApellido.getText();
         String correo = txtCorreo.getText();
@@ -410,23 +431,25 @@ public class JFEmpleado extends javax.swing.JFrame {
         int salario = Integer.parseInt(txtSalario.getText());
         String nombreSucursal = (String) boxSucursal.getSelectedItem();
         String nombreRol = (String) boxRol.getSelectedItem();
-        String nombrePuesto = (String) boxPuesto.getSelectedItem(); 
+        String nombrePuesto = (String) boxPuesto.getSelectedItem();
 
         // Se obtiene IDs de rol, sucursal y puesto utilizando los nombres seleccionados en cada combobox
         int idRolSeleccionador = RolDAO.obtenerIdPorDescripcionr(nombreRol, listaRoles);
         int idRolSeleccionados = SucursalDAO.obtenerIdPorDescripcions(nombreSucursal, listaSucursal);
         int idRolSeleccionadop = PuestoDAO.obtenerIdPorDescripcionp(nombrePuesto, listaPuesto);
 
-        try {
+        try
+        {
             // Se inserta nuevo empleado utilizando los datos y IDs obtenidos
-            empleadoDAO.insertarEmpleado(idRolSeleccionadop,idRolSeleccionador, nombre, apellido, correo, contraseña, salario, idRolSeleccionados);
-             // Después de insertar, se debe actualizar la lista de empleados y limpiar los campos
+            empleadoDAO.insertarEmpleado(idRolSeleccionadop, idRolSeleccionador, nombre, apellido, correo, contraseña, salario, idRolSeleccionados);
+            // Después de insertar, se debe actualizar la lista de empleados y limpiar los campos
             listar();
             limpiarCampos();
             llenarComboBoxSucursal();
             llenarComboBoxRoles();
             llenarComboBoxPuesto();
-        } catch (NumberFormatException ex) {
+        } catch (NumberFormatException ex)
+        {
             JOptionPane.showMessageDialog(this, "Salario inválido. Por favor, ingrese un valor numérico válido.");
         }
     }//GEN-LAST:event_btnNuevoActionPerformed
@@ -434,7 +457,8 @@ public class JFEmpleado extends javax.swing.JFrame {
     private void tablaEmpleadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaEmpleadosMouseClicked
         //  Obtiene el índice de la fila seleccionada en la tabla
         int filaSeleccionada = tablaEmpleados.getSelectedRow();
-        if (filaSeleccionada >= 0) {
+        if (filaSeleccionada >= 0)
+        {
             // Se obtiene datos del empleado seleccionado desde la tabla
             int idRol = (int) tablaEmpleados.getValueAt(filaSeleccionada, 2);
             int idPuesto = (int) tablaEmpleados.getValueAt(filaSeleccionada, 1);
@@ -468,16 +492,17 @@ public class JFEmpleado extends javax.swing.JFrame {
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         // Obtener la fila seleccionada en la tabla
         int filaSeleccionada = tablaEmpleados.getSelectedRow();
-        if (filaSeleccionada >= 0) {
+        if (filaSeleccionada >= 0)
+        {
             // Obtener el ID del cliente seleccionado en la tabla
             int idEmpleado = Integer.parseInt(tablaEmpleados.getValueAt(filaSeleccionada, 0).toString());
-            
+
             // Instanciar la clase Cliente_DAO
             EmpleadoDAO empleadoDAO = new EmpleadoDAO();
-            
+
             // Llamar al método eliminarCliente con el ID del cliente seleccionado
             empleadoDAO.eliminarEmpleado(idEmpleado);
-            
+
             // Actualizar la tabla después de eliminar el cliente
             // Aquí deberías tener un método para actualizar la tabla con los clientes
             // Si no tienes uno, deberías crearlo o implementarlo según tu estructura
@@ -485,10 +510,19 @@ public class JFEmpleado extends javax.swing.JFrame {
             limpiarCampos();
             // Opcionalmente, mostrar un mensaje de éxito
             JOptionPane.showMessageDialog(null, "Empleado eliminado correctamente");
-        } else {
+        } else
+        {
             JOptionPane.showMessageDialog(null, "Por favor, seleccione un Empleado primero");
         }
     }//GEN-LAST:event_btnEliminarActionPerformed
+
+    private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
+        // TODO add your handling code here:
+        dispose();
+
+        JFPrincipal principal = new JFPrincipal();
+        principal.setVisible(true);
+    }//GEN-LAST:event_btnRegresarActionPerformed
 
     private void limpiarCampos() {
         txtNombre.setText("");
@@ -497,7 +531,7 @@ public class JFEmpleado extends javax.swing.JFrame {
         txtContraseña.setText("");
         txtSalario.setText("");
     }
-    
+
     public final void llenarComboBoxRoles() {
         DefaultComboBoxModel<String> comboBoxModel = new DefaultComboBoxModel<>();
         // Obtener lista de roles
@@ -505,13 +539,14 @@ public class JFEmpleado extends javax.swing.JFrame {
         // Agregar ítem por defecto al modelo del JComboBox
         comboBoxModel.addElement("Seleccione un Rol");
         // Agregar roles al modelo del JComboBox
-        for (Rol rol : roles) {
+        for (Rol rol : roles)
+        {
             comboBoxModel.addElement(rol.getDescripcion_Rol());
         }
         // Establecer el modelo en el JComboBox
         boxRol.setModel(comboBoxModel);
     }
-    
+
     public final void llenarComboBoxPuesto() {
         DefaultComboBoxModel<String> comboBoxModel = new DefaultComboBoxModel<>();
         // Obtener lista de puestos
@@ -519,32 +554,33 @@ public class JFEmpleado extends javax.swing.JFrame {
         // Agregar ítem por defecto al modelo del JComboBox
         comboBoxModel.addElement("Seleccione un Puesto");
         // Agregar puestos al modelo del JComboBox
-        for (Puesto puesto : puestos) {
+        for (Puesto puesto : puestos)
+        {
             comboBoxModel.addElement(puesto.getDescripcion_Puesto());
         }
         // Establecer el modelo en el JComboBox
         boxPuesto.setModel(comboBoxModel);
     }
 
-    
     public final void llenarComboBoxSucursal() {
         DefaultComboBoxModel<String> comboBoxModel = new DefaultComboBoxModel<>();
         // Obtener lista de sucursales
         List<Sucursal> sucursales = sucursalDAO.ListarSucursal();
         // Agregar ítem por defecto al modelo del JComboBox
         comboBoxModel.addElement("Seleccione una Sucursal");
-    
+
         // Agregar sucursales al modelo del JComboBox
-        for (Sucursal sucursal : sucursales) {
+        for (Sucursal sucursal : sucursales)
+        {
             comboBoxModel.addElement(sucursal.getNombre_Sucursal());
         }
-    
+
         // Establecer el modelo en el JComboBox
         boxSucursal.setModel(comboBoxModel);
-    
+
     }
-   
-    public final void listar(){
+
+    public final void listar() {
         /*Llama al método ListarCliente de la clase cliente_DAO para obtener la
         lista de clientes desde la DB.*/
         List<Empleado> lista = empleadoDAO.ListarEmpleado();
@@ -566,7 +602,8 @@ public class JFEmpleado extends javax.swing.JFrame {
         para almacenar los datos de cada cliente antes de agregarlos al modelo de la tabla*/
         Object[] empleado = new Object[9];
         /*Itera sobre la lista de clientes recuperados de la base de datos*/
-        for(int i = 0; i < lista.size(); i++){
+        for (int i = 0; i < lista.size(); i++)
+        {
             /*Toma los atributos de cada cliente de la lista y los asigna al array client en las posiciones correspondientes*/
             empleado[0] = lista.get(i).getID_Empleado();
             empleado[1] = lista.get(i).getID_Puesto();
@@ -585,9 +622,6 @@ public class JFEmpleado extends javax.swing.JFrame {
         los datos de los clientes en la tabla*/
         tablaEmpleados.setModel(modelo);
     }
-    
-
-    
 
     public static void main(String args[]) {
 
@@ -608,6 +642,7 @@ public class JFEmpleado extends javax.swing.JFrame {
     private javax.swing.JButton btnLimpiar;
     private javax.swing.JButton btnNuevo;
     private javax.swing.JButton btnRefrescar;
+    private javax.swing.JButton btnRegresar;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblAcciones;
