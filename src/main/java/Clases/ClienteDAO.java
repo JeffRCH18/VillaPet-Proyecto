@@ -5,12 +5,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import Conexion.Conexion;
 import java.sql.CallableStatement;
+import java.sql.Types;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import oracle.jdbc.OracleTypes;
-public class Cliente_DAO extends Cliente{
+public class ClienteDAO extends Cliente{
 /*Llamada del procedimiento almacenado que recibi 5 parametros*/
     private static final String PROCEDURE_INSERT_CLIENTE = "{CALL Insertar_Cliente_SP(?, ?, ?, ?, ?)}";
     public void insertarCliente(String nombre, String apellido, String direccion, String correo, int telefono) {
@@ -93,5 +94,28 @@ public class Cliente_DAO extends Cliente{
         }
     }
 
+    public String listarClientesConCompras() {
+        String listaClientes = "";
+        try ( Connection connection = Conexion.obtenerConexion();  CallableStatement statement = connection.prepareCall("{ ? = call ListarClientesConCompras_FN }")) {
+            statement.registerOutParameter(1, Types.VARCHAR);
+            statement.execute();
+            listaClientes = statement.getString(1);
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return listaClientes;
+    }
+
+    public String listarClientesConTotalCompras() {
+        String listaClientes = "";
+        try ( Connection connection = Conexion.obtenerConexion();  CallableStatement statement = connection.prepareCall("{ ? = call ListarClientesConTotalCompras_FN }")) {
+            statement.registerOutParameter(1, Types.VARCHAR);
+            statement.execute();
+            listaClientes = statement.getString(1);
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return listaClientes;
+    }
     
 }

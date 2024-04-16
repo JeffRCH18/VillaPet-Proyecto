@@ -5,6 +5,7 @@ import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Types;
 import java.util.ArrayList;
 import java.util.List;
 import oracle.jdbc.OracleTypes;
@@ -58,5 +59,17 @@ public class PuestoDAO {
             }
         }
         return -1; // Si no se encuentra el rol, devolver -1 o lanzar una excepción según el caso
+    }
+    
+     public String promedioSalarioPorPuesto() {
+        String listaPromediosSalarios = "";
+        try ( Connection connection = Conexion.obtenerConexion();  CallableStatement statement = connection.prepareCall("{ ? = call PromedioSalarioPorPuesto_FN }")) {
+            statement.registerOutParameter(1, Types.VARCHAR);
+            statement.execute();
+            listaPromediosSalarios = statement.getString(1);
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return listaPromediosSalarios;
     }
 }

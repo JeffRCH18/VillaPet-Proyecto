@@ -103,19 +103,19 @@ INSERT INTO Tab_Rol (ID_Rol, Descripcion_Rol) VALUES (02, 'USER');
 
 -- Inserciones en Tab_Sucursal
 INSERT INTO Tab_Sucursal (ID_Sucursal, Correo_sucursal, Telefono_Sucursal, Nombre_Sucursal, Direccion_Sucursal) VALUES (01, 'villapetsabana@gmail.com', '89326213', 'Sucursal Principal', 'Sabana este');
-INSERT INTO Tab_Sucursal (ID_Sucursal, Correo_sucursal, Telefono_Sucursal, Nombre_Sucursal, Direccion_Sucursal) VALUES (02, 'villapetcurridabat@gmail.com', '22554488', 'Sucursal Curridabat', 'Curridabat, San José');
-INSERT INTO Tab_Sucursal (ID_Sucursal, Correo_sucursal, Telefono_Sucursal, Nombre_Sucursal, Direccion_Sucursal) VALUES (03, 'villapetescazu@gmail.com', '26435566', 'Sucursal Escazú', 'Escazú, San Jose');
+INSERT INTO Tab_Sucursal (ID_Sucursal, Correo_sucursal, Telefono_Sucursal, Nombre_Sucursal, Direccion_Sucursal) VALUES (02, 'villapetcurridabat@gmail.com', '22554488', 'Sucursal Curridabat', 'Curridabat, San Josï¿½');
+INSERT INTO Tab_Sucursal (ID_Sucursal, Correo_sucursal, Telefono_Sucursal, Nombre_Sucursal, Direccion_Sucursal) VALUES (03, 'villapetescazu@gmail.com', '26435566', 'Sucursal Escazï¿½', 'Escazï¿½, San Jose');
 INSERT INTO Tab_Sucursal (ID_Sucursal, Correo_sucursal, Telefono_Sucursal, Nombre_Sucursal, Direccion_Sucursal) VALUES (04, 'villapetoxigeno@gmail.com', '27778899', 'Sucursal Oxigeno', 'Oxigeno, Heredia');
 INSERT INTO Tab_Sucursal (ID_Sucursal, Correo_sucursal, Telefono_Sucursal, Nombre_Sucursal, Direccion_Sucursal) VALUES (05, 'villapetcartago@gmail.com', '21013322', 'Sucursal Cartago', 'Cartago Centro');
 INSERT INTO Tab_Sucursal (ID_Sucursal, Correo_sucursal, Telefono_Sucursal, Nombre_Sucursal, Direccion_Sucursal) VALUES (06, 'villapetsanpedro@gmail.com', '22001122', 'Sucursal San Pedro', 'San Pedro, San Jose');
 
 -- Inserciones en Tab_Proveedor
 INSERT INTO Tab_Proveedor (ID_Proveedor, Nombre_Proveedor, Telefono_Proveedor, Direccion_Proveedor) VALUES (01, 'Pedigree', '25254080', 'San Jose');
-INSERT INTO Tab_Proveedor (ID_Proveedor, Nombre_Proveedor, Telefono_Proveedor, Direccion_Proveedor) VALUES (02, 'Royal Canin', '22223344', 'San Pedro, San José');
-INSERT INTO Tab_Proveedor (ID_Proveedor, Nombre_Proveedor, Telefono_Proveedor, Direccion_Proveedor) VALUES (03, 'Hills Pet Nutrition', '24445566', 'Curridabat, San José');
+INSERT INTO Tab_Proveedor (ID_Proveedor, Nombre_Proveedor, Telefono_Proveedor, Direccion_Proveedor) VALUES (02, 'Royal Canin', '22223344', 'San Pedro, San Josï¿½');
+INSERT INTO Tab_Proveedor (ID_Proveedor, Nombre_Proveedor, Telefono_Proveedor, Direccion_Proveedor) VALUES (03, 'Hills Pet Nutrition', '24445566', 'Curridabat, San Josï¿½');
 INSERT INTO Tab_Proveedor (ID_Proveedor, Nombre_Proveedor, Telefono_Proveedor, Direccion_Proveedor) VALUES (04, 'Whiskas', '27778899', 'Heredia, Heredia');
 INSERT INTO Tab_Proveedor (ID_Proveedor, Nombre_Proveedor, Telefono_Proveedor, Direccion_Proveedor) VALUES (05, 'Purina', '25556677', 'San Rafael, Alajuela');
-INSERT INTO Tab_Proveedor (ID_Proveedor, Nombre_Proveedor, Telefono_Proveedor, Direccion_Proveedor) VALUES (06, 'Friskies', '26667788', 'Curridabat, San José');
+INSERT INTO Tab_Proveedor (ID_Proveedor, Nombre_Proveedor, Telefono_Proveedor, Direccion_Proveedor) VALUES (06, 'Friskies', '26667788', 'Curridabat, San Josï¿½');
 
 -- Inserciones en Tab_Puesto
 INSERT INTO Tab_Puesto (ID_Puesto, Descripcion_Puesto) VALUES (01, 'Peluquero');
@@ -123,7 +123,7 @@ INSERT INTO Tab_Puesto (ID_Puesto, Descripcion_Puesto) VALUES (02, 'Cajero');
 INSERT INTO Tab_Puesto (ID_Puesto, Descripcion_Puesto) VALUES (03, 'Vendedor');
 INSERT INTO Tab_Puesto (ID_Puesto, Descripcion_Puesto) VALUES (04, 'Administrador');
 INSERT INTO Tab_Puesto (ID_Puesto, Descripcion_Puesto) VALUES (05, 'Recepcionista');
-INSERT INTO Tab_Puesto (ID_Puesto, Descripcion_Puesto) VALUES (06, 'Encargado de Almacén');
+INSERT INTO Tab_Puesto (ID_Puesto, Descripcion_Puesto) VALUES (06, 'Encargado de Almacï¿½n');
 
 -- Inserciones en Tab_Categoria
 INSERT INTO Tab_Categoria (ID_Categoria, Descripcion_Categoria) VALUES (01, 'Peluqueria');
@@ -135,17 +135,17 @@ INSERT INTO Tab_Categoria (ID_Categoria, Descripcion_Categoria) VALUES (06, 'Pro
 
 -- Inserciones en Tab_Empleado
 INSERT INTO Tab_Empleado (ID_Empleado, ID_Puesto, ID_Rol, ID_Sucursal, Nombre_Empleado, Apellido, Correo, Contrasena, Salario) VALUES (01, 01,02, 01, 'Bruno','Diaz','diaz01@yahoo.com','12345', 300000);
-INSERT INTO Tab_Empleado (ID_Empleado, ID_Puesto, ID_Rol, ID_Sucursal, Nombre_Empleado, Apellido, Correo, Contrasena, Salario) VALUES (02, 03, 01, 02, 'María', 'Martínez', 'mmartinez@example.com', '123', 320000);
-INSERT INTO Tab_Empleado (ID_Empleado, ID_Puesto, ID_Rol, ID_Sucursal, Nombre_Empleado, Apellido, Correo, Contrasena, Salario) VALUES (03, 03, 01, 01, 'Juan', 'Gonzólez', 'jgonzalez@example.com', '123', 320000);
-INSERT INTO Tab_Empleado (ID_Empleado, ID_Puesto, ID_Rol, ID_Sucursal, Nombre_Empleado, Apellido, Correo, Contrasena, Salario) VALUES (04, 04, 01, 04, 'Ana', 'Sánchez', 'asanchez@example.com', '123', 350000);
+INSERT INTO Tab_Empleado (ID_Empleado, ID_Puesto, ID_Rol, ID_Sucursal, Nombre_Empleado, Apellido, Correo, Contrasena, Salario) VALUES (02, 03, 01, 02, 'Marï¿½a', 'Martï¿½nez', 'mmartinez@example.com', '123', 320000);
+INSERT INTO Tab_Empleado (ID_Empleado, ID_Puesto, ID_Rol, ID_Sucursal, Nombre_Empleado, Apellido, Correo, Contrasena, Salario) VALUES (03, 03, 01, 01, 'Juan', 'Gonzï¿½lez', 'jgonzalez@example.com', '123', 320000);
+INSERT INTO Tab_Empleado (ID_Empleado, ID_Puesto, ID_Rol, ID_Sucursal, Nombre_Empleado, Apellido, Correo, Contrasena, Salario) VALUES (04, 04, 01, 04, 'Ana', 'Sï¿½nchez', 'asanchez@example.com', '123', 350000);
 INSERT INTO Tab_Empleado (ID_Empleado, ID_Puesto, ID_Rol, ID_Sucursal, Nombre_Empleado, Apellido, Correo, Contrasena, Salario) VALUES (05, 05, 02, 05, 'Carlos', 'Vargas', 'cvargas@example.com', '123', 380000);
-INSERT INTO Tab_Empleado (ID_Empleado, ID_Puesto, ID_Rol, ID_Sucursal, Nombre_Empleado, Apellido, Correo, Contrasena, Salario) VALUES (06, 06, 01, 05, 'Sofía', 'López', 'slopez@example.com', '123', 400000);
+INSERT INTO Tab_Empleado (ID_Empleado, ID_Puesto, ID_Rol, ID_Sucursal, Nombre_Empleado, Apellido, Correo, Contrasena, Salario) VALUES (06, 06, 01, 05, 'Sofï¿½a', 'Lï¿½pez', 'slopez@example.com', '123', 400000);
 
 -- Inserciones en Tab_Cliente
 INSERT INTO Tab_Cliente (ID_Cliente, Nombre_Cliente, Apellido, Direccion_Cliente, Telefono_Cliente, Correo_Cliente) VALUES (01, 'Jeff','Ramos', 'Santa ana', '67253534', 'anad92@gmail.com');
-INSERT INTO Tab_Cliente (ID_Cliente, Nombre_Cliente, Apellido, Direccion_Cliente, Telefono_Cliente, Correo_Cliente) VALUES (02, 'Laura', 'Fernández', 'San José', '87123456', 'lfernandez@example.com');
-INSERT INTO Tab_Cliente (ID_Cliente, Nombre_Cliente, Apellido, Direccion_Cliente, Telefono_Cliente, Correo_Cliente) VALUES (03, 'Diego', 'Gómez', 'Heredia', '81234567', 'dgomez@example.com');
-INSERT INTO Tab_Cliente (ID_Cliente, Nombre_Cliente, Apellido, Direccion_Cliente, Telefono_Cliente, Correo_Cliente) VALUES (04, 'Valentina', 'Chacón', 'Alajuela', '72345678', 'vchacon@example.com');
+INSERT INTO Tab_Cliente (ID_Cliente, Nombre_Cliente, Apellido, Direccion_Cliente, Telefono_Cliente, Correo_Cliente) VALUES (02, 'Laura', 'Fernï¿½ndez', 'San Josï¿½', '87123456', 'lfernandez@example.com');
+INSERT INTO Tab_Cliente (ID_Cliente, Nombre_Cliente, Apellido, Direccion_Cliente, Telefono_Cliente, Correo_Cliente) VALUES (03, 'Diego', 'Gï¿½mez', 'Heredia', '81234567', 'dgomez@example.com');
+INSERT INTO Tab_Cliente (ID_Cliente, Nombre_Cliente, Apellido, Direccion_Cliente, Telefono_Cliente, Correo_Cliente) VALUES (04, 'Valentina', 'Chacï¿½n', 'Alajuela', '72345678', 'vchacon@example.com');
 INSERT INTO Tab_Cliente (ID_Cliente, Nombre_Cliente, Apellido, Direccion_Cliente, Telefono_Cliente, Correo_Cliente) VALUES (05, 'Mateo', 'Castro', 'Cartago', '63456789', 'mcastro@example.com');
 INSERT INTO Tab_Cliente (ID_Cliente, Nombre_Cliente, Apellido, Direccion_Cliente, Telefono_Cliente, Correo_Cliente) VALUES (06, 'Isabella', 'Morales', 'Liberia', '54567890', 'imorales@example.com');
 
@@ -173,3 +173,5 @@ INSERT INTO Tab_Pago (Cod_Pago, ID_Proveedor, Monto, Fecha) VALUES (03, 03, 6000
 INSERT INTO Tab_Pago (Cod_Pago, ID_Proveedor, Monto, Fecha) VALUES (04, 04, 70000, SYSDATE);
 INSERT INTO Tab_Pago (Cod_Pago, ID_Proveedor, Monto, Fecha) VALUES (05, 05, 40000, SYSDATE);
 
+-- Inserciones en Tab_Servicio
+INSERT INTO Tab_Servicio (ID_Empleado, Nombre_Servicios, Descripcion_Servicio) VALUES (01, 'Peluqueria', 'Bano y corte para mascotas');

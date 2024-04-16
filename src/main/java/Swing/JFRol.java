@@ -1,6 +1,6 @@
 package Swing;
 
-import Clases.Cliente_DAO;
+import Clases.ClienteDAO;
 import Clases.Rol;
 import Clases.RolDAO;
 import java.util.List;
@@ -325,7 +325,7 @@ public class JFRol extends javax.swing.JFrame {
             // Obtener el ID del cliente seleccionado en la tabla
             int idRol = Integer.parseInt(tablaRoles.getValueAt(filaSeleccionada, 0).toString());
             
-            // Instanciar la clase Cliente_DAO
+            // Instanciar la clase ClienteDAO
             RolDAO rolDAO = new RolDAO();
             
             // Llamar al método eliminarCliente con el ID del cliente seleccionado
