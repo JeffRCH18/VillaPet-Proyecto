@@ -375,7 +375,6 @@ public class JFProducto extends javax.swing.JFrame {
         }catch (Exception ex) {
             JOptionPane.showMessageDialog(this, "Por favor, intente de nuevo.");
         }
-       
     }//GEN-LAST:event_btnNuevoActionPerformed
 
     private void btnRefrescarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefrescarActionPerformed

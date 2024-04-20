@@ -71,3 +71,10 @@ SELECT NUM_FACTURA, ID_CLIENTE, ID_SUCURSAL, MONTO_VENTA, FECHA
 FROM TAB_VENTA;
 
 --------------------------------------------------------------------------------
+
+--Vista para lista las ventas
+CREATE OR REPLACE VIEW PAGO_VIEW AS
+SELECT COD_PAGO, ID_PROVEEDOR, MONTO, FECHA
+FROM TAB_PAGO;
+
+--------------------------------------------------------------------------------

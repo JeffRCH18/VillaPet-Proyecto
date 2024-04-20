@@ -606,6 +606,58 @@ END LISTAR_CATEGORIA_SP;
 
 --------------------------------------------------------------------------------
 
+CREATE OR REPLACE PROCEDURE INSERTAR_PAGO_SP(
+    p_id_proveedor IN NUMBER,
+    p_monto IN NUMBER,
+    p_fecha IN DATE
+)
+AS
+BEGIN
+    INSERT INTO TAB_PAGO(ID_PROVEEDOR, MONTO, FECHA)
+    VALUES (p_id_proveedor, p_monto, p_fecha);
+    COMMIT;
+END INSERTAR_PAGO_SP;
+
+--------------------------------------------------------------------------------
+
+CREATE OR REPLACE PROCEDURE ELIMINAR_PAGO_SP(p_CODPAGO IN NUMBER)
+IS 
+BEGIN 
+    DELETE FROM TAB_PAGO
+    WHERE COD_PAGO = p_CODPAGO;
+EXCEPTION 
+    WHEN NO_DATA_FOUND THEN 
+        DBMS_OUTPUT.PUT_LINE('No se pudo borrar la categoria seleccionada');
+END ELIMINAR_PAGO_SP;
+
+--------------------------------------------------------------------------------
+
+CREATE OR REPLACE PROCEDURE ACTUALIZAR_PAGO_SP(
+    p_CODPAGO IN NUMBER,
+    p_IDPROVEEDOR IN NUMBER,
+    p_MONTO IN NUMBER
+)
+IS 
+BEGIN 
+    UPDATE TAB_PAGO
+    SET 
+        ID_PROVEEDOR = p_IDPROVEEDOR,
+        MONTO = p_MONTO
+    WHERE 
+        COD_PAGO = p_CODPAGO;
+END ACTUALIZAR_PAGO_SP;
+
+--------------------------------------------------------------------------------
+CREATE OR REPLACE PROCEDURE LISTAR_PAGO_SP(p_cursor OUT SYS_REFCURSOR)
+IS
+BEGIN
+  OPEN p_cursor FOR
+    SELECT COD_PAGO, ID_PROVEEDOR, MONTO, FECHA
+    FROM PAGO_VIEW;
+END LISTAR_PAGO_SP;
+
+--------------------------------------------------------------------------------
+
 --Venta CRUD
 
 --------------------------------------------------------------------------------
