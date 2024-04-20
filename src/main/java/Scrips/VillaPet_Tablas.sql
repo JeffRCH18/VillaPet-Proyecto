@@ -72,6 +72,7 @@ CREATE TABLE Tab_Servicio (
     ID_Empleado NUMBER,
     Nombre_Servicios VARCHAR2(100) NOT NULL,
     Descripcion_Servicio VARCHAR2(200) NOT NULL,
+    Precio NUMBER,
     CONSTRAINT fk_empleado_servicio FOREIGN KEY (ID_Empleado) REFERENCES Tab_Empleado(ID_Empleado)
 );
 

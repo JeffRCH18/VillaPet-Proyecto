@@ -60,4 +60,23 @@ BEGIN
     VALUES(USER, SYSDATE, 'LogOut');
 END;
 
+--Trigger de reduccion de Stock
+CREATE OR REPLACE TRIGGER REDUCCION_STOCK_TRG
+AFTER INSERT ON TAB_DETALLE
+FOR EACH ROW
+DECLARE
+    v_tipo_elemento VARCHAR2(20);
+    v_id_elemento NUMBER;
+    v_cantidad NUMBER;
+BEGIN
+    v_tipo_elemento := :NEW.TIPO_ELEMENTO;
+    v_id_elemento := :NEW.ID_ELEMENTO;
+    v_cantidad := :NEW.CANTIDAD;
+
+    IF v_tipo_elemento = 'Producto' THEN
+        UPDATE TAB_PRODUCTO
+        SET STOCK = STOCK - v_cantidad
+        WHERE ID_PRODUCTO = v_id_elemento;
+    END IF;
+END REDUCCION_STOCK_TRG;
 
