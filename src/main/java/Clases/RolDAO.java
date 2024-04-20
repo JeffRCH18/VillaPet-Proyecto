@@ -71,7 +71,7 @@ public class RolDAO {
     }
     
     private static final String PROCEDURE_UPDATE_ROL = "{CALL Actualizar_Rol_SP(?,?)}";
-    public void actualizarCliente(int idRol, String nombre) {
+    public void actualizarRol(int idRol, String nombre) {
         try (Connection connection = Conexion.obtenerConexion()) {
             CallableStatement statement = connection.prepareCall(PROCEDURE_UPDATE_ROL);
             statement.setInt(1, idRol); // Primer parámetro: ID del cliente

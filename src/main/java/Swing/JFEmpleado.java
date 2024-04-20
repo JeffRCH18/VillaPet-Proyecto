@@ -145,6 +145,11 @@ public class JFEmpleado extends javax.swing.JFrame {
         btnActualizar.setText("Actualizar");
         btnActualizar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnActualizar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnActualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnActualizarActionPerformed(evt);
+            }
+        });
 
         btnEliminar.setBackground(new java.awt.Color(153, 153, 153));
         btnEliminar.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
@@ -513,21 +518,16 @@ public class JFEmpleado extends javax.swing.JFrame {
         int filaSeleccionada = tablaEmpleados.getSelectedRow();
         if (filaSeleccionada >= 0)
         {
-            // Obtener el ID del cliente seleccionado en la tabla
+
             int idEmpleado = Integer.parseInt(tablaEmpleados.getValueAt(filaSeleccionada, 0).toString());
 
-            // Instanciar la clase Cliente_DAO
-            EmpleadoDAO empleadoDAO = new EmpleadoDAO();
-
-            // Llamar al método eliminarCliente con el ID del cliente seleccionado
             empleadoDAO.eliminarEmpleado(idEmpleado);
 
-            // Actualizar la tabla después de eliminar el cliente
-            // Aquí deberías tener un método para actualizar la tabla con los clientes
-            // Si no tienes uno, deberías crearlo o implementarlo según tu estructura
             listar();
             limpiarCampos();
-            // Opcionalmente, mostrar un mensaje de éxito
+            llenarComboBoxSucursal();
+            llenarComboBoxRoles();
+            llenarComboBoxPuesto();
             JOptionPane.showMessageDialog(null, "Empleado eliminado correctamente");
         } else
         {
@@ -535,6 +535,8 @@ public class JFEmpleado extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnEliminarActionPerformed
 
+    
+    
     private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
         // TODO add your handling code here:
         dispose();
@@ -552,6 +554,41 @@ public class JFEmpleado extends javax.swing.JFrame {
         String listaEmpleados = empleadoDAO.listarEmpleadosPorRangoSalario(salarioMinimo, salarioMaximo);
         JOptionPane.showMessageDialog(this, listaEmpleados, "Listar Empleados por Rango de Salario", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_btnEmpleadosporRangoSalarioActionPerformed
+
+    private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
+        int filaSeleccionada = tablaEmpleados.getSelectedRow();
+        if (filaSeleccionada >= 0) {
+            int idEmpleado = (int) tablaEmpleados.getValueAt(filaSeleccionada, 0);
+            List<Rol> listaRoles = rolDAO.Listarrol();
+            List<Puesto> listaPuesto = puestoDAO.ListarPuesto();
+            List<Sucursal> listaSucursal = sucursalDAO.ListarSucursal();
+            // Obtener datos modificados del empleado desde los campos de texto y combobox
+            String nombre = txtNombre.getText();
+            String apellido = txtApellido.getText();
+            String correo = txtCorreo.getText();
+            String contrasena = txtContraseña.getText();
+            int salario = Integer.parseInt(txtSalario.getText());
+            String nombreRol = (String) boxRol.getSelectedItem();
+            String nombrePuesto = (String) boxPuesto.getSelectedItem();
+            String nombreSucursal = (String) boxSucursal.getSelectedItem();
+
+            int idRol = RolDAO.obtenerIdPorDescripcionr(nombreRol, listaRoles);
+            int idPuesto = PuestoDAO.obtenerIdPorDescripcionp(nombrePuesto, listaPuesto);
+            int idSucursal = SucursalDAO.obtenerIdPorDescripcions(nombreSucursal, listaSucursal);
+            // Llamar al método para actualizar el empleado
+            empleadoDAO.actualizarEmpleado(idEmpleado, idPuesto, idRol, nombre, apellido, correo, contrasena, salario, idSucursal);
+
+            // Actualizar la tabla después de la actualización
+            JOptionPane.showMessageDialog(null, "Empleado actualizado correctamente");
+            listar();
+            limpiarCampos();
+            llenarComboBoxSucursal();
+            llenarComboBoxRoles();
+            llenarComboBoxPuesto();
+        } else {
+            JOptionPane.showMessageDialog(null, "Por favor, seleccione un empleado primero");
+        }
+    }//GEN-LAST:event_btnActualizarActionPerformed
 
     private void limpiarCampos() {
         txtNombre.setText("");

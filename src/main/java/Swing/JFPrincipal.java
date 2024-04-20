@@ -448,7 +448,7 @@ public class JFPrincipal extends javax.swing.JFrame {
 
     private void btnIngresarPuestoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarPuestoActionPerformed
         // TODO add your handling code here:
-        JFPuesto puesto = new JFPuesto();
+        JFVenta_Lista puesto = new JFVenta_Lista();
         puesto.setVisible(true);
     }//GEN-LAST:event_btnIngresarPuestoActionPerformed
 

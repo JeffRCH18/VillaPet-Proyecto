@@ -386,11 +386,9 @@ public class JFCliente extends javax.swing.JFrame {
         String correo = txtCorreo.getText();
         int telefono = Integer.parseInt(txtTelefono.getText());
 
-        ClienteDAO clienteDAO = new ClienteDAO();
-
         try
         {
-            clienteDAO.insertarCliente(nombre, apellido, direccion, correo, telefono);
+            cliente_DAO.insertarCliente(nombre, apellido, direccion, correo, telefono);
             limpiarCampos();
             listar();
         } catch (NumberFormatException ex)
@@ -429,8 +427,7 @@ public class JFCliente extends javax.swing.JFrame {
 
             // Actualizar la tabla de clientes para reflejar los cambios
             listar();
-        } else
-        {
+        } else{
             // Mostrar un mensaje de error si no se seleccionó ninguna fila
             JOptionPane.showMessageDialog(null, "Por favor, selecciona un cliente para actualizar.", "Error", JOptionPane.ERROR_MESSAGE);
         }
