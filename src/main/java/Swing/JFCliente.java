@@ -501,14 +501,14 @@ public class JFCliente extends javax.swing.JFrame {
         // TODO add your handling code here:
         ClienteDAO clienteDAO = new ClienteDAO();
         String listaClientes = clienteDAO.listarClientesConCompras();
-        JOptionPane.showMessageDialog(this, listaClientes, "Listar Clientes con Compras de Hoy", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(this, listaClientes, "Compras de Hoy", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_btnClientesconComprasActionPerformed
 
     private void btnClientesconTotalComprasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClientesconTotalComprasActionPerformed
         // TODO add your handling code here:
         ClienteDAO clienteDAO = new ClienteDAO();
         String listaClientes = clienteDAO.listarClientesConTotalCompras();
-        JOptionPane.showMessageDialog(this, listaClientes, "Listar Clientes con Total de Compras", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(this, listaClientes, "Total de Compras", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_btnClientesconTotalComprasActionPerformed
 
     public void listar() {

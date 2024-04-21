@@ -579,7 +579,7 @@ public class JFEmpleado extends javax.swing.JFrame {
 
         EmpleadoDAO empleadoDAO = new EmpleadoDAO();
         String listaEmpleados = empleadoDAO.listarEmpleadosPorRangoSalario(salarioMinimo, salarioMaximo);
-        JOptionPane.showMessageDialog(this, listaEmpleados, "Listar Empleados por Rango de Salario", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(this, listaEmpleados, "Empleados con el rango indicado", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_btnEmpleadosporRangoSalarioActionPerformed
 
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed

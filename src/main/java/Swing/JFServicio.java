@@ -431,14 +431,14 @@ public class JFServicio extends javax.swing.JFrame {
 
         ServicioDAO servicioDAO = new ServicioDAO();
         String listaEmpleadosServicio = servicioDAO.listarEmpleadosParaServicio(nombreServicio);
-        JOptionPane.showMessageDialog(this, listaEmpleadosServicio, "Listar Empleados para Servicio", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(this, listaEmpleadosServicio, "Empleados para los Servicios", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_btnEmpleadosporServicioActionPerformed
 
     private void btnServicioporSucursalesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnServicioporSucursalesActionPerformed
         // TODO add your handling code here:
         ServicioDAO servicioDAO = new ServicioDAO();
         String listaServiciosSucursal = servicioDAO.listarServiciosPorTodasSucursales();
-        JOptionPane.showMessageDialog(this, listaServiciosSucursal, "Listar Servicios por Todas las Sucursales", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(this, listaServiciosSucursal, "Servicios por Sucursales", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_btnServicioporSucursalesActionPerformed
 
     private void tablaServiciosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaServiciosMouseClicked

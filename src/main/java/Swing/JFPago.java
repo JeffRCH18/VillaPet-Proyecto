@@ -67,7 +67,6 @@ public class JFPago extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(102, 153, 255));
 
         lblTitulo.setFont(new java.awt.Font("Roboto Black", 1, 18)); // NOI18N
-        lblTitulo.setForeground(new java.awt.Color(0, 0, 0));
         lblTitulo.setText("Villa Pet");
 
         lblPago.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
@@ -82,14 +81,12 @@ public class JFPago extends javax.swing.JFrame {
         lblProveedor.setForeground(new java.awt.Color(255, 255, 255));
         lblProveedor.setText("PROVEEDOR:");
 
-        txtProveedor.setBackground(new java.awt.Color(255, 255, 255));
         txtProveedor.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
 
         lblMontoPago.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
         lblMontoPago.setForeground(new java.awt.Color(255, 255, 255));
         lblMontoPago.setText("MONTO DE PAGO:");
 
-        txtPago.setBackground(new java.awt.Color(255, 255, 255));
         txtPago.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
 
         btnBuscar.setBackground(new java.awt.Color(153, 153, 153));
@@ -171,7 +168,6 @@ public class JFPago extends javax.swing.JFrame {
         jScrollPane1.setBackground(new java.awt.Color(255, 255, 255));
 
         tablaPago.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
-        tablaPago.setForeground(new java.awt.Color(0, 0, 0));
         tablaPago.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -189,7 +185,6 @@ public class JFPago extends javax.swing.JFrame {
 
         btnRegresar1.setBackground(new java.awt.Color(204, 204, 204));
         btnRegresar1.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
-        btnRegresar1.setForeground(new java.awt.Color(0, 0, 0));
         btnRegresar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/contents/regresar peq.png"))); // NOI18N
         btnRegresar1.setText("Regresar");
         btnRegresar1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -200,11 +195,9 @@ public class JFPago extends javax.swing.JFrame {
             }
         });
 
-        txtPagosaProveedor.setBackground(new java.awt.Color(255, 255, 255));
         txtPagosaProveedor.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
 
         btnPagoaProveedor.setBackground(new java.awt.Color(204, 204, 204));
-        btnPagoaProveedor.setForeground(new java.awt.Color(0, 0, 0));
         btnPagoaProveedor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/contents/pago peq.png"))); // NOI18N
         btnPagoaProveedor.setText("Pagos al Proveedor");
         btnPagoaProveedor.addActionListener(new java.awt.event.ActionListener() {
@@ -213,17 +206,13 @@ public class JFPago extends javax.swing.JFrame {
             }
         });
 
-        txtFechaInicio.setBackground(new java.awt.Color(255, 255, 255));
         txtFechaInicio.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
 
-        txtFechaFin.setBackground(new java.awt.Color(255, 255, 255));
         txtFechaFin.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
 
-        txtPagosporPeriodo.setBackground(new java.awt.Color(255, 255, 255));
         txtPagosporPeriodo.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
 
         btnPagosporPeriodo.setBackground(new java.awt.Color(204, 204, 204));
-        btnPagosporPeriodo.setForeground(new java.awt.Color(0, 0, 0));
         btnPagosporPeriodo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/contents/pago periodo peq.png"))); // NOI18N
         btnPagosporPeriodo.setText("Pagos por Periodo");
         btnPagosporPeriodo.addActionListener(new java.awt.event.ActionListener() {
@@ -247,11 +236,12 @@ public class JFPago extends javax.swing.JFrame {
         jLabel4.setMaximumSize(new java.awt.Dimension(69, 15));
 
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("ID");
+        jLabel5.setText("  Total de Pagos");
+        jLabel5.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jLabel5.setMaximumSize(new java.awt.Dimension(69, 15));
 
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setText("Fecha");
+        jLabel6.setText("Pagos");
         jLabel6.setMaximumSize(new java.awt.Dimension(69, 15));
 
         lblimagenProductos1.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
@@ -330,8 +320,9 @@ public class JFPago extends javax.swing.JFrame {
                                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGap(54, 54, 54))
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                            .addGap(96, 96, 96)
-                            .addComponent(txtPagosaProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(txtPagosaProveedor, javax.swing.GroupLayout.DEFAULT_SIZE, 91, Short.MAX_VALUE))
                             .addGap(111, 111, 111)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(btnPagoaProveedor)
@@ -345,10 +336,6 @@ public class JFPago extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(144, 144, 144))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(152, 152, 152))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
