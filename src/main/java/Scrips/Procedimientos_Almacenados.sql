@@ -162,6 +162,33 @@ END LISTAR_EMPLEADO_SP;
 
 --------------------------------------------------------------------------------
 
+CREATE OR REPLACE PROCEDURE Sesion_Empleado_SP(
+    p_Correo IN VARCHAR2,
+    p_Contrasena IN VARCHAR2,
+    p_ID_Empleado OUT NUMBER
+)
+AS
+    v_Empleado_ID NUMBER;
+BEGIN
+    -- Buscar el empleado por correo y contrase 
+    SELECT ID_Empleado
+    INTO v_Empleado_ID
+    FROM TAB_EMPLEADO
+    WHERE Correo = p_Correo
+      AND Contrasena = p_Contrasena;
+
+    -- Asignar el ID del empleado encontrado a la variable de salida
+    p_ID_Empleado := v_Empleado_ID;
+    
+EXCEPTION
+    WHEN NO_DATA_FOUND THEN
+        p_ID_Empleado := NULL;
+    WHEN OTHERS THEN
+        p_ID_Empleado := -1;
+END Sesion_Empleado_SP;
+
+--------------------------------------------------------------------------------
+
 --Sucursales CRUD
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------

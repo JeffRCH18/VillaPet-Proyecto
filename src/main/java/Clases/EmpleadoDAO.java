@@ -97,7 +97,6 @@ private static final String PROCEDURE_INSERT_EMPLEADO = "{CALL INSERTAR_EMPLEADO
             statement.setString(7,Contraseña);
             statement.setInt(8,Salario);
             statement.setInt(9,ID_Sucursal );
-            
             statement.execute();
         } catch (SQLException e) {
             System.out.println(e.toString());
@@ -107,10 +106,10 @@ private static final String PROCEDURE_INSERT_EMPLEADO = "{CALL INSERTAR_EMPLEADO
     public static int obtenerIdPorNombre(String nombre,List<Empleado> empleados) {
         for (Empleado empleado : empleados) {
             if (empleado.getNombre_Empleado().equalsIgnoreCase(nombre)) {
-                return empleado.getID_Empleado(); // Devolver el ID del rol encontrado
+                return empleado.getID_Empleado();
             }
         }
-        return -1; // Si no se encuentra el rol, devolver -1 o lanzar una excepción
+        return -1;
     }
     
     public static String obtenerNombrePorID(int idEmpleado, List<Empleado> empleados) {
@@ -119,7 +118,7 @@ private static final String PROCEDURE_INSERT_EMPLEADO = "{CALL INSERTAR_EMPLEADO
                 return empleado.getNombre_Empleado();
             }
         }
-        return null; // Devuelve null si no se encuentra el rol con el ID especificado
+        return null;
     }
 
     public String listarEmpleadosPorRangoSalario(double salarioMinimo, double salarioMaximo) {
@@ -152,6 +151,39 @@ private static final String PROCEDURE_INSERT_EMPLEADO = "{CALL INSERTAR_EMPLEADO
         }
         return conteoEmpleados;
     }
+    
+    private static final String PROCEDURE_INICIO_SESION = "{CALL Sesion_Empleado_SP(?, ?, ?)}";
+    public static Empleado iniciarSesion(String correo, String contrasena) {
+    Empleado empleado = null;
+    try (Connection connection = Conexion.obtenerConexion();
+         CallableStatement statement = connection.prepareCall(PROCEDURE_INICIO_SESION)) {
+        
+        // Configurar los parámetros de entrada y salida
+        statement.setString(1, correo);
+        statement.setString(2, contrasena);
+        statement.registerOutParameter(3, Types.INTEGER);
+        statement.execute();
+        
+        // Obtener el ID_Empleado del parámetro de salida
+        int empleadoID = statement.getInt(3);
+        if (empleadoID != 0) {
+            // Crear un nuevo objeto Empleado con el ID recuperado
+            empleado = new Empleado();
+            empleado.setID_Empleado(empleadoID);
+            empleado.setCorreo(correo);
+            empleado.setContrasena(contrasena);
+        }
+        
+    } catch (SQLException e) {
+        System.out.println("Error al iniciar sesión: " + e.getMessage());
+    }  
+    return empleado;
 }
+
+
+
+
+}
+
 
 

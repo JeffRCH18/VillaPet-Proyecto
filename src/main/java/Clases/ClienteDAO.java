@@ -13,7 +13,7 @@ import javax.swing.table.DefaultTableModel;
 import oracle.jdbc.OracleTypes;
 public class ClienteDAO extends Cliente{
     /*Llamada del procedimiento almacenado que recibi 5 parametros*/
-    private static final String PROCEDURE_INSERT_CLIENTE = "{CALL insertar_cliente(?, ?, ?, ?, ?)}";
+    private static final String PROCEDURE_INSERT_CLIENTE = "{CALL CRUD_cliente_PKG.Insertar_Cliente_SP(?, ?, ?, ?, ?)}";
     public void insertarCliente(String nombre, String apellido, String direccion, String correo, int telefono) {
         try (Connection connection = Conexion.obtenerConexion();
             /*Se verifica la conexion y se prepara una consulta con los datos recibidos en el metodo desde la interfaz*/
@@ -27,12 +27,13 @@ public class ClienteDAO extends Cliente{
             statement.executeUpdate();
             JOptionPane.showMessageDialog(null, "Cliente insertado correctamente.");
         } catch (SQLException e) {
+            System.out.println(e.getMessage());
             JOptionPane.showMessageDialog(null, "Error al insertar cliente: " + e.getMessage());
         }
     }
     
     /*Llamada del procedimiento almacenado que recibi 1 parametro*/
-    private static final String PROCEDURE_LIST_CLIENTE = "{CALL LISTAR_CLIENTE_SP(?)}";
+    private static final String PROCEDURE_LIST_CLIENTE = "{CALL CRUD_cliente_PKG.LISTAR_CLIENTE_SP(?)}";
     /*Metodo que devuelve una lista de objetos*/
     public List<Cliente> ListarCliente() {
     /*Crea una lista vacía para almacenar los objetos */   
@@ -66,7 +67,7 @@ public class ClienteDAO extends Cliente{
     /*Devuelve la lista de clientes recuperada de la DB*/
     return lista;
 }
-    private static final String PROCEDURE_DELETE_CLIENTE = "{CALL DELETE_CLIENTE(?)}";
+    private static final String PROCEDURE_DELETE_CLIENTE = "{CALL CRUD_cliente_PKG.ELIMINAR_CLIENTE_SP(?)}";
     public void eliminarCliente(int idCliente){
         // Llamar al procedimiento almacenado para eliminar el cliente
         try (Connection connection = Conexion.obtenerConexion()) {
@@ -79,7 +80,7 @@ public class ClienteDAO extends Cliente{
         }
     }
     
-    private static final String PROCEDURE_UPDATE_CLIENTE = "{CALL UPDATE_CLIENTE(?, ?, ?, ?, ?, ?)}";
+    private static final String PROCEDURE_UPDATE_CLIENTE = "{CALL CRUD_cliente_PKG.ACTUALIZAR_CLIENTE_SP(?, ?, ?, ?, ?, ?)}";
     public void actualizarCliente(int idCliente, String nombre, String apellido, String direccion, String telefono, String correo) {
         try (Connection connection = Conexion.obtenerConexion()) {
             CallableStatement statement = connection.prepareCall(PROCEDURE_UPDATE_CLIENTE);
@@ -107,33 +108,21 @@ public class ClienteDAO extends Cliente{
     public static Cliente buscarClientePorId(int id) {
         Cliente cliente = null;
         try (Connection connection = Conexion.obtenerConexion();
-             CallableStatement statement = connection.prepareCall(PROCEDURE_BUSCAR_CLIENTE)) {
-
-            // Configurar el parámetro de entrada del procedimiento almacenado
+            CallableStatement statement = connection.prepareCall(PROCEDURE_BUSCAR_CLIENTE)) {
             statement.setInt(1, id);
-
-            // Registrar el parámetro de salida para el cursor
             statement.registerOutParameter(2, OracleTypes.CURSOR);
-
-            // Ejecutar el procedimiento almacenado
             statement.execute();
-
-            // Obtener el cursor de resultados del procedimiento almacenado
             ResultSet rs = (ResultSet) statement.getObject(2);
-
-            // Verificar si se obtuvo un resultado
             if (rs.next()) {
                 // Crear un nuevo objeto Cliente y configurar sus atributos con los datos recuperados del ResultSet
                 cliente = new Cliente();
                 cliente.setNombre_Cliente(rs.getString("NOMBRE_CLIENTE"));
                 cliente.setApellido_Cliente(rs.getString("APELLIDO"));
                 cliente.setCorreo_Cliente(rs.getString("CORREO_CLIENTE"));
-                // Agregar más configuraciones si es necesario para otras columnas
                 }
             } catch (SQLException e) {
                 System.out.println("Error al buscar cliente por ID: " + e.getMessage());
             }
-
             return cliente;
     }      
 

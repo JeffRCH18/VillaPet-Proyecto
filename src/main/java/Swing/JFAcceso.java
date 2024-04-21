@@ -1,13 +1,13 @@
 package Swing;
 
+import Clases.EmpleadoDAO;
+import Clases.Empleado;
 import java.awt.Color;
 import javax.swing.JOptionPane;
 
 public class JFAcceso extends javax.swing.JFrame {
-
-    /**
-     * Creates new form JFAcceso
-     */
+    EmpleadoDAO empleadoDAO = new EmpleadoDAO();
+    Empleado empleado = new Empleado();
     public JFAcceso() {
         initComponents();
         lblTitulo.requestFocus();
@@ -204,13 +204,14 @@ public class JFAcceso extends javax.swing.JFrame {
     }//GEN-LAST:event_txtContraseñaMousePressed
 
     private void btnIngresarAccesoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarAccesoActionPerformed
-        // TODO add your handling code here:
+    sesion();
+// TODO add your handling code here:
         // Nombre de usuario y la contraseña ingresados
-        String usuario = txtUsuario.getText();
-        String contrasena = new String(txtContraseña.getPassword());
+        //String usuario = txtUsuario.getText();
+        //String contrasena = new String(txtContraseña.getPassword());
 
         // Verificar si el nombre de usuario y la contraseña son válidos
-        if (usuario.equals("Villapet@gmail.com") && contrasena.equals("12345678"))
+        /*if (usuario.equals("Villapet@gmail.com") && contrasena.equals("12345678"))
         {
             this.setVisible(false);
 
@@ -219,12 +220,33 @@ public class JFAcceso extends javax.swing.JFrame {
         } else
         {
             JOptionPane.showMessageDialog(this, "Usuario o contraseña incorrectos", "Error", JOptionPane.ERROR_MESSAGE);
-        }
+        }*/
+        
+
     }//GEN-LAST:event_btnIngresarAccesoActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
+   public void sesion() {
+    String usuario = txtUsuario.getText();
+    String contrasena = new String(txtContraseña.getPassword());
+    if (!"".equals(usuario) && !"".equals(contrasena)) {
+        Empleado empleado = EmpleadoDAO.iniciarSesion(usuario, contrasena);
+        if (empleado != null && empleado.getCorreo() != null && empleado.getContrasena() != null) {
+            // Si las credenciales son válidas,muestra la principal
+            JOptionPane.showMessageDialog(null, "Sesion iniciada como: "+usuario);
+            this.setVisible(false);
+            JFPrincipal principal = new JFPrincipal();
+            principal.setVisible(true);
+        } else {
+            // Las credenciales no son válidas o el empleado no fue encontrado
+            JOptionPane.showMessageDialog(null, "Credenciales incorrectas");
+        }
+    } else {
+        JOptionPane.showMessageDialog(null, "Debe completar los campos correspondientes");
+    }
+}
+
+
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
