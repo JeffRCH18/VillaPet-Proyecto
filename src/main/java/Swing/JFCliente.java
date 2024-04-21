@@ -62,6 +62,7 @@ public class JFCliente extends javax.swing.JFrame {
         jPanel1.setPreferredSize(new java.awt.Dimension(1007, 740));
 
         lblTitulo.setFont(new java.awt.Font("Roboto Black", 1, 18)); // NOI18N
+        lblTitulo.setForeground(new java.awt.Color(0, 0, 0));
         lblTitulo.setText("Villa Pet");
 
         lblmenuClientes.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
@@ -198,6 +199,7 @@ public class JFCliente extends javax.swing.JFrame {
 
         btnRegresar.setBackground(new java.awt.Color(204, 204, 204));
         btnRegresar.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        btnRegresar.setForeground(new java.awt.Color(0, 0, 0));
         btnRegresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/contents/regresar peq.png"))); // NOI18N
         btnRegresar.setText("Regresar");
         btnRegresar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -208,14 +210,20 @@ public class JFCliente extends javax.swing.JFrame {
             }
         });
 
-        btnClientesconCompras.setText("ClienteconComprasHoy");
+        btnClientesconCompras.setBackground(new java.awt.Color(204, 204, 204));
+        btnClientesconCompras.setForeground(new java.awt.Color(0, 0, 0));
+        btnClientesconCompras.setIcon(new javax.swing.ImageIcon(getClass().getResource("/contents/compras mas peq.png"))); // NOI18N
+        btnClientesconCompras.setText("Compras de Hoy");
         btnClientesconCompras.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnClientesconComprasActionPerformed(evt);
             }
         });
 
-        btnClientesconTotalCompras.setText("ClientesconTotalCompras");
+        btnClientesconTotalCompras.setBackground(new java.awt.Color(204, 204, 204));
+        btnClientesconTotalCompras.setForeground(new java.awt.Color(0, 0, 0));
+        btnClientesconTotalCompras.setIcon(new javax.swing.ImageIcon(getClass().getResource("/contents/total peq.png"))); // NOI18N
+        btnClientesconTotalCompras.setText("Total de Compras");
         btnClientesconTotalCompras.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnClientesconTotalComprasActionPerformed(evt);
@@ -233,14 +241,9 @@ public class JFCliente extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane1)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(0, 0, Short.MAX_VALUE)
-                                        .addComponent(btnClientesconCompras))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(btnRegresar, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(lblTitulo)))
+                                .addComponent(btnRegresar, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(lblTitulo)
                                 .addGap(30, 30, 30)))
                         .addContainerGap())
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -257,12 +260,9 @@ public class JFCliente extends javax.swing.JFrame {
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(lblTelefono)
                                             .addComponent(lblDireccion1)))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(lblApellido, javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(lblDireccion, javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(lblNombre1, javax.swing.GroupLayout.Alignment.TRAILING))))
+                                    .addComponent(lblApellido, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(lblDireccion, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(lblNombre1, javax.swing.GroupLayout.Alignment.TRAILING))
                                 .addGap(15, 15, 15)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -289,9 +289,11 @@ public class JFCliente extends javax.swing.JFrame {
                                             .addComponent(btnActualizar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                             .addComponent(btnNuevo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addComponent(btnRefrescar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 72, Short.MAX_VALUE)
-                        .addComponent(btnClientesconTotalCompras)
-                        .addGap(27, 27, 27))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 75, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btnClientesconTotalCompras, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnClientesconCompras, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(32, 32, 32))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -329,22 +331,23 @@ public class JFCliente extends javax.swing.JFrame {
                                     .addComponent(lblDireccion)
                                     .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(22, 22, 22)
-                                .addComponent(btnClientesconCompras)
-                                .addGap(29, 29, 29)
+                                .addGap(116, 116, 116)
                                 .addComponent(btnClientesconTotalCompras))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(92, 92, 92)
                         .addComponent(lblAcciones)
                         .addGap(18, 18, 18)
-                        .addComponent(btnNuevo)
-                        .addGap(29, 29, 29)
-                        .addComponent(btnActualizar)
-                        .addGap(29, 29, 29)
-                        .addComponent(btnEliminar)
-                        .addGap(29, 29, 29)
-                        .addComponent(btnRefrescar)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnClientesconCompras)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(btnNuevo)
+                                .addGap(29, 29, 29)
+                                .addComponent(btnActualizar)
+                                .addGap(29, 29, 29)
+                                .addComponent(btnEliminar)
+                                .addGap(29, 29, 29)
+                                .addComponent(btnRefrescar)))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnBuscar)
                     .addComponent(btnLimpiar))
@@ -491,6 +494,7 @@ public class JFCliente extends javax.swing.JFrame {
 
         JFPrincipal principal = new JFPrincipal();
         principal.setVisible(true);
+        principal.setLocationRelativeTo(null);
     }//GEN-LAST:event_btnRegresarActionPerformed
 
     private void btnClientesconComprasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClientesconComprasActionPerformed

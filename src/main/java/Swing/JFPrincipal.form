@@ -47,8 +47,8 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+              <Component id="jPanel1" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -74,48 +74,59 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
-                  <EmptySpace min="-2" pref="200" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="1" attributes="0">
-                      <Component id="lblEmpleados" min="-2" max="-2" attributes="0"/>
-                      <Component id="btnIngresarEmpleados" min="-2" max="-2" attributes="0"/>
-                      <Component id="btnIngresarClientes" alignment="1" min="-2" max="-2" attributes="0"/>
-                      <Component id="btnIngresarProductos" min="-2" max="-2" attributes="0"/>
-                      <Component id="btnIngresarVentas" alignment="1" min="-2" max="-2" attributes="0"/>
-                      <Component id="btnIngresarPago" min="-2" max="-2" attributes="0"/>
-                      <Component id="lblPago" min="-2" max="-2" attributes="0"/>
-                      <Component id="lblProductos" min="-2" max="-2" attributes="0"/>
-                      <Component id="lblClientes" min="-2" max="-2" attributes="0"/>
-                      <Component id="lblVentas" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace min="-2" pref="331" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="btnIngresarProveedores" min="-2" max="-2" attributes="0"/>
-                      <Component id="lblProveedores" min="-2" max="-2" attributes="0"/>
-                      <Component id="btnIngresarPuesto" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="btnIngresarRol" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="btnIngresarSucursal" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="btnIngresarServicio" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="lblServicio" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="lblPuesto" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="lblRol" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="lblSucursal" alignment="0" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace min="-2" pref="200" max="-2" attributes="0"/>
-              </Group>
-              <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="btnCerrarSesion" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="32767" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="lblMenuPrincipal" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
-                          <Component id="lblImagenPrincipal" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="btnCerrarSesion" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="268" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="lblMenuPrincipal" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+                                  <Component id="lblImagenPrincipal" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <EmptySpace min="-2" pref="263" max="-2" attributes="0"/>
+                          <Component id="lblTitulo" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" attributes="0">
+                          <EmptySpace min="-2" pref="100" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Component id="lblEmpleados" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnIngresarEmpleados" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnIngresarClientes" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnIngresarProductos" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnIngresarVentas" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnIngresarPago" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblPago" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblProductos" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblClientes" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblVentas" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="81" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="btnIngresarListaVentas1" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Group type="102" alignment="1" attributes="0">
+                                  <Component id="lblPuesto1" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <EmptySpace min="-2" pref="62" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="btnIngresarProveedores" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblProveedores" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnIngresarCategorias" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnIngresarRol" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnIngresarSucursal" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnIngresarServicio" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblServicio" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblPuesto" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblRol" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblSucursal" alignment="0" min="-2" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
                   </Group>
-                  <EmptySpace min="-2" pref="353" max="-2" attributes="0"/>
-                  <Component id="lblTitulo" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
+                  <EmptySpace pref="48" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -132,68 +143,79 @@
                       </Group>
                       <Component id="btnCerrarSesion" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="85" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="1" attributes="0">
-                      <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <Component id="lblProveedores" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="btnIngresarProveedores" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" attributes="0">
-                                  <Component id="lblEmpleados" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="btnIngresarEmpleados" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
-                          <Component id="lblPuesto" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <Component id="lblClientes" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="1" attributes="0">
-                      <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="btnIngresarClientes" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="btnIngresarPuesto" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
-                          <Component id="lblRol" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <Component id="lblProductos" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="1" attributes="0">
-                      <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="btnIngresarRol" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="btnIngresarProductos" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
-                          <Component id="lblServicio" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <Component id="lblPago" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="btnIngresarServicio" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="btnIngresarPago" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
-                          <Component id="lblSucursal" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="85" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" attributes="0">
+                                          <Component id="lblProveedores" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="btnIngresarProveedores" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" attributes="0">
+                                          <Component id="lblEmpleados" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="btnIngresarEmpleados" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+                                  <Component id="lblPuesto" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Component id="lblClientes" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="btnIngresarClientes" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="btnIngresarCategorias" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+                                  <Component id="lblRol" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Component id="lblProductos" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="btnIngresarRol" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="btnIngresarProductos" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+                                  <Component id="lblServicio" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Component id="lblPago" min="-2" max="-2" attributes="0"/>
+                          </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="btnIngresarVentas" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="btnIngresarSucursal" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnIngresarServicio" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnIngresarPago" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
+                          <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <Component id="lblSucursal" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="btnIngresarVentas" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="btnIngresarSucursal" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <Component id="lblVentas" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace pref="149" max="32767" attributes="0"/>
                       </Group>
-                      <Component id="lblVentas" min="-2" max="-2" attributes="0"/>
+                      <Group type="102" alignment="1" attributes="0">
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="lblPuesto1" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="btnIngresarListaVentas1" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="90" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
-                  <EmptySpace pref="149" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -268,7 +290,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Puestos"/>
+            <Property name="text" type="java.lang.String" value="Categoria"/>
             <Property name="horizontalTextPosition" type="int" value="0"/>
             <Property name="verticalTextPosition" type="int" value="3"/>
           </Properties>
@@ -493,7 +515,7 @@
             <Property name="verticalTextPosition" type="int" value="3"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="btnIngresarPuesto">
+        <Component class="javax.swing.JButton" name="btnIngresarCategorias">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="cc" green="cc" red="cc" type="rgb"/>
@@ -507,7 +529,7 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/contents/actualizar.png"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="INGRESAR PUESTOS"/>
+            <Property name="text" type="java.lang.String" value="INGRESAR CATEGORIAS"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.SoftBevelBorderInfo">
                 <BevelBorder/>
@@ -518,7 +540,7 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnIngresarPuestoActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnIngresarCategoriasActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="lblRol">
@@ -670,6 +692,47 @@
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCerrarSesionActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblPuesto1">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Roboto" size="15" style="0"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Lista de Ventas"/>
+            <Property name="horizontalTextPosition" type="int" value="0"/>
+            <Property name="verticalTextPosition" type="int" value="3"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="btnIngresarListaVentas1">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="cc" green="cc" red="cc" type="rgb"/>
+            </Property>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Roboto" size="12" style="0"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="0" green="0" red="0" type="rgb"/>
+            </Property>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/contents/actualizar.png"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="INGRESAR LISTA VENTAS"/>
+            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+              <Border info="org.netbeans.modules.form.compat2.border.SoftBevelBorderInfo">
+                <BevelBorder/>
+              </Border>
+            </Property>
+            <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+              <Color id="Hand Cursor"/>
+            </Property>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnIngresarListaVentas1ActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>

@@ -11,7 +11,6 @@ public class JFVenta_Lista extends javax.swing.JFrame {
     VentaDAO ventaDAO = new VentaDAO();
     public JFVenta_Lista() {
         initComponents();
-        listar();
     }
 
     @SuppressWarnings("unchecked")
@@ -25,17 +24,19 @@ public class JFVenta_Lista extends javax.swing.JFrame {
         tablaVenta = new javax.swing.JTable();
         btnRegresar = new javax.swing.JButton();
         btnPromedioSalarioporPuesto = new javax.swing.JButton();
+        lblmenuVentas3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(102, 153, 255));
 
         lblTitulo.setFont(new java.awt.Font("Roboto Black", 1, 18)); // NOI18N
+        lblTitulo.setForeground(new java.awt.Color(0, 0, 0));
         lblTitulo.setText("Villa Pet");
 
         lblPuesto.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
         lblPuesto.setForeground(new java.awt.Color(255, 255, 255));
-        lblPuesto.setText("Lista de Ventas");
+        lblPuesto.setText("LISTA DE VENTAS");
 
         jScrollPane1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -53,6 +54,7 @@ public class JFVenta_Lista extends javax.swing.JFrame {
 
         btnRegresar.setBackground(new java.awt.Color(204, 204, 204));
         btnRegresar.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        btnRegresar.setForeground(new java.awt.Color(0, 0, 0));
         btnRegresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/contents/regresar peq.png"))); // NOI18N
         btnRegresar.setText("Regresar");
         btnRegresar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -63,37 +65,49 @@ public class JFVenta_Lista extends javax.swing.JFrame {
             }
         });
 
-        btnPromedioSalarioporPuesto.setText("PromedioSalarioporPuesto");
+        btnPromedioSalarioporPuesto.setBackground(new java.awt.Color(204, 204, 204));
+        btnPromedioSalarioporPuesto.setForeground(new java.awt.Color(0, 0, 0));
+        btnPromedioSalarioporPuesto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/contents/pago peq.png"))); // NOI18N
+        btnPromedioSalarioporPuesto.setText("Promedio Salario por Puesto");
         btnPromedioSalarioporPuesto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPromedioSalarioporPuestoActionPerformed(evt);
             }
         });
 
+        lblmenuVentas3.setBackground(new java.awt.Color(255, 255, 255));
+        lblmenuVentas3.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
+        lblmenuVentas3.setForeground(new java.awt.Color(255, 255, 255));
+        lblmenuVentas3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/contents/sucursalpeq.png"))); // NOI18N
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(649, 867, Short.MAX_VALUE)
-                .addComponent(btnPromedioSalarioporPuesto)
-                .addGap(15, 15, 15))
-            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                         .addComponent(jScrollPane1)
                         .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(btnRegresar, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(371, 371, 371)
+                                .addComponent(lblmenuVentas3)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(lblTitulo)
-                                .addGap(482, 482, 482))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(lblPuesto)
-                                .addGap(463, 463, 463))))))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(btnPromedioSalarioporPuesto))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGap(334, 334, 334)
+                                        .addComponent(lblPuesto)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 351, Short.MAX_VALUE)
+                                        .addComponent(lblTitulo)))
+                                .addGap(46, 46, 46))))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -102,14 +116,16 @@ public class JFVenta_Lista extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnRegresar)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(lblTitulo)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblTitulo)
+                            .addComponent(lblPuesto))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblPuesto)
-                        .addGap(42, 42, 42)
-                        .addComponent(btnPromedioSalarioporPuesto)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 100, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(147, 147, 147))
+                        .addComponent(lblmenuVentas3)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                .addComponent(btnPromedioSalarioporPuesto)
+                .addGap(80, 80, 80)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(64, 64, 64))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -138,6 +154,7 @@ public class JFVenta_Lista extends javax.swing.JFrame {
 
         JFPrincipal principal = new JFPrincipal();
         principal.setVisible(true);
+        principal.setLocationRelativeTo(null);
     }//GEN-LAST:event_btnRegresarActionPerformed
 
     private void btnPromedioSalarioporPuestoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPromedioSalarioporPuestoActionPerformed
@@ -229,6 +246,7 @@ public class JFVenta_Lista extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblPuesto;
     private javax.swing.JLabel lblTitulo;
+    private javax.swing.JLabel lblmenuVentas3;
     private javax.swing.JTable tablaVenta;
     // End of variables declaration//GEN-END:variables
 }

@@ -37,7 +37,7 @@ public class JFPrincipal extends javax.swing.JFrame {
         lblPago = new javax.swing.JLabel();
         btnIngresarPago = new javax.swing.JButton();
         lblVentas = new javax.swing.JLabel();
-        btnIngresarPuesto = new javax.swing.JButton();
+        btnIngresarCategorias = new javax.swing.JButton();
         lblRol = new javax.swing.JLabel();
         btnIngresarRol = new javax.swing.JButton();
         lblServicio = new javax.swing.JLabel();
@@ -45,6 +45,8 @@ public class JFPrincipal extends javax.swing.JFrame {
         lblSucursal = new javax.swing.JLabel();
         btnIngresarSucursal = new javax.swing.JButton();
         btnCerrarSesion = new javax.swing.JButton();
+        lblPuesto1 = new javax.swing.JLabel();
+        btnIngresarListaVentas1 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         menuOpciones = new javax.swing.JMenu();
         menuOpcionSalir = new javax.swing.JMenuItem();
@@ -81,7 +83,7 @@ public class JFPrincipal extends javax.swing.JFrame {
 
         lblPuesto.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
         lblPuesto.setForeground(new java.awt.Color(255, 255, 255));
-        lblPuesto.setText("Puestos");
+        lblPuesto.setText("Categoria");
         lblPuesto.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         lblPuesto.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
 
@@ -185,16 +187,16 @@ public class JFPrincipal extends javax.swing.JFrame {
         lblVentas.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         lblVentas.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
 
-        btnIngresarPuesto.setBackground(new java.awt.Color(204, 204, 204));
-        btnIngresarPuesto.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
-        btnIngresarPuesto.setForeground(new java.awt.Color(0, 0, 0));
-        btnIngresarPuesto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/contents/actualizar.png"))); // NOI18N
-        btnIngresarPuesto.setText("INGRESAR PUESTOS");
-        btnIngresarPuesto.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        btnIngresarPuesto.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnIngresarPuesto.addActionListener(new java.awt.event.ActionListener() {
+        btnIngresarCategorias.setBackground(new java.awt.Color(204, 204, 204));
+        btnIngresarCategorias.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        btnIngresarCategorias.setForeground(new java.awt.Color(0, 0, 0));
+        btnIngresarCategorias.setIcon(new javax.swing.ImageIcon(getClass().getResource("/contents/actualizar.png"))); // NOI18N
+        btnIngresarCategorias.setText("INGRESAR CATEGORIAS");
+        btnIngresarCategorias.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnIngresarCategorias.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnIngresarCategorias.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnIngresarPuestoActionPerformed(evt);
+                btnIngresarCategoriasActionPerformed(evt);
             }
         });
 
@@ -268,48 +270,74 @@ public class JFPrincipal extends javax.swing.JFrame {
             }
         });
 
+        lblPuesto1.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
+        lblPuesto1.setForeground(new java.awt.Color(255, 255, 255));
+        lblPuesto1.setText("Lista de Ventas");
+        lblPuesto1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        lblPuesto1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+
+        btnIngresarListaVentas1.setBackground(new java.awt.Color(204, 204, 204));
+        btnIngresarListaVentas1.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        btnIngresarListaVentas1.setForeground(new java.awt.Color(0, 0, 0));
+        btnIngresarListaVentas1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/contents/actualizar.png"))); // NOI18N
+        btnIngresarListaVentas1.setText("INGRESAR LISTA VENTAS");
+        btnIngresarListaVentas1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnIngresarListaVentas1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnIngresarListaVentas1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnIngresarListaVentas1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(200, 200, 200)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lblEmpleados)
-                    .addComponent(btnIngresarEmpleados)
-                    .addComponent(btnIngresarClientes)
-                    .addComponent(btnIngresarProductos)
-                    .addComponent(btnIngresarVentas)
-                    .addComponent(btnIngresarPago)
-                    .addComponent(lblPago)
-                    .addComponent(lblProductos)
-                    .addComponent(lblClientes)
-                    .addComponent(lblVentas))
-                .addGap(331, 331, 331)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnIngresarProveedores)
-                    .addComponent(lblProveedores)
-                    .addComponent(btnIngresarPuesto)
-                    .addComponent(btnIngresarRol)
-                    .addComponent(btnIngresarSucursal)
-                    .addComponent(btnIngresarServicio)
-                    .addComponent(lblServicio)
-                    .addComponent(lblPuesto)
-                    .addComponent(lblRol)
-                    .addComponent(lblSucursal))
-                .addGap(200, 200, 200))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(btnCerrarSesion)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblMenuPrincipal)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(40, 40, 40)
-                        .addComponent(lblImagenPrincipal)))
-                .addGap(353, 353, 353)
-                .addComponent(lblTitulo)
-                .addGap(60, 60, 60))
+                        .addContainerGap()
+                        .addComponent(btnCerrarSesion)
+                        .addGap(268, 268, 268)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblMenuPrincipal)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(40, 40, 40)
+                                .addComponent(lblImagenPrincipal)))
+                        .addGap(263, 263, 263)
+                        .addComponent(lblTitulo))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(100, 100, 100)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lblEmpleados)
+                            .addComponent(btnIngresarEmpleados)
+                            .addComponent(btnIngresarClientes)
+                            .addComponent(btnIngresarProductos)
+                            .addComponent(btnIngresarVentas)
+                            .addComponent(btnIngresarPago)
+                            .addComponent(lblPago)
+                            .addComponent(lblProductos)
+                            .addComponent(lblClientes)
+                            .addComponent(lblVentas))
+                        .addGap(81, 81, 81)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnIngresarListaVentas1, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(lblPuesto1)
+                                .addGap(47, 47, 47)))
+                        .addGap(62, 62, 62)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnIngresarProveedores)
+                            .addComponent(lblProveedores)
+                            .addComponent(btnIngresarCategorias)
+                            .addComponent(btnIngresarRol)
+                            .addComponent(btnIngresarSucursal)
+                            .addComponent(btnIngresarServicio)
+                            .addComponent(lblServicio)
+                            .addComponent(lblPuesto)
+                            .addComponent(lblRol)
+                            .addComponent(lblSucursal))))
+                .addContainerGap(48, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -322,53 +350,61 @@ public class JFPrincipal extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(lblImagenPrincipal))
                     .addComponent(btnCerrarSesion))
-                .addGap(85, 85, 85)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(lblProveedores)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnIngresarProveedores))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(lblEmpleados)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnIngresarEmpleados)))
-                        .addGap(24, 24, 24)
-                        .addComponent(lblPuesto))
-                    .addComponent(lblClientes))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnIngresarClientes)
-                            .addComponent(btnIngresarPuesto))
-                        .addGap(24, 24, 24)
-                        .addComponent(lblRol))
-                    .addComponent(lblProductos))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnIngresarRol)
-                            .addComponent(btnIngresarProductos))
-                        .addGap(24, 24, 24)
-                        .addComponent(lblServicio))
-                    .addComponent(lblPago))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnIngresarServicio)
-                    .addComponent(btnIngresarPago))
-                .addGap(24, 24, 24)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(lblSucursal)
+                        .addGap(85, 85, 85)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(lblProveedores)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(btnIngresarProveedores))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(lblEmpleados)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(btnIngresarEmpleados)))
+                                .addGap(24, 24, 24)
+                                .addComponent(lblPuesto))
+                            .addComponent(lblClientes))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(btnIngresarClientes)
+                                    .addComponent(btnIngresarCategorias))
+                                .addGap(24, 24, 24)
+                                .addComponent(lblRol))
+                            .addComponent(lblProductos))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(btnIngresarRol)
+                                    .addComponent(btnIngresarProductos))
+                                .addGap(24, 24, 24)
+                                .addComponent(lblServicio))
+                            .addComponent(lblPago))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnIngresarVentas)
-                            .addComponent(btnIngresarSucursal)))
-                    .addComponent(lblVentas))
-                .addContainerGap(149, Short.MAX_VALUE))
+                            .addComponent(btnIngresarServicio)
+                            .addComponent(btnIngresarPago))
+                        .addGap(24, 24, 24)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(lblSucursal)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(btnIngresarVentas)
+                                    .addComponent(btnIngresarSucursal)))
+                            .addComponent(lblVentas))
+                        .addContainerGap(149, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lblPuesto1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnIngresarListaVentas1)
+                        .addGap(90, 90, 90))))
         );
 
         menuOpciones.setText("Opciones");
@@ -391,8 +427,8 @@ public class JFPrincipal extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(10, 10, 10))
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -414,60 +450,70 @@ public class JFPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
         JFEmpleado empleado = new JFEmpleado();
         empleado.setVisible(true);
+        empleado.setLocationRelativeTo(null);
     }//GEN-LAST:event_btnIngresarEmpleadosActionPerformed
 
     private void btnIngresarProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarProductosActionPerformed
         // TODO add your handling code here:
         JFProducto producto = new JFProducto();
         producto.setVisible(true);
+        producto.setLocationRelativeTo(null);
     }//GEN-LAST:event_btnIngresarProductosActionPerformed
 
     private void btnIngresarVentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarVentasActionPerformed
         // TODO add your handling code here:
         JFVenta venta = new JFVenta();
         venta.setVisible(true);
+        venta.setLocationRelativeTo(null);
     }//GEN-LAST:event_btnIngresarVentasActionPerformed
 
     private void btnIngresarClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarClientesActionPerformed
         // TODO add your handling code here:
         JFCliente cliente = new JFCliente();
         cliente.setVisible(true);
+        cliente.setLocationRelativeTo(null);
     }//GEN-LAST:event_btnIngresarClientesActionPerformed
 
     private void btnIngresarProveedoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarProveedoresActionPerformed
         // TODO add your handling code here:
         JFProveedor proveedor = new JFProveedor();
         proveedor.setVisible(true);
+        proveedor.setLocationRelativeTo(null);
     }//GEN-LAST:event_btnIngresarProveedoresActionPerformed
 
     private void btnIngresarPagoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarPagoActionPerformed
         // TODO add your handling code here:
         JFPago pago = new JFPago();
         pago.setVisible(true);
+        pago.setLocationRelativeTo(null);
     }//GEN-LAST:event_btnIngresarPagoActionPerformed
 
-    private void btnIngresarPuestoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarPuestoActionPerformed
+    private void btnIngresarCategoriasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarCategoriasActionPerformed
         // TODO add your handling code here:
-        JFVenta_Lista puesto = new JFVenta_Lista();
-        puesto.setVisible(true);
-    }//GEN-LAST:event_btnIngresarPuestoActionPerformed
+        JFCategoria categoria = new JFCategoria();
+        categoria.setVisible(true);
+        categoria.setLocationRelativeTo(null);
+    }//GEN-LAST:event_btnIngresarCategoriasActionPerformed
 
     private void btnIngresarRolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarRolActionPerformed
         // TODO add your handling code here:
         JFRol rol = new JFRol();
         rol.setVisible(true);
+        rol.setLocationRelativeTo(null);
     }//GEN-LAST:event_btnIngresarRolActionPerformed
 
     private void btnIngresarServicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarServicioActionPerformed
         // TODO add your handling code here:
         JFServicio servicio = new JFServicio();
         servicio.setVisible(true);
+        servicio.setLocationRelativeTo(null);
     }//GEN-LAST:event_btnIngresarServicioActionPerformed
 
     private void btnIngresarSucursalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarSucursalActionPerformed
         // TODO add your handling code here:
         JFSucursal sucursal = new JFSucursal();
         sucursal.setVisible(true);
+        sucursal.setLocationRelativeTo(null);
     }//GEN-LAST:event_btnIngresarSucursalActionPerformed
 
     private void btnCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarSesionActionPerformed
@@ -475,9 +521,18 @@ public class JFPrincipal extends javax.swing.JFrame {
         JFAcceso acceso = new JFAcceso();
 
         acceso.setVisible(true);
+        
+        acceso.setLocationRelativeTo(null);
 
         dispose();
     }//GEN-LAST:event_btnCerrarSesionActionPerformed
+
+    private void btnIngresarListaVentas1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarListaVentas1ActionPerformed
+        // TODO add your handling code here:
+        JFVenta_Lista listaVenta = new JFVenta_Lista();
+        listaVenta.setVisible(true);
+        listaVenta.setLocationRelativeTo(null);
+    }//GEN-LAST:event_btnIngresarListaVentas1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -523,12 +578,13 @@ public class JFPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCerrarSesion;
+    private javax.swing.JButton btnIngresarCategorias;
     private javax.swing.JButton btnIngresarClientes;
     private javax.swing.JButton btnIngresarEmpleados;
+    private javax.swing.JButton btnIngresarListaVentas1;
     private javax.swing.JButton btnIngresarPago;
     private javax.swing.JButton btnIngresarProductos;
     private javax.swing.JButton btnIngresarProveedores;
-    private javax.swing.JButton btnIngresarPuesto;
     private javax.swing.JButton btnIngresarRol;
     private javax.swing.JButton btnIngresarServicio;
     private javax.swing.JButton btnIngresarSucursal;
@@ -543,6 +599,7 @@ public class JFPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel lblProductos;
     private javax.swing.JLabel lblProveedores;
     private javax.swing.JLabel lblPuesto;
+    private javax.swing.JLabel lblPuesto1;
     private javax.swing.JLabel lblRol;
     private javax.swing.JLabel lblServicio;
     private javax.swing.JLabel lblSucursal;

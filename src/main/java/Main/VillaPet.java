@@ -17,5 +17,6 @@ public class VillaPet {
     public static void iniciarAPP(){
         JFAcceso Login = new JFAcceso();
         Login.setVisible(true);
+        Login.setLocationRelativeTo(null);
     }
 }
