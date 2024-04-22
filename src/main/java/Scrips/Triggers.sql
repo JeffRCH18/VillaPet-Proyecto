@@ -16,16 +16,6 @@ BEGIN
     VALUES('Tabla Empleado', transactionl, USER, SYSDATE);
 END;
 
---Creacion de un trigger para evitar que se haga un insert en la tabla venta 
-CREATE OR REPLACE TRIGGER no_insert_venta_TRG
-    BEFORE
-    INSERT 
-    ON Tab_Venta
-    FOR EACH ROW 
-BEGIN 
-    RAISE_APPLICATION_ERROR(-20105,'No se pueden hacer inserts en la tabla venta');
-END;
-
 --Trigger de auditoria para la tabla prodcuto 
 CREATE OR REPLACE TRIGGER audit_prod_TRG
     AFTER 

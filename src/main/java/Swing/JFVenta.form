@@ -145,7 +145,7 @@
                                               <EmptySpace min="-2" pref="128" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
-                                      <Component id="btnVentasEmpSucursal" min="-2" max="-2" attributes="0"/>
+                                      <Component id="btnVentasClienteSucursal" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
                               </Group>
@@ -232,7 +232,7 @@
                           <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
                           <Component id="btnVentasporSucursal" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
-                          <Component id="btnVentasEmpSucursal" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnVentasClienteSucursal" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace pref="182" max="32767" attributes="0"/>
@@ -460,7 +460,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnVentasporSucursalActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="btnVentasEmpSucursal">
+        <Component class="javax.swing.JButton" name="btnVentasClienteSucursal">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="cc" green="cc" red="cc" type="rgb"/>
@@ -468,10 +468,10 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/contents/empledo sucursal peq.png"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Ventas empleado por Sucursal"/>
+            <Property name="text" type="java.lang.String" value="Ventas Cliente por Sucursal"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnVentasEmpSucursalActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnVentasClienteSucursalActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JComboBox" name="boxSucursal">

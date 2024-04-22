@@ -46,7 +46,7 @@ FROM TAB_PROVEEDOR;
 
 --Vista para lista los empleados
 CREATE OR REPLACE VIEW EMPLEADO_VIEW AS
-SELECT ID_EMPLEADO, ID_PUESTO, ID_ROL, ID_SUCURSAL, NOMBRE_EMPLEADO, APELLIDO, CORREO, CONTRASENA, SALARIO
+SELECT ID_EMPLEADO, ID_PUESTO, ID_ROL, NOMBRE_EMPLEADO, APELLIDO, CORREO, CONTRASENA, SALARIO, ID_SUCURSAL
 FROM TAB_EMPLEADO;
 
 --------------------------------------------------------------------------------
@@ -76,5 +76,17 @@ FROM TAB_VENTA;
 CREATE OR REPLACE VIEW PAGO_VIEW AS
 SELECT COD_PAGO, ID_PROVEEDOR, MONTO, FECHA
 FROM TAB_PAGO;
+
+--------------------------------------------------------------------------------
+
+CREATE OR REPLACE VIEW PRODUCTO_SERVICIO_VIEW AS
+  SELECT 'Servicio' AS Tipo, s.ID_Servicio AS ID, s.ID_Empleado AS ID_Relacionado,
+       s.Nombre_Servicios AS Descripcion, s.Descripcion_Servicio AS Detalle,
+       s.Precio AS Precio, NULL AS Stock
+FROM Tab_Servicio s
+UNION ALL
+SELECT 'Producto' AS Tipo, p.ID_Producto AS ID, p.ID_Proveedor AS ID_Relacionado,
+       p.Descripcion, NULL AS Detalle, p.Precio, p.Stock
+FROM Tab_Producto p;
 
 --------------------------------------------------------------------------------

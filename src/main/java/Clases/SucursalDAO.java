@@ -11,7 +11,7 @@ import java.util.List;
 import oracle.jdbc.OracleTypes;
 
 public class SucursalDAO {
-    private static final String PROCEDURE_INSERT_SUCURSAL = "{CALL CRUD_sucursal_PKG.INSERTAR_SUCURSAL_SP(?,?,?,?)}";
+    private static final String PROCEDURE_INSERT_SUCURSAL = "{CALL INSERTAR_SUCURSAL_SP(?,?,?,?)}";
     public void insertarSucursal(String correo, int telefono, String nombre, String direccion) {
         try (Connection connection = Conexion.obtenerConexion();
             /*Se verifica la conexion y se prepara una consulta con los datos recibidos en el metodo desde la interfaz*/
@@ -29,7 +29,7 @@ public class SucursalDAO {
     }
     
     /*Llamada del procedimiento almacenado que recibi 1 parametro*/
-    private static final String PROCEDURE_LIST_SUCURSAL = "{CALL CRUD_sucursal_PKG.LISTAR_SUCURSAL_SP(?)}";
+    private static final String PROCEDURE_LIST_SUCURSAL = "{CALL LISTAR_SUCURSAL_SP(?)}";
     /*Metodo que devuelve una lista de objetos*/
     public List<Sucursal> ListarSucursal() {
     /*Crea una lista vacía para almacenar los objetos */   
@@ -65,7 +65,7 @@ public class SucursalDAO {
         return lista;
     }
 
-    private static final String PROCEDURE_DELETE_SUCURSAL = "{CALL CRUD_sucursal_PKG.ELIMINAR_SUCURSAL_SP(?)}";
+    private static final String PROCEDURE_DELETE_SUCURSAL = "{CALL ELIMINAR_SUCURSAL_SP(?)}";
     public void eliminarSucursal(int idSucursal){
         // Llamar al procedimiento almacenado para eliminar la sucursal
         try (Connection connection = Conexion.obtenerConexion()) {
@@ -78,7 +78,7 @@ public class SucursalDAO {
         }
     }
     
-    private static final String PROCEDURE_UPDATE_SUCURSAL = "{CALL CRUD_sucursal_PKG.Actualizar_Sucursal_SP(?, ?, ?, ?, ?)}";
+    private static final String PROCEDURE_UPDATE_SUCURSAL = "{CALL Actualizar_Sucursal_SP(?, ?, ?, ?, ?)}";
     public void actualizarSucursal(int idSucursal,String correo, int telefono, String nombre, String direccion) {
         try (Connection connection = Conexion.obtenerConexion()) {
             CallableStatement statement = connection.prepareCall(PROCEDURE_UPDATE_SUCURSAL);

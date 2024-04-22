@@ -289,6 +289,7 @@ public class JFRol extends javax.swing.JFrame {
         try {
             rolDAO.insertarRol(nombre);
             limpiarCampos();
+            listar();
         }catch (Exception ex) {
             JOptionPane.showMessageDialog(this, "Datos no validos.");
         }

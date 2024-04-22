@@ -374,7 +374,7 @@ public class JFSucursal extends javax.swing.JFrame {
         int telefono = Integer.parseInt(txtTelefono.getText());      
 
         try {
-            sucursalDAO.insertarSucursal(correo,telefono, nombre,direccion );
+            sucursalDAO.insertarSucursal(correo, telefono, nombre, direccion );
             limpiarCampos();
             listar();
             JOptionPane.showMessageDialog(this, "Sucursal Insertada correctamente.");
@@ -394,7 +394,7 @@ public class JFSucursal extends javax.swing.JFrame {
         if (filaSeleccionada != -1) {
             int idSucursal = (int) tablaSucursal.getValueAt(filaSeleccionada, 0);
 
-            sucursalDAO.actualizarSucursal(idSucursal, nombre,telefono, correo, direccion);
+            sucursalDAO.actualizarSucursal(idSucursal, correo,telefono, nombre, direccion);
             listar();
         } else {
             JOptionPane.showMessageDialog(null, "Por favor, selecciona una sucursal para actualizar.", "Error", JOptionPane.ERROR_MESSAGE);

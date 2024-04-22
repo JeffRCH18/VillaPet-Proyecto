@@ -208,6 +208,12 @@ public class JFEmpleado extends javax.swing.JFrame {
             }
         });
 
+        boxSucursal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boxSucursalActionPerformed(evt);
+            }
+        });
+
         lblSalario2.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
         lblSalario2.setForeground(new java.awt.Color(255, 255, 255));
         lblSalario2.setText("ROL");
@@ -613,6 +619,10 @@ public class JFEmpleado extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Por favor, seleccione un empleado primero");
         }
     }//GEN-LAST:event_btnActualizarActionPerformed
+
+    private void boxSucursalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boxSucursalActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_boxSucursalActionPerformed
 
     private void limpiarCampos() {
         txtNombre.setText("");

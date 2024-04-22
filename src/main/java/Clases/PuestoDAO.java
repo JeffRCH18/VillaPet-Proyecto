@@ -12,7 +12,7 @@ import javax.swing.JOptionPane;
 import oracle.jdbc.OracleTypes;
 
 public class PuestoDAO {
-    private static final String PROCEDURE_INSERT_PUESTO = "{CALL CRUD_puestos_PKG.Insertar_Puesto_SP(?)}";
+    private static final String PROCEDURE_INSERT_PUESTO = "{CALL Insertar_Puesto_SP(?)}";
     public void insertarPuesto(String nombre) {
         try (Connection connection = Conexion.obtenerConexion();
             /*Se verifica la conexion y se prepara una consulta con los datos recibidos en el metodo desde la interfaz*/
@@ -27,7 +27,7 @@ public class PuestoDAO {
         }
     }
     
-    private static final String PROCEDURE_LIST_PUESTO = "{CALL CRUD_puestos_PKG.Listar_Puesto_SP(?)}";
+    private static final String PROCEDURE_LIST_PUESTO = "{CALL Listar_Puesto_SP(?)}";
     /*Metodo que devuelve una lista de objetos*/
     public List<Puesto> ListarPuesto() {
     /*Crea una lista vacía para almacenar los objetos */   
@@ -50,7 +50,6 @@ public class PuestoDAO {
             puesto.setDescripcion_Puesto(rs.getString("Descripcion_Puesto"));
             /*Agrega el objeto Cliente a la lista de clientes*/
             lista.add(puesto);
-            System.out.println("Se ha agregado un puesto: " + puesto.getID_Puesto() + " - " + puesto.getDescripcion_Puesto());
         }
     } catch (SQLException e) {
         System.out.println(e.toString());
@@ -59,7 +58,7 @@ public class PuestoDAO {
     return lista;
     }
     
-    private static final String PROCEDURE_DELETE_PUESTO = "{CALL CRUD_puestos_PKG.Eliminar_Puesto_SP(?)}";
+    private static final String PROCEDURE_DELETE_PUESTO = "{CALL Eliminar_Puesto_SP(?)}";
     public void eliminarPuesto(int idPuesto){
         // Llamar al procedimiento almacenado para eliminar el Rol
         try (Connection connection = Conexion.obtenerConexion()) {
@@ -71,7 +70,7 @@ public class PuestoDAO {
         }
     }
     
-    private static final String PROCEDURE_UPDATE_PUESTO = "{CALL CRUD_puestos_PKG.Actualizar_Puesto_SP(?, ?)}";
+    private static final String PROCEDURE_UPDATE_PUESTO = "{CALL Actualizar_Puesto_SP(?, ?)}";
     public void actualizarPuesto(int idPuesto, String nombre) {
         try (Connection connection = Conexion.obtenerConexion()) {
             CallableStatement statement = connection.prepareCall(PROCEDURE_UPDATE_PUESTO);

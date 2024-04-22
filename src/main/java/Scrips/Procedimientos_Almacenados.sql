@@ -15,7 +15,6 @@ AS
 BEGIN
     INSERT INTO Tab_Cliente (Nombre_Cliente, Apellido, Direccion_Cliente, Correo_Cliente, Telefono_Cliente)
     VALUES (nombre_cliente, apellido, direccion_cliente, correo_cliente, telefono_cliente);
-    COMMIT;
 END INSERTAR_CLIENTE_SP;
 
 --------------------------------------------------------------------------------
@@ -108,7 +107,6 @@ EXCEPTION
     WHEN NO_DATA_FOUND THEN
         DBMS_OUTPUT.PUT_LINE('No se pudo ingresar el empleado, intente de nuevo');
 END INSERTAR_EMPLEADO_SP;
-
 --------------------------------------------------------------------------------
 
 CREATE OR REPLACE PROCEDURE ELIMINAR_EMPLEADO_SP(p_IDEMP IN NUMBER)
@@ -156,7 +154,7 @@ CREATE OR REPLACE PROCEDURE LISTAR_EMPLEADO_SP(p_cursor OUT SYS_REFCURSOR)
 IS
 BEGIN
   OPEN p_cursor FOR
-    SELECT ID_EMPLEADO, ID_PUESTO, ID_ROL, ID_SUCURSAL, NOMBRE_EMPLEADO, APELLIDO, CORREO, SALARIO
+    SELECT ID_EMPLEADO, ID_PUESTO, ID_ROL, NOMBRE_EMPLEADO, APELLIDO, CORREO, CONTRASENA, SALARIO, ID_SUCURSAL
     FROM Empleado_VIEW;
 END LISTAR_EMPLEADO_SP;
 
@@ -194,7 +192,6 @@ END Sesion_Empleado_SP;
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 CREATE OR REPLACE PROCEDURE INSERTAR_SUCURSAL_SP(
-    p_ID IN NUMBER,
     p_CORREO IN VARCHAR2, 
     p_TELEFONO IN VARCHAR2, 
     p_NOMBRE_SUCURSAL IN VARCHAR2,
@@ -202,12 +199,11 @@ CREATE OR REPLACE PROCEDURE INSERTAR_SUCURSAL_SP(
 IS 
 BEGIN
     INSERT INTO TAB_SUCURSAL(
-    ID_SUCURSAL, 
     CORREO_SUCURSAL, 
     TELEFONO_SUCURSAL, 
     NOMBRE_SUCURSAL, 
     DIRECCION_SUCURSAL)
-    VALUES (p_ID, p_CORREO, p_TELEFONO, p_NOMBRE_SUCURSAL, p_DIRECCION_SUCURSAL);
+    VALUES (p_CORREO, p_TELEFONO, p_NOMBRE_SUCURSAL, p_DIRECCION_SUCURSAL);
 EXCEPTION 
     WHEN OTHERS THEN
         DBMS_OUTPUT.PUT_LINE('No se pudo ingresar la sucursal, intente de nuevo');
@@ -402,7 +398,6 @@ END LISTAR_PRODUCTO_SP;
 --------------------------------------------------------------------------------
 
 CREATE OR REPLACE PROCEDURE INSERTAR_SERVICIO_SP(
-    p_ID IN NUMBER,
     p_ID_EMP IN NUMBER, 
     p_NOMBRE_SERV IN VARCHAR2,
     p_DESCRIPCION_SERV IN VARCHAR2,
@@ -410,12 +405,11 @@ CREATE OR REPLACE PROCEDURE INSERTAR_SERVICIO_SP(
 IS 
 BEGIN
     INSERT INTO TAB_SERVICIO(
-    ID_SERVICIO, 
     ID_EMPLEADO, 
     NOMBRE_SERVICIOS, 
     DESCRIPCION_SERVICIO,
     PRECIO)
-    VALUES (p_ID, p_ID_EMP, p_NOMBRE_SERV, p_DESCRIPCION_SERV, p_PRECIO);
+    VALUES (p_ID_EMP, p_NOMBRE_SERV, p_DESCRIPCION_SERV, p_PRECIO);
 EXCEPTION 
     WHEN NO_DATA_FOUND THEN
         DBMS_OUTPUT.PUT_LINE('No se pudo ingresar el servicio, intente de nuevo');
@@ -471,12 +465,11 @@ END LISTAR_SERVICIO_SP;
 --------------------------------------------------------------------------------
 
 CREATE OR REPLACE PROCEDURE INSERTAR_PUESTO_SP(
-    p_ID IN NUMBER,
     p_DESCRIPCION_P IN VARCHAR2)
 IS 
 BEGIN
-    INSERT INTO TAB_PUESTO(ID_PUESTO, DESCRIPCION_PUESTO)
-    VALUES (p_ID, p_DESCRIPCION_P);
+    INSERT INTO TAB_PUESTO(DESCRIPCION_PUESTO)
+    VALUES (p_DESCRIPCION_P);
 EXCEPTION 
     WHEN NO_DATA_FOUND THEN
         DBMS_OUTPUT.PUT_LINE('No se pudo ingresar el puesto, intente de nuevo');
@@ -719,6 +712,18 @@ AS
 BEGIN
     SELECT MAX(num_factura) INTO p_venta_id FROM TAB_VENTA;
 END VENTA_ID_SP;
+
+--------------------------------------------------------------------------------
+
+CREATE OR REPLACE PROCEDURE PRODUCTO_SERVICIO_SP (
+    p_cursor OUT SYS_REFCURSOR
+)
+AS
+BEGIN
+    OPEN p_cursor FOR
+        SELECT *
+        FROM PRODUCTO_SERVICIO_VIEW;
+END PRODUCTO_SERVICIO_SP;
 
 --------------------------------------------------------------------------------
 

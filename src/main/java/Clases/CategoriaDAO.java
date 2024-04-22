@@ -10,7 +10,7 @@ import java.util.List;
 import oracle.jdbc.OracleTypes;
 
 public class CategoriaDAO {
-    private static final String PROCEDURE_INSERT_CATEGORIA = "{CALL CRUD_catogorias_PKG.INSERTAR_CATEGORIA_SP(?)}";
+    private static final String PROCEDURE_INSERT_CATEGORIA = "{CALL INSERTAR_CATEGORIA_SP(?)}";
     public void insertarCategoria(String descripcion) {
         try (Connection connection = Conexion.obtenerConexion();
             /*Se verifica la conexion y se prepara una consulta con los datos recibidos en el metodo desde la interfaz*/
@@ -23,7 +23,7 @@ public class CategoriaDAO {
         }
     }
     /*Llamada del procedimiento almacenado que recibi 1 parametro*/
-    private static final String PROCEDURE_LIST_CATEGORIA = "{CALL CRUD_categorias_PKG.LISTAR_CATEGORIA_SP(?)}";
+    private static final String PROCEDURE_LIST_CATEGORIA = "{CALL LISTAR_CATEGORIA_SP(?)}";
     /*Metodo que devuelve una lista de objetos*/
     public List<Categoria> ListarCategoria() {
     /*Crea una lista vacía para almacenar los objetos */   
@@ -53,7 +53,7 @@ public class CategoriaDAO {
     /*Devuelve la lista de categorias recuperada de la DB*/
     return lista;
 }
-    private static final String PROCEDURE_DELETE_CATEGORIA = "{CALL CRUD_categorias_PKG.ELIMINAR_CATEGORIA_SP(?)}";
+    private static final String PROCEDURE_DELETE_CATEGORIA = "{CALL ELIMINAR_CATEGORIA_SP(?)}";
     public void eliminarCategoria(int idCategoria){
         // Llamar al procedimiento almacenado para eliminar el categoria
         try (Connection connection = Conexion.obtenerConexion()) {
@@ -66,7 +66,7 @@ public class CategoriaDAO {
         }
     }
     
-    private static final String PROCEDURE_UPDATE_CATEGORIA = "{CALL CRUD_categorias_PKG.ACTUALIZAR_CATEGORIA_SP(?, ?)}";
+    private static final String PROCEDURE_UPDATE_CATEGORIA = "{CALL ACTUALIZAR_CATEGORIA_SP(?, ?)}";
     public void actualizarCategoria(int idCategoria, String descripcion) {
         try (Connection connection = Conexion.obtenerConexion()) {
             CallableStatement statement = connection.prepareCall(PROCEDURE_UPDATE_CATEGORIA);

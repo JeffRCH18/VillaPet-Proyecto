@@ -1,6 +1,7 @@
 package Clases;
 
 public class Empleado {
+
     private int ID_Empleado;
     private int ID_Puesto;
     private int ID_Rol;
@@ -22,8 +23,8 @@ public class Empleado {
         this.Salario = Salario;
         this.ID_Sucursal = ID_Sucursal;
     }
-    
-        public Empleado() {
+
+    public Empleado() {
 
     }
 
@@ -90,8 +91,8 @@ public class Empleado {
     public void setSalario(int Salario) {
         this.Salario = Salario;
     }
-    
-        public int getID_Sucursal() {
+
+    public int getID_Sucursal() {
         return ID_Sucursal;
     }
 

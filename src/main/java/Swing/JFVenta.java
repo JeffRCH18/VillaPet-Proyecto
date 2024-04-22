@@ -30,6 +30,7 @@ public class JFVenta extends javax.swing.JFrame {
         initComponents();
         llenarComboBoxSucursal();
         tablaCarrito();
+        listar();
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -52,7 +53,7 @@ public class JFVenta extends javax.swing.JFrame {
         btnRegresar = new javax.swing.JButton();
         txtNombreSucursal = new javax.swing.JTextField();
         btnVentasporSucursal = new javax.swing.JButton();
-        btnVentasEmpSucursal = new javax.swing.JButton();
+        btnVentasClienteSucursal = new javax.swing.JButton();
         boxSucursal = new javax.swing.JComboBox<>();
         jScrollPane2 = new javax.swing.JScrollPane();
         tablaCarrito = new javax.swing.JTable();
@@ -165,12 +166,12 @@ public class JFVenta extends javax.swing.JFrame {
             }
         });
 
-        btnVentasEmpSucursal.setBackground(new java.awt.Color(204, 204, 204));
-        btnVentasEmpSucursal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/contents/empledo sucursal peq.png"))); // NOI18N
-        btnVentasEmpSucursal.setText("Ventas empleado por Sucursal");
-        btnVentasEmpSucursal.addActionListener(new java.awt.event.ActionListener() {
+        btnVentasClienteSucursal.setBackground(new java.awt.Color(204, 204, 204));
+        btnVentasClienteSucursal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/contents/empledo sucursal peq.png"))); // NOI18N
+        btnVentasClienteSucursal.setText("Ventas Cliente por Sucursal");
+        btnVentasClienteSucursal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnVentasEmpSucursalActionPerformed(evt);
+                btnVentasClienteSucursalActionPerformed(evt);
             }
         });
 
@@ -298,7 +299,7 @@ public class JFVenta extends javax.swing.JFrame {
                                                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addComponent(txtNombreSucursal, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
                                             .addGap(128, 128, 128)))
-                                    .addComponent(btnVentasEmpSucursal))
+                                    .addComponent(btnVentasClienteSucursal))
                                 .addGap(44, 44, 44))))))
         );
         jPanel1Layout.setVerticalGroup(
@@ -360,7 +361,7 @@ public class JFVenta extends javax.swing.JFrame {
                         .addGap(14, 14, 14)
                         .addComponent(btnVentasporSucursal)
                         .addGap(51, 51, 51)
-                        .addComponent(btnVentasEmpSucursal)))
+                        .addComponent(btnVentasClienteSucursal)))
                 .addContainerGap(182, Short.MAX_VALUE))
         );
 
@@ -424,11 +425,11 @@ public class JFVenta extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnVentasporSucursalActionPerformed
 
-    private void btnVentasEmpSucursalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVentasEmpSucursalActionPerformed
+    private void btnVentasClienteSucursalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVentasClienteSucursalActionPerformed
         VentaDAO ventaDAO = new VentaDAO();
-        String listaVentas = ventaDAO.listarVentasPorEmpleadoSucursal();
+        String listaVentas = ventaDAO.listarVentasPorClienteSucursal();
         JOptionPane.showMessageDialog(this, listaVentas, "Ventas por Empleado y Sucursal", JOptionPane.INFORMATION_MESSAGE);
-    }//GEN-LAST:event_btnVentasEmpSucursalActionPerformed
+    }//GEN-LAST:event_btnVentasClienteSucursalActionPerformed
 
     private void btnPagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPagarActionPerformed
         List<Sucursal> listaSucursal = sucursalDAO.ListarSucursal();
@@ -600,6 +601,7 @@ public class JFVenta extends javax.swing.JFrame {
             // Sumar el subtotal al total_pagar
             total_pagar += subtotal;
         }
+        txtTotal.setText(String.format("%d", total_pagar));
     }
     
     public void tablaCarrito(){
@@ -659,7 +661,7 @@ public class JFVenta extends javax.swing.JFrame {
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnPagar;
     private javax.swing.JButton btnRegresar;
-    private javax.swing.JButton btnVentasEmpSucursal;
+    private javax.swing.JButton btnVentasClienteSucursal;
     private javax.swing.JButton btnVentasporSucursal;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;

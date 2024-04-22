@@ -11,6 +11,7 @@ public class JFVenta_Lista extends javax.swing.JFrame {
     VentaDAO ventaDAO = new VentaDAO();
     public JFVenta_Lista() {
         initComponents();
+        listar();
     }
 
     @SuppressWarnings("unchecked")
@@ -23,7 +24,6 @@ public class JFVenta_Lista extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaVenta = new javax.swing.JTable();
         btnRegresar = new javax.swing.JButton();
-        btnPromedioSalarioporPuesto = new javax.swing.JButton();
         lblmenuVentas3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -31,7 +31,6 @@ public class JFVenta_Lista extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(102, 153, 255));
 
         lblTitulo.setFont(new java.awt.Font("Roboto Black", 1, 18)); // NOI18N
-        lblTitulo.setForeground(new java.awt.Color(0, 0, 0));
         lblTitulo.setText("Villa Pet");
 
         lblPuesto.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
@@ -41,7 +40,6 @@ public class JFVenta_Lista extends javax.swing.JFrame {
         jScrollPane1.setBackground(new java.awt.Color(255, 255, 255));
 
         tablaVenta.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
-        tablaVenta.setForeground(new java.awt.Color(0, 0, 0));
         tablaVenta.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -54,7 +52,6 @@ public class JFVenta_Lista extends javax.swing.JFrame {
 
         btnRegresar.setBackground(new java.awt.Color(204, 204, 204));
         btnRegresar.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
-        btnRegresar.setForeground(new java.awt.Color(0, 0, 0));
         btnRegresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/contents/regresar peq.png"))); // NOI18N
         btnRegresar.setText("Regresar");
         btnRegresar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -62,16 +59,6 @@ public class JFVenta_Lista extends javax.swing.JFrame {
         btnRegresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRegresarActionPerformed(evt);
-            }
-        });
-
-        btnPromedioSalarioporPuesto.setBackground(new java.awt.Color(204, 204, 204));
-        btnPromedioSalarioporPuesto.setForeground(new java.awt.Color(0, 0, 0));
-        btnPromedioSalarioporPuesto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/contents/pago peq.png"))); // NOI18N
-        btnPromedioSalarioporPuesto.setText("Promedio Salario por Puesto");
-        btnPromedioSalarioporPuesto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPromedioSalarioporPuestoActionPerformed(evt);
             }
         });
 
@@ -98,15 +85,10 @@ public class JFVenta_Lista extends javax.swing.JFrame {
                                 .addComponent(lblmenuVentas3)
                                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(btnPromedioSalarioporPuesto))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(334, 334, 334)
-                                        .addComponent(lblPuesto)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 351, Short.MAX_VALUE)
-                                        .addComponent(lblTitulo)))
+                                .addGap(334, 334, 334)
+                                .addComponent(lblPuesto)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 351, Short.MAX_VALUE)
+                                .addComponent(lblTitulo)
                                 .addGap(46, 46, 46))))))
         );
         jPanel1Layout.setVerticalGroup(
@@ -121,9 +103,7 @@ public class JFVenta_Lista extends javax.swing.JFrame {
                             .addComponent(lblPuesto))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lblmenuVentas3)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
-                .addComponent(btnPromedioSalarioporPuesto)
-                .addGap(80, 80, 80)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 138, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(64, 64, 64))
         );
@@ -156,13 +136,6 @@ public class JFVenta_Lista extends javax.swing.JFrame {
         principal.setVisible(true);
         principal.setLocationRelativeTo(null);
     }//GEN-LAST:event_btnRegresarActionPerformed
-
-    private void btnPromedioSalarioporPuestoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPromedioSalarioporPuestoActionPerformed
-        // TODO add your handling code here:
-        PuestoDAO puestoDAO = new PuestoDAO();
-        String listaPromediosSalarios = puestoDAO.promedioSalarioPorPuesto();
-        JOptionPane.showMessageDialog(this, listaPromediosSalarios, "Promedio de Salario por Puesto", JOptionPane.INFORMATION_MESSAGE);
-    }//GEN-LAST:event_btnPromedioSalarioporPuestoActionPerformed
 
     public void listar(){
         /*Llama al método ListarCliente de la clase cliente_DAO para obtener la
@@ -240,7 +213,6 @@ public class JFVenta_Lista extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnPromedioSalarioporPuesto;
     private javax.swing.JButton btnRegresar;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;

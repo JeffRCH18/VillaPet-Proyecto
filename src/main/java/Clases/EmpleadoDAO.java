@@ -12,8 +12,8 @@ import javax.swing.JOptionPane;
 import oracle.jdbc.OracleTypes;
 
 public class EmpleadoDAO {
-private static final String PROCEDURE_INSERT_EMPLEADO = "{CALL CRUD_empleados_PKG.INSERTAR_EMPLEADO_SP(?, ?, ?, ?, ?, ?, ?, ?)}";
-    public void insertarEmpleado(int ID_Puesto,int ID_Rol, String Nombre_Empleado, String Apellido, String Correo, String Contraseña, int Salario, int ID_Sucursal) {
+private static final String PROCEDURE_INSERT_EMPLEADO = "{CALL INSERTAR_EMPLEADO_SP(?, ?, ?, ?, ?, ?, ?, ?)}";
+    public void insertarEmpleado(int ID_Puesto,int ID_Rol, String Nombre_Empleado, String Apellido, String Correo, String Contrasena, int Salario, int ID_Sucursal) {
         try (Connection connection = Conexion.obtenerConexion();
             /*Se verifica la conexion y se prepara una consulta con los datos recibidos en el metodo desde la interfaz*/
             CallableStatement statement = connection.prepareCall(PROCEDURE_INSERT_EMPLEADO)) {
@@ -22,7 +22,7 @@ private static final String PROCEDURE_INSERT_EMPLEADO = "{CALL CRUD_empleados_PK
             statement.setString(3, Nombre_Empleado);
             statement.setString(4, Apellido);
             statement.setString(5, Correo);
-            statement.setString(6, Contraseña );
+            statement.setString(6, Contrasena );
             statement.setInt(7, Salario);
             statement.setInt(8, ID_Sucursal);
             /*Se ejecuta el procedimiento almacenado que tiene la consulta insertando en la tsbla sql*/
@@ -34,7 +34,7 @@ private static final String PROCEDURE_INSERT_EMPLEADO = "{CALL CRUD_empleados_PK
         }
     }
     
-    private static final String PROCEDURE_LIST_EMPLEADO = "{CALL CRUD_empleados_PKG.LISTAR_EMPLEADO_SP(?)}";
+    private static final String PROCEDURE_LIST_EMPLEADO = "{CALL LISTAR_EMPLEADO_SP(?)}";
     /*Metodo que devuelve una lista de objetos*/
     public List<Empleado> ListarEmpleado (){
     /*Crea una lista vacía para almacenar los objetos */   
@@ -64,14 +64,15 @@ private static final String PROCEDURE_INSERT_EMPLEADO = "{CALL CRUD_empleados_PK
             empleado.setSalario(rs.getInt("SALARIO"));
             /*Agrega el objeto Cliente a la lista de clientes*/
             lista.add(empleado);
+            System.out.println(empleado);
         }
     } catch (SQLException e) {
-        System.out.println(e.toString());
+        System.out.println(e.getMessage());
     }
     /*Devuelve la lista de clientes recuperada de la DB*/
     return lista;
 }
-    private static final String PROCEDURE_DELETE_EMPLEADO = "{CALL CRUD_empleados_PKG.ELIMINAR_EMPLEADO_SP(?)}";
+    private static final String PROCEDURE_DELETE_EMPLEADO = "{CALL ELIMINAR_EMPLEADO_SP(?)}";
     public void eliminarEmpleado(int idEmpleado){
         // Llamar al procedimiento almacenado para eliminar el cliente
         try (Connection connection = Conexion.obtenerConexion()) {
@@ -84,7 +85,7 @@ private static final String PROCEDURE_INSERT_EMPLEADO = "{CALL CRUD_empleados_PK
         }
     }
     
-    private static final String PROCEDURE_UPDATE_EMPLEADO = "{CALL CRUD_empleados_PKG.ACTUALIZAR_EMPLEADO_SP(?, ?, ?, ?, ?, ?, ?, ?, ?)}";
+    private static final String PROCEDURE_UPDATE_EMPLEADO = "{CALL ACTUALIZAR_EMPLEADO_SP(?, ?, ?, ?, ?, ?, ?, ?, ?)}";
     public void actualizarEmpleado(int ID_Empleado, int ID_Puesto,int ID_Rol, String Nombre_Empleado, String Apellido, String Correo, String Contraseña, int Salario, int ID_Sucursal) {
         try (Connection connection = Conexion.obtenerConexion()) {
             CallableStatement statement = connection.prepareCall(PROCEDURE_UPDATE_EMPLEADO);

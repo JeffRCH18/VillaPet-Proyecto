@@ -22,7 +22,6 @@ public class ProveedorDAO {
             statement.setString(3, Direccion);
             /*Se ejecuta el procedimiento almacenado que tiene la consulta insertando en la tsbla sql*/
             statement.executeUpdate();
-            JOptionPane.showMessageDialog(null, "Proveedor insertado correctamente.");
         } catch (SQLException e) {
             System.out.println(e.getMessage());
             

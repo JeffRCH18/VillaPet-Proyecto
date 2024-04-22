@@ -57,28 +57,24 @@ public class JFServicio extends javax.swing.JFrame {
         lblServicio.setText("NOMBRE SERVICIO:");
 
         lblTitulo.setFont(new java.awt.Font("Roboto Black", 1, 18)); // NOI18N
-        lblTitulo.setForeground(new java.awt.Color(0, 0, 0));
         lblTitulo.setText("Villa Pet");
 
         lblPago.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
         lblPago.setForeground(new java.awt.Color(255, 255, 255));
         lblPago.setText("MENÚ SERVICIO");
 
-        txtNombre.setBackground(new java.awt.Color(255, 255, 255));
         txtNombre.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
 
         lblDescripcion.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
         lblDescripcion.setForeground(new java.awt.Color(255, 255, 255));
         lblDescripcion.setText("DESCRIPCION SERVICIO:");
 
-        txtPrecio.setBackground(new java.awt.Color(255, 255, 255));
         txtPrecio.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
 
         lblEmpleado.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
         lblEmpleado.setForeground(new java.awt.Color(255, 255, 255));
         lblEmpleado.setText("PRECIO:");
 
-        txtDescripcion.setBackground(new java.awt.Color(255, 255, 255));
         txtDescripcion.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
 
         btnBuscar.setBackground(new java.awt.Color(153, 153, 153));
@@ -160,7 +156,6 @@ public class JFServicio extends javax.swing.JFrame {
         jScrollPane1.setBackground(new java.awt.Color(255, 255, 255));
 
         tablaServicios.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
-        tablaServicios.setForeground(new java.awt.Color(255, 255, 255));
         tablaServicios.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -189,7 +184,6 @@ public class JFServicio extends javax.swing.JFrame {
         });
 
         btnEmpleadosporServicio.setBackground(new java.awt.Color(204, 204, 204));
-        btnEmpleadosporServicio.setForeground(new java.awt.Color(0, 0, 0));
         btnEmpleadosporServicio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/contents/empledo sucursal peq.png"))); // NOI18N
         btnEmpleadosporServicio.setText("Empleados por Servicio");
         btnEmpleadosporServicio.addActionListener(new java.awt.event.ActionListener() {
@@ -199,7 +193,6 @@ public class JFServicio extends javax.swing.JFrame {
         });
 
         btnServicioporSucursales.setBackground(new java.awt.Color(204, 204, 204));
-        btnServicioporSucursales.setForeground(new java.awt.Color(0, 0, 0));
         btnServicioporSucursales.setIcon(new javax.swing.ImageIcon(getClass().getResource("/contents/pago periodo peq.png"))); // NOI18N
         btnServicioporSucursales.setText("Servicios por Sucursales");
         btnServicioporSucursales.addActionListener(new java.awt.event.ActionListener() {

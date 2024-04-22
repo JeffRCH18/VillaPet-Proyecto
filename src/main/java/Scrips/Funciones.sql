@@ -109,30 +109,30 @@ END PagosporPeriodo_FN;
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 --Calcular el total de ventas por empleado en cada sucursal
-CREATE OR REPLACE FUNCTION ListarVentasPorEmpleadoSucursal_FN
+CREATE OR REPLACE FUNCTION ListarVentasPorClienteSucursal_FN
 RETURN VARCHAR2 
 IS
     lista_ventas VARCHAR2(4000); 
-    nombre_empleado Tab_Empleado.Nombre_Empleado%TYPE;
-    apellido_empleado Tab_Empleado.Apellido%TYPE;
+    nombre_cliente Tab_Cliente.Nombre_Cliente%TYPE;
+    apellido_cliente Tab_Cliente.Apellido%TYPE;
     sucursal_venta Tab_Sucursal.Nombre_Sucursal%TYPE;
     total_venta NUMBER;
     CURSOR c_ventas IS
-        SELECT e.Nombre_Empleado, e.Apellido, s.Nombre_Sucursal, SUM(v.Monto_Venta) AS Total_Venta
+        SELECT c.Nombre_Cliente, c.Apellido, s.Nombre_Sucursal, SUM(v.Monto_Venta) AS Total_Venta
         FROM Tab_Venta v
-        INNER JOIN Tab_Empleado e ON v.ID_Sucursal = e.ID_Sucursal
+        INNER JOIN Tab_Cliente c ON v.ID_Cliente = c.ID_Cliente
         INNER JOIN Tab_Sucursal s ON v.ID_Sucursal = s.ID_Sucursal
-        GROUP BY e.Nombre_Empleado, e.Apellido, s.Nombre_Sucursal
+        GROUP BY c.Nombre_Cliente, c.Apellido, s.Nombre_Sucursal
         ORDER BY s.Nombre_Sucursal, Total_Venta DESC;
 BEGIN
     lista_ventas := '';
     FOR venta IN c_ventas 
     LOOP
-        nombre_empleado := venta.Nombre_Empleado;
-        apellido_empleado := venta.Apellido;
+        nombre_cliente := venta.Nombre_Cliente;
+        apellido_cliente := venta.Apellido;
         sucursal_venta := venta.Nombre_Sucursal;
         total_venta := venta.Total_Venta;
-        lista_ventas := lista_ventas || 'Empleado: ' || nombre_empleado || ' ' || apellido_empleado || CHR(10) ||
+        lista_ventas := lista_ventas || 'Cliente: ' || nombre_cliente || ' ' || apellido_cliente || CHR(10) ||
                                          'Sucursal: ' || sucursal_venta || CHR(10) ||
                                          'Total de Ventas: ' || total_venta || CHR(10) || '-----------------------------------' || CHR(10);
     END LOOP;
@@ -140,7 +140,7 @@ BEGIN
 EXCEPTION
     WHEN NO_DATA_FOUND THEN
         RETURN 'No se encontraron ventas';
-END ListarVentasPorEmpleadoSucursal_FN;
+END ListarVentasPorClienteSucursal_FN;
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 --Listar proveedores con sus productos suministrados
@@ -441,7 +441,7 @@ SELECT PagosaProveedor_FN(1) AS Pagos_Pedigree FROM dual;
 SELECT PagosporPeriodo_FN(TO_DATE('2024-01-01', 'YYYY-MM-DD'), TO_DATE('2024-12-31', 'YYYY-MM-DD')) AS Total_Pagos_2024 FROM dual;
 
 -- Prueba de ListarVentasPorEmpleadoSucursal_FN
-SELECT ListarVentasPorEmpleadoSucursal_FN() AS Ventas_Por_Empleado_Y_Sucursal FROM dual;
+SELECT ListarVentasPorClienteSucursal_FN() AS Ventas_Por_Cliente_Y_Sucursal FROM dual;
 
 -- Prueba de ListarProveedoresConProductos_FN
 SELECT ListarProveedoresConProductos_FN() AS Proveedores_Con_Productos FROM dual;

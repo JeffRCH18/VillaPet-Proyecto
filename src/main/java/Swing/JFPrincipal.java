@@ -47,6 +47,8 @@ public class JFPrincipal extends javax.swing.JFrame {
         btnCerrarSesion = new javax.swing.JButton();
         lblPuesto1 = new javax.swing.JLabel();
         btnIngresarListaVentas1 = new javax.swing.JButton();
+        lblSucursal1 = new javax.swing.JLabel();
+        btnIngresarPuesto = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         menuOpciones = new javax.swing.JMenu();
         menuOpcionSalir = new javax.swing.JMenuItem();
@@ -56,7 +58,6 @@ public class JFPrincipal extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(102, 153, 255));
 
         lblTitulo.setFont(new java.awt.Font("Roboto Black", 1, 18)); // NOI18N
-        lblTitulo.setForeground(new java.awt.Color(0, 0, 0));
         lblTitulo.setText("Villa Pet");
 
         lblMenuPrincipal.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
@@ -99,7 +100,6 @@ public class JFPrincipal extends javax.swing.JFrame {
 
         btnIngresarEmpleados.setBackground(new java.awt.Color(204, 204, 204));
         btnIngresarEmpleados.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
-        btnIngresarEmpleados.setForeground(new java.awt.Color(0, 0, 0));
         btnIngresarEmpleados.setIcon(new javax.swing.ImageIcon(getClass().getResource("/contents/actualizar.png"))); // NOI18N
         btnIngresarEmpleados.setText("INGRESAR EMPLEADOS");
         btnIngresarEmpleados.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -112,7 +112,6 @@ public class JFPrincipal extends javax.swing.JFrame {
 
         btnIngresarProductos.setBackground(new java.awt.Color(204, 204, 204));
         btnIngresarProductos.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
-        btnIngresarProductos.setForeground(new java.awt.Color(0, 0, 0));
         btnIngresarProductos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/contents/actualizar.png"))); // NOI18N
         btnIngresarProductos.setText("INGRESAR PRODUCTOS");
         btnIngresarProductos.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -125,7 +124,6 @@ public class JFPrincipal extends javax.swing.JFrame {
 
         btnIngresarVentas.setBackground(new java.awt.Color(204, 204, 204));
         btnIngresarVentas.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
-        btnIngresarVentas.setForeground(new java.awt.Color(0, 0, 0));
         btnIngresarVentas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/contents/actualizar.png"))); // NOI18N
         btnIngresarVentas.setText("INGRESAR VENTAS");
         btnIngresarVentas.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -138,7 +136,6 @@ public class JFPrincipal extends javax.swing.JFrame {
 
         btnIngresarClientes.setBackground(new java.awt.Color(204, 204, 204));
         btnIngresarClientes.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
-        btnIngresarClientes.setForeground(new java.awt.Color(0, 0, 0));
         btnIngresarClientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/contents/actualizar.png"))); // NOI18N
         btnIngresarClientes.setText("INGRESAR CLIENTES");
         btnIngresarClientes.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -151,7 +148,6 @@ public class JFPrincipal extends javax.swing.JFrame {
 
         btnIngresarProveedores.setBackground(new java.awt.Color(204, 204, 204));
         btnIngresarProveedores.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
-        btnIngresarProveedores.setForeground(new java.awt.Color(0, 0, 0));
         btnIngresarProveedores.setIcon(new javax.swing.ImageIcon(getClass().getResource("/contents/actualizar.png"))); // NOI18N
         btnIngresarProveedores.setText("INGRESAR PROVEEDORES");
         btnIngresarProveedores.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -170,7 +166,6 @@ public class JFPrincipal extends javax.swing.JFrame {
 
         btnIngresarPago.setBackground(new java.awt.Color(204, 204, 204));
         btnIngresarPago.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
-        btnIngresarPago.setForeground(new java.awt.Color(0, 0, 0));
         btnIngresarPago.setIcon(new javax.swing.ImageIcon(getClass().getResource("/contents/actualizar.png"))); // NOI18N
         btnIngresarPago.setText("INGRESAR PAGOS");
         btnIngresarPago.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -189,7 +184,6 @@ public class JFPrincipal extends javax.swing.JFrame {
 
         btnIngresarCategorias.setBackground(new java.awt.Color(204, 204, 204));
         btnIngresarCategorias.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
-        btnIngresarCategorias.setForeground(new java.awt.Color(0, 0, 0));
         btnIngresarCategorias.setIcon(new javax.swing.ImageIcon(getClass().getResource("/contents/actualizar.png"))); // NOI18N
         btnIngresarCategorias.setText("INGRESAR CATEGORIAS");
         btnIngresarCategorias.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -208,7 +202,6 @@ public class JFPrincipal extends javax.swing.JFrame {
 
         btnIngresarRol.setBackground(new java.awt.Color(204, 204, 204));
         btnIngresarRol.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
-        btnIngresarRol.setForeground(new java.awt.Color(0, 0, 0));
         btnIngresarRol.setIcon(new javax.swing.ImageIcon(getClass().getResource("/contents/actualizar.png"))); // NOI18N
         btnIngresarRol.setText("INGRESAR ROLES");
         btnIngresarRol.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -227,7 +220,6 @@ public class JFPrincipal extends javax.swing.JFrame {
 
         btnIngresarServicio.setBackground(new java.awt.Color(204, 204, 204));
         btnIngresarServicio.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
-        btnIngresarServicio.setForeground(new java.awt.Color(0, 0, 0));
         btnIngresarServicio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/contents/actualizar.png"))); // NOI18N
         btnIngresarServicio.setText("INGRESAR SERVICIOS");
         btnIngresarServicio.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -246,7 +238,6 @@ public class JFPrincipal extends javax.swing.JFrame {
 
         btnIngresarSucursal.setBackground(new java.awt.Color(204, 204, 204));
         btnIngresarSucursal.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
-        btnIngresarSucursal.setForeground(new java.awt.Color(0, 0, 0));
         btnIngresarSucursal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/contents/actualizar.png"))); // NOI18N
         btnIngresarSucursal.setText("INGRESAR SUCURSAL");
         btnIngresarSucursal.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -259,7 +250,6 @@ public class JFPrincipal extends javax.swing.JFrame {
 
         btnCerrarSesion.setBackground(new java.awt.Color(204, 204, 204));
         btnCerrarSesion.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
-        btnCerrarSesion.setForeground(new java.awt.Color(0, 0, 0));
         btnCerrarSesion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/contents/cerrar sesion peq.png"))); // NOI18N
         btnCerrarSesion.setText("Cerrar Sesion");
         btnCerrarSesion.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -278,7 +268,6 @@ public class JFPrincipal extends javax.swing.JFrame {
 
         btnIngresarListaVentas1.setBackground(new java.awt.Color(204, 204, 204));
         btnIngresarListaVentas1.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
-        btnIngresarListaVentas1.setForeground(new java.awt.Color(0, 0, 0));
         btnIngresarListaVentas1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/contents/actualizar.png"))); // NOI18N
         btnIngresarListaVentas1.setText("INGRESAR LISTA VENTAS");
         btnIngresarListaVentas1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -286,6 +275,24 @@ public class JFPrincipal extends javax.swing.JFrame {
         btnIngresarListaVentas1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnIngresarListaVentas1ActionPerformed(evt);
+            }
+        });
+
+        lblSucursal1.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
+        lblSucursal1.setForeground(new java.awt.Color(255, 255, 255));
+        lblSucursal1.setText("Puestos");
+        lblSucursal1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        lblSucursal1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+
+        btnIngresarPuesto.setBackground(new java.awt.Color(204, 204, 204));
+        btnIngresarPuesto.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        btnIngresarPuesto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/contents/actualizar.png"))); // NOI18N
+        btnIngresarPuesto.setText("INGRESAR PUESTOS");
+        btnIngresarPuesto.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnIngresarPuesto.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnIngresarPuesto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnIngresarPuestoActionPerformed(evt);
             }
         });
 
@@ -307,7 +314,7 @@ public class JFPrincipal extends javax.swing.JFrame {
                         .addGap(263, 263, 263)
                         .addComponent(lblTitulo))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(100, 100, 100)
+                        .addGap(89, 89, 89)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(lblEmpleados)
                             .addComponent(btnIngresarEmpleados)
@@ -318,14 +325,10 @@ public class JFPrincipal extends javax.swing.JFrame {
                             .addComponent(lblPago)
                             .addComponent(lblProductos)
                             .addComponent(lblClientes)
-                            .addComponent(lblVentas))
-                        .addGap(81, 81, 81)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnIngresarListaVentas1, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(lblPuesto1)
-                                .addGap(47, 47, 47)))
-                        .addGap(62, 62, 62)
+                            .addComponent(lblVentas)
+                            .addComponent(btnIngresarListaVentas1)
+                            .addComponent(lblPuesto1))
+                        .addGap(324, 324, 324)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnIngresarProveedores)
                             .addComponent(lblProveedores)
@@ -336,7 +339,9 @@ public class JFPrincipal extends javax.swing.JFrame {
                             .addComponent(lblServicio)
                             .addComponent(lblPuesto)
                             .addComponent(lblRol)
-                            .addComponent(lblSucursal))))
+                            .addComponent(lblSucursal)
+                            .addComponent(btnIngresarPuesto)
+                            .addComponent(lblSucursal1))))
                 .addContainerGap(48, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -350,61 +355,65 @@ public class JFPrincipal extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(lblImagenPrincipal))
                     .addComponent(btnCerrarSesion))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(85, 85, 85)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(85, 85, 85)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(lblProveedores)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(btnIngresarProveedores))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(lblEmpleados)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(btnIngresarEmpleados)))
-                                .addGap(24, 24, 24)
-                                .addComponent(lblPuesto))
-                            .addComponent(lblClientes))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(btnIngresarClientes)
-                                    .addComponent(btnIngresarCategorias))
-                                .addGap(24, 24, 24)
-                                .addComponent(lblRol))
-                            .addComponent(lblProductos))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(btnIngresarRol)
-                                    .addComponent(btnIngresarProductos))
-                                .addGap(24, 24, 24)
-                                .addComponent(lblServicio))
-                            .addComponent(lblPago))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnIngresarServicio)
-                            .addComponent(btnIngresarPago))
-                        .addGap(24, 24, 24)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(lblSucursal)
+                                .addComponent(lblProveedores)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(btnIngresarVentas)
-                                    .addComponent(btnIngresarSucursal)))
-                            .addComponent(lblVentas))
-                        .addContainerGap(149, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnIngresarProveedores))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(lblEmpleados)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnIngresarEmpleados)))
+                        .addGap(24, 24, 24)
+                        .addComponent(lblPuesto))
+                    .addComponent(lblClientes))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnIngresarClientes)
+                            .addComponent(btnIngresarCategorias))
+                        .addGap(24, 24, 24)
+                        .addComponent(lblRol))
+                    .addComponent(lblProductos))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnIngresarRol)
+                            .addComponent(btnIngresarProductos))
+                        .addGap(24, 24, 24)
+                        .addComponent(lblServicio))
+                    .addComponent(lblPago))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnIngresarServicio)
+                    .addComponent(btnIngresarPago))
+                .addGap(24, 24, 24)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(lblSucursal)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnIngresarVentas)
+                            .addComponent(btnIngresarSucursal)))
+                    .addComponent(lblVentas))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(lblSucursal1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnIngresarPuesto)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
                         .addComponent(lblPuesto1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(18, 18, 18)
                         .addComponent(btnIngresarListaVentas1)
-                        .addGap(90, 90, 90))))
+                        .addGap(40, 40, 40))))
         );
 
         menuOpciones.setText("Opciones");
@@ -534,6 +543,13 @@ public class JFPrincipal extends javax.swing.JFrame {
         listaVenta.setLocationRelativeTo(null);
     }//GEN-LAST:event_btnIngresarListaVentas1ActionPerformed
 
+    private void btnIngresarPuestoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarPuestoActionPerformed
+        // TODO add your handling code here:
+        JFPuesto Puesto = new JFPuesto();
+        Puesto.setVisible(true);
+        Puesto.setLocationRelativeTo(null);
+    }//GEN-LAST:event_btnIngresarPuestoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -585,6 +601,7 @@ public class JFPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton btnIngresarPago;
     private javax.swing.JButton btnIngresarProductos;
     private javax.swing.JButton btnIngresarProveedores;
+    private javax.swing.JButton btnIngresarPuesto;
     private javax.swing.JButton btnIngresarRol;
     private javax.swing.JButton btnIngresarServicio;
     private javax.swing.JButton btnIngresarSucursal;
@@ -603,6 +620,7 @@ public class JFPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel lblRol;
     private javax.swing.JLabel lblServicio;
     private javax.swing.JLabel lblSucursal;
+    private javax.swing.JLabel lblSucursal1;
     private javax.swing.JLabel lblTitulo;
     private javax.swing.JLabel lblVentas;
     private javax.swing.JMenuItem menuOpcionSalir;
