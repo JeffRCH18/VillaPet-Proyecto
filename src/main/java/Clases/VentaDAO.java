@@ -14,7 +14,7 @@ import javax.swing.JOptionPane;
 import oracle.jdbc.OracleTypes;
 
 public class VentaDAO {
-    private static final String PROCEDURE_INSERT_VENTA = "{CALL INSERTAR_VENTA_SP(?, ?, ?, ?)}";
+    private static final String PROCEDURE_INSERT_VENTA = "{CALL CRUD_venta_PKG.INSERTAR_VENTA_SP(?, ?, ?, ?)}";
     public void insertarVenta(int ID_Cliente, int ID_Sucursal, int Monto_Venta, LocalDate fecha) {
         try (Connection connection = Conexion.obtenerConexion();
             /*Se verifica la conexion y se prepara una consulta con los datos recibidos en el metodo desde la interfaz*/
@@ -33,7 +33,7 @@ public class VentaDAO {
         }
     }
     
-    private static final String PROCEDURE_LIST_VENTA = "{CALL LISTAR_VENTA_SP(?)}";
+    private static final String PROCEDURE_LIST_VENTA = "{CALL CRUD_venta_PKG.LISTAR_VENTA_SP(?)}";
     /*Metodo que devuelve una lista de objetos*/
     public List<Venta> ListarVenta() {
         /*Crea una lista vacía para almacenar los objetos */   
@@ -96,7 +96,7 @@ public class VentaDAO {
         return listaVentas;
     }
     
-    private static final String CALL_VISTA_SERVICIO_PRODUCTO = "{CALL PRODUCTO_SERVICIO_SP(?)}";
+    private static final String CALL_VISTA_SERVICIO_PRODUCTO = "{CALL CRUD_venta_PKG.PRODUCTO_SERVICIO_SP(?)}";
     public List<Object> usarVista() {
         List<Object> lista = new ArrayList<>(); // Lista para almacenar productos y servicios
 
@@ -138,7 +138,7 @@ public class VentaDAO {
         return lista; // Devuelve la lista de productos y servicios
     }
      
-    private static final String PROCEDURE_GET_MAX_VENTA_ID = "{CALL VENTA_ID_SP(?)}";
+    private static final String PROCEDURE_GET_MAX_VENTA_ID = "{CALL CRUD_venta_PKG.VENTA_ID_SP(?)}";
     public int IdVenta() {
     int id = 0;
     try (Connection connection = Conexion.obtenerConexion();

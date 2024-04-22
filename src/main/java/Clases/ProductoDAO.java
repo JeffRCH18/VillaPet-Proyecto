@@ -12,7 +12,7 @@ import javax.swing.JOptionPane;
 import oracle.jdbc.OracleTypes;
 
 public class ProductoDAO {
-    private static final String PROCEDURE_INSERT_PRODUCTO = "{CALL INSERTAR_PRODUCTO_SP(?, ?, ?, ?, ?)}";
+    private static final String PROCEDURE_INSERT_PRODUCTO = "{CALL CRUD_producto_PKG.INSERTAR_PRODUCTO_SP(?, ?, ?, ?, ?)}";
     public void insertarProducto(int ID_Categoria, int ID_Proveedor, String Descripcion, int Precio, int Stock) {
         try (Connection connection = Conexion.obtenerConexion();
             /*Se verifica la conexion y se prepara una consulta con los datos recibidos en el metodo desde la interfaz*/
@@ -31,7 +31,7 @@ public class ProductoDAO {
         }
     }
     
-    private static final String PROCEDURE_LIST_PRODUCTO = "{CALL LISTAR_PRODUCTO_SP(?)}";
+    private static final String PROCEDURE_LIST_PRODUCTO = "{CALL CRUD_producto_PKG.LISTAR_PRODUCTO_SP(?)}";
     /*Metodo que devuelve una lista de objetos*/
     public List<Producto> ListarProducto() {
     /*Crea una lista vacía para almacenar los objetos */   
@@ -66,7 +66,7 @@ public class ProductoDAO {
     return lista;
     }
     
-    private static final String PROCEDURE_DELETE_PRODUCTO = "{CALL ELIMINAR_PRODUCTO_SP(?)}";
+    private static final String PROCEDURE_DELETE_PRODUCTO = "{CALL CRUD_producto_PKG.ELIMINAR_PRODUCTO_SP(?)}";
     public void eliminarProducto(int idProducto){
         // Llamar al procedimiento almacenado para eliminar el cliente
         try (Connection connection = Conexion.obtenerConexion()) {
@@ -79,7 +79,7 @@ public class ProductoDAO {
         }
     }
     
-    private static final String PROCEDURE_UPDATE_PRODUCTO = "{CALL ACTUALIZAR_PRODUCTO_SP(?, ?, ?, ?, ?, ?)}";
+    private static final String PROCEDURE_UPDATE_PRODUCTO = "{CALL CRUD_producto_PKG.ACTUALIZAR_PRODUCTO_SP(?, ?, ?, ?, ?, ?)}";
     public void actualizarProducto(int ID_Producto, int ID_Categoria, int ID_Proveedor, String Descripcion, int Precio, int Stock) {
         try (Connection connection = Conexion.obtenerConexion()) {
             CallableStatement statement = connection.prepareCall(PROCEDURE_UPDATE_PRODUCTO);

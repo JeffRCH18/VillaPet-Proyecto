@@ -14,7 +14,7 @@ import javax.swing.JOptionPane;
 import oracle.jdbc.OracleTypes;
 
 public class PagoDAO {
-    private static final String PROCEDURE_INSERT_PAGO = "{CALL INSERTAR_PAGO_SP(?, ?, ?)}";
+    private static final String PROCEDURE_INSERT_PAGO = "{CALL CRUD_pago_PKG.INSERTAR_PAGO_SP(?, ?, ?)}";
     public void insertarPago(int ID_Proveedor, int Monto, LocalDate fecha) {
         try (Connection connection = Conexion.obtenerConexion();
             /*Se verifica la conexion y se prepara una consulta con los datos recibidos en el metodo desde la interfaz*/
@@ -32,7 +32,7 @@ public class PagoDAO {
         }
     }
     
-    private static final String PROCEDURE_LIST_PAGO = "{CALL LISTAR_PAGO_SP(?)}";
+    private static final String PROCEDURE_LIST_PAGO = "{CALL CRUD_pago_PKG.LISTAR_PAGO_SP(?)}";
     /*Metodo que devuelve una lista de objetos*/
     public List<Pago> ListarPago() {
         /*Crea una lista vacía para almacenar los objetos */   
@@ -68,7 +68,7 @@ public class PagoDAO {
         return lista;
     }
     
-    private static final String PROCEDURE_DELETE_PAGO = "{CALL ELIMINAR_PAGO_SP(?)}";
+    private static final String PROCEDURE_DELETE_PAGO = "{CALL CRUD_pago_PKG.ELIMINAR_PAGO_SP(?)}";
     public void eliminarPago(int idPago){
         // Llamar al procedimiento almacenado para eliminar el cliente
         try (Connection connection = Conexion.obtenerConexion()) {
@@ -81,7 +81,7 @@ public class PagoDAO {
         }
     }
     
-    private static final String PROCEDURE_UPDATE_PAGO = "{CALL ACTUALIZAR_PAGO_SP(?, ?, ?)}";
+    private static final String PROCEDURE_UPDATE_PAGO = "{CALL CRUD_pago_PKG.ACTUALIZAR_PAGO_SP(?, ?, ?)}";
     public void actualizarPago(int COD_Pago, int ID_Proveedor, int Monto) {
         try (Connection connection = Conexion.obtenerConexion()) {
             CallableStatement statement = connection.prepareCall(PROCEDURE_UPDATE_PAGO);

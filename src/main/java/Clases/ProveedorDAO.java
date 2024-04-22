@@ -12,7 +12,7 @@ import javax.swing.JOptionPane;
 import oracle.jdbc.OracleTypes;
 
 public class ProveedorDAO {
-    private static final String PROCEDURE_INSERT_PROVEEDOR = "{CALL INSERTAR_PROVEEDOR_SP(?, ?, ?)}";
+    private static final String PROCEDURE_INSERT_PROVEEDOR = "{CALL CRUD_proveedor_PKG.INSERTAR_PROVEEDOR_SP(?, ?, ?)}";
     public void insertarProveedor(String Nombre_Proveedor, int Telefono, String Direccion) {
         try (Connection connection = Conexion.obtenerConexion();
             /*Se verifica la conexion y se prepara una consulta con los datos recibidos en el metodo desde la interfaz*/
@@ -29,7 +29,7 @@ public class ProveedorDAO {
         }
     }
     
-    private static final String PROCEDURE_LIST_PROVEEDOR = "{CALL LISTAR_PROVEEDOR_SP(?)}";
+    private static final String PROCEDURE_LIST_PROVEEDOR = "{CALL CRUD_proveedor_PKG.LISTAR_PROVEEDOR_SP(?)}";
     /*Metodo que devuelve una lista de objetos*/
     public List<Proveedor> ListarProveedor() {
     /*Crea una lista vacía para almacenar los objetos */   
@@ -62,7 +62,7 @@ public class ProveedorDAO {
     return lista;
     }
     
-    private static final String PROCEDURE_DELETE_PROVEEDOR = "{CALL ELIMINAR_PROVEEDOR_SP(?)}";
+    private static final String PROCEDURE_DELETE_PROVEEDOR = "{CALL CRUD_proveedor_PKG.ELIMINAR_PROVEEDOR_SP(?)}";
     public void eliminarProveedor(int idProveedor){
         // Llamar al procedimiento almacenado para eliminar el cliente
         try (Connection connection = Conexion.obtenerConexion()) {
@@ -75,7 +75,7 @@ public class ProveedorDAO {
         }
     }
     
-    private static final String PROCEDURE_UPDATE_PROVEEDOR = "{CALL ACTUALIZAR_PROVEEDOR_SP(?, ?, ?, ?)}";
+    private static final String PROCEDURE_UPDATE_PROVEEDOR = "{CALL CRUD_proveedor_PKG.ACTUALIZAR_PROVEEDOR_SP(?, ?, ?, ?)}";
     public void actualizarProveedor(int ID_Proveedor, String Nombre_Proveedor, int Telefono, String Direccion) {
         try (Connection connection = Conexion.obtenerConexion()) {
             CallableStatement statement = connection.prepareCall(PROCEDURE_UPDATE_PROVEEDOR);

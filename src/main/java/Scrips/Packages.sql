@@ -374,7 +374,7 @@ CREATE OR REPLACE PACKAGE CRUD_producto_PKG AS
 END CRUD_proveedor_PKG;
 
 --Cuerpo del paquete CRUD productos 
-CREATE OR REPLACE PACKAGE BODY CRUD_proveedor_PKG AS
+CREATE OR REPLACE PACKAGE BODY CRUD_producto_PKG AS
 --PS para insertar producto
     PROCEDURE INSERTAR_PRODUCTO_SP(
     p_ID_CATEGORIA IN NUMBER, 
@@ -540,7 +540,7 @@ CREATE OR REPLACE PACKAGE CRUD_puestos_PKG AS
 END CRUD_puestos_PKG;
 
 --Cuerpo del package para CRUD_puesto_PKG
-CREATE OR REPLACE PACKAGE BODY CRUD_puesto_PKG AS 
+CREATE OR REPLACE PACKAGE BODY CRUD_puestos_PKG AS 
 --PS para insertar puesto
     PROCEDURE INSERTAR_PUESTO_SP(
     p_ID IN NUMBER,
@@ -585,6 +585,66 @@ END INSERTAR_Puesto_SP;
     FROM Puestos_VIEW;
     END Listar_Puesto_SP;
 END CRUD_puestos_PKG;
+
+--Encabezado del package CRUD roles
+CREATE OR REPLACE PACKAGE CRUD_roles_PKG AS
+--Encabezado para insertar rol
+    PROCEDURE INSERTAR_ROL_SP(
+    DESCRIPCION_ROL IN VARCHAR2);
+--Encabezado para eliminar rol
+    PROCEDURE ELIMINAR_ROL_SP(p_IDRol IN NUMBER);
+--Encabezado para actualizar rol 
+    PROCEDURE ACTUALIZAR_ROL_SP(
+    p_ID_ROL     IN NUMBER,
+    p_NOMBRE IN VARCHAR2);
+--Encabezado para listar rol
+    PROCEDURE LISTAR_ROL_SP(p_cursor OUT SYS_REFCURSOR);
+END CRUD_roles_PKG;
+
+--Cuerpo del paquete CRUD_rol_PKG
+CREATE OR REPLACE PACKAGE BODY CRUD_roles_PKG AS 
+--PS para insertar rol
+    PROCEDURE INSERTAR_ROL_SP(
+    DESCRIPCION_ROL IN VARCHAR2)
+    IS 
+    BEGIN
+    INSERT INTO TAB_ROL(Descripcion_Rol)
+    VALUES (DESCRIPCION_ROL);
+        EXCEPTION 
+            WHEN NO_DATA_FOUND THEN
+                DBMS_OUTPUT.PUT_LINE('No se pudo ingresar el rol, intente de nuevo');
+    END INSERTAR_ROL_SP;
+--PS para eliminar rol 
+    PROCEDURE ELIMINAR_ROL_SP(p_IDRol IN NUMBER)
+    IS 
+    BEGIN 
+    DELETE FROM TAB_ROL
+    WHERE ID_ROL = p_IDRol;
+        EXCEPTION 
+            WHEN NO_DATA_FOUND THEN 
+                DBMS_OUTPUT.PUT_LINE('No se pudo borrar el rol seleccionado');
+    END ELIMINAR_ROL_SP;
+--PS para actualizar rol
+    PROCEDURE ACTUALIZAR_ROL_SP(
+    p_ID_ROL     IN NUMBER,
+    p_NOMBRE IN VARCHAR2)
+    IS 
+    BEGIN 
+    UPDATE TAB_ROL
+    SET 
+    DESCRIPCION_ROL = p_NOMBRE
+    WHERE 
+        ID_ROL = p_ID_ROL;
+    END Actualizar_Rol_SP;
+--PS para listar rol
+    PROCEDURE LISTAR_ROL_SP(p_cursor OUT SYS_REFCURSOR)
+    IS
+    BEGIN
+    OPEN p_cursor FOR
+    SELECT ID_Rol,Descripcion_Rol
+    FROM ROL_VIEW;
+    END LISTAR_ROL_SP;
+END CRUD_roles_PKG;
  
 --Encabezado para CRUD categorias 
 CREATE OR REPLACE PACKAGE CRUD_categorias_PKG AS
