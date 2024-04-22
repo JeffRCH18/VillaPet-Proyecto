@@ -91,7 +91,7 @@ CREATE OR REPLACE PROCEDURE INSERTAR_EMPLEADO_SP(
     p_CORREO IN VARCHAR2, 
     p_CONTRASENA IN VARCHAR2,
     p_SALARIO IN NUMBER,
-    p_SUCURSAL)
+    p_SUCURSAL IN VARCHAR2)
 IS 
 BEGIN
     INSERT INTO TAB_EMPLEADO(
@@ -394,7 +394,7 @@ BEGIN
   OPEN p_cursor FOR
     SELECT ID_PRODUCTO, ID_CATEGORIA, ID_PROVEEDOR, DESCRIPCION, PRECIO, STOCK
     FROM PRODUCTO_VIEW;
-END;
+END LISTAR_PRODUCTO_SP;
 
 --------------------------------------------------------------------------------
 
@@ -432,7 +432,7 @@ BEGIN
 EXCEPTION 
     WHEN NO_DATA_FOUND THEN 
         DBMS_OUTPUT.PUT_LINE('No se pudo borrar el servicio seleccionado');
-END ELIMINAR_Servicio_SP
+END ELIMINAR_Servicio_SP;
 
 --------------------------------------------------------------------------------
 
@@ -463,7 +463,7 @@ BEGIN
   OPEN p_cursor FOR
     SELECT ID_SERVICIO, ID_EMPLEADO, NOMBRE_SERVICIOS, DESCRIPCION_SERVICIO, PRECIO
     FROM SERVICIO_VIEW;
-END;
+END LISTAR_SERVICIO_SP;
 
 --------------------------------------------------------------------------------
 
@@ -633,6 +633,9 @@ END LISTAR_CATEGORIA_SP;
 
 --------------------------------------------------------------------------------
 
+--Pago CRUD 
+
+--------------------------------------------------------------------------------
 CREATE OR REPLACE PROCEDURE INSERTAR_PAGO_SP(
     p_id_proveedor IN NUMBER,
     p_monto IN NUMBER,
@@ -693,8 +696,7 @@ CREATE OR REPLACE PROCEDURE INSERTAR_VENTA_SP(
     p_id_cliente IN NUMBER,
     p_id_sucursal IN NUMBER,
     p_monto_venta IN NUMBER,
-    p_fecha IN DATE
-)
+    p_fecha IN DATE)
 AS
 BEGIN
     INSERT INTO TAB_VENTA (ID_CLIENTE, ID_SUCURSAL, MONTO_VENTA, FECHA)
@@ -715,12 +717,11 @@ END LISTAR_VENTA_SP;
 --------------------------------------------------------------------------------
 
 CREATE OR REPLACE PROCEDURE VENTA_ID_SP (
-    p_venta_id OUT NUMBER
-)
+    p_venta_id OUT NUMBER)
 AS
 BEGIN
     SELECT MAX(num_factura) INTO p_venta_id FROM TAB_VENTA;
-END VENTA_ID_SP ;
+END VENTA_ID_SP;
 
 --------------------------------------------------------------------------------
 
@@ -732,8 +733,7 @@ CREATE OR REPLACE PROCEDURE INSERTAR_DETALLE_SP (
     p_id_elemento IN NUMBER,
     p_cantidad IN NUMBER,
     p_precio IN NUMBER,
-    p_id_venta IN NUMBER
-)
+    p_id_venta IN NUMBER)
 AS
 BEGIN
     IF p_tipo_elemento = 'Producto' THEN
