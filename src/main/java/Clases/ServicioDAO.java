@@ -12,7 +12,7 @@ import javax.swing.JOptionPane;
 import oracle.jdbc.OracleTypes;
 
 public class ServicioDAO {
-    private static final String PROCEDURE_INSERT_SERVICIO = "{CALL INSERTAR_SERVICIO_SP(?, ?, ?, ?)}";
+    private static final String PROCEDURE_INSERT_SERVICIO = "{CALL CRUD_servicios_PKG.INSERTAR_SERVICIO_SP(?, ?, ?, ?)}";
     public void insertarServicio(int idEmpleado, String nombre, String descripcion, int precio) {
         try (Connection connection = Conexion.obtenerConexion();
             /*Se verifica la conexion y se prepara una consulta con los datos recibidos en el metodo desde la interfaz*/
@@ -30,7 +30,7 @@ public class ServicioDAO {
         }
     }
     
-    private static final String PROCEDURE_LIST_SERVICIO = "{CALL LISTAR_SERVICIO_SP(?)}";
+    private static final String PROCEDURE_LIST_SERVICIO = "{CALL CRUD_servicios_PKG.LISTAR_SERVICIO_SP(?)}";
     /*Metodo que devuelve una lista de objetos*/
     public List<Servicio> Listarservicio() {
     /*Crea una lista vacía para almacenar los objetos */   
@@ -64,7 +64,7 @@ public class ServicioDAO {
     return lista;
     }
     
-    private static final String PROCEDURE_DELETE_SERVICIO = "{CALL Eliminar_Servicio_SP(?)}";
+    private static final String PROCEDURE_DELETE_SERVICIO = "{CALL CRUD_servicios_PKG.Eliminar_Servicio_SP(?)}";
     public void eliminarServicio(int idServicio){
         // Llamar al procedimiento almacenado para eliminar el Rol
         try (Connection connection = Conexion.obtenerConexion()) {
@@ -77,7 +77,7 @@ public class ServicioDAO {
         }
     }
     
-    private static final String PROCEDURE_UPDATE_SERVICIO = "{CALL Actualizar_Servicio_SP(?, ?, ?,?,?)}";
+    private static final String PROCEDURE_UPDATE_SERVICIO = "{CALL CRUD_servicios_PKG.Actualizar_Servicio_SP(?, ?, ?,?,?)}";
     public void actualizarServicio(int idServicio, int idEmpleado, String nombre, String descripcion, int precio) {
         try (Connection connection = Conexion.obtenerConexion()) {
             CallableStatement statement = connection.prepareCall(PROCEDURE_UPDATE_SERVICIO);

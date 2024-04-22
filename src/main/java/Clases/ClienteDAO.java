@@ -13,7 +13,7 @@ import javax.swing.table.DefaultTableModel;
 import oracle.jdbc.OracleTypes;
 public class ClienteDAO extends Cliente{
     /*Llamada del procedimiento almacenado que recibi 5 parametros*/
-    private static final String PROCEDURE_INSERT_CLIENTE = "{CALL Insertar_Cliente_SP(?, ?, ?, ?, ?)}";
+    private static final String PROCEDURE_INSERT_CLIENTE = "{CALL CRUD_cliente_PKG.Insertar_Cliente_SP(?, ?, ?, ?, ?)}";
     public void insertarCliente(String nombre, String apellido, String direccion, String correo, int telefono) {
         try (Connection connection = Conexion.obtenerConexion();
             /*Se verifica la conexion y se prepara una consulta con los datos recibidos en el metodo desde la interfaz*/
@@ -33,7 +33,7 @@ public class ClienteDAO extends Cliente{
     }
     
     /*Llamada del procedimiento almacenado que recibi 1 parametro*/
-    private static final String PROCEDURE_LIST_CLIENTE = "{CALL LISTAR_CLIENTE_SP(?)}";
+    private static final String PROCEDURE_LIST_CLIENTE = "{CALL CRUD_cliente_PKG.LISTAR_CLIENTE_SP(?)}";
     /*Metodo que devuelve una lista de objetos*/
     public List<Cliente> ListarCliente() {
     /*Crea una lista vacía para almacenar los objetos */   
@@ -67,7 +67,7 @@ public class ClienteDAO extends Cliente{
     /*Devuelve la lista de clientes recuperada de la DB*/
     return lista;
 }
-    private static final String PROCEDURE_DELETE_CLIENTE = "{CALL ELIMINAR_CLIENTE_SP(?)}";
+    private static final String PROCEDURE_DELETE_CLIENTE = "{CALL CRUD_cliente_PKG.ELIMINAR_CLIENTE_SP(?)}";
     public void eliminarCliente(int idCliente){
         // Llamar al procedimiento almacenado para eliminar el cliente
         try (Connection connection = Conexion.obtenerConexion()) {
@@ -80,7 +80,7 @@ public class ClienteDAO extends Cliente{
         }
     }
     
-    private static final String PROCEDURE_UPDATE_CLIENTE = "{CALL ACTUALIZAR_CLIENTE_SP(?, ?, ?, ?, ?, ?)}";
+    private static final String PROCEDURE_UPDATE_CLIENTE = "{CALL CRUD_cliente_PKG.ACTUALIZAR_CLIENTE_SP(?, ?, ?, ?, ?, ?)}";
     public void actualizarCliente(int idCliente, String nombre, String apellido, String direccion, String telefono, String correo) {
         try (Connection connection = Conexion.obtenerConexion()) {
             CallableStatement statement = connection.prepareCall(PROCEDURE_UPDATE_CLIENTE);

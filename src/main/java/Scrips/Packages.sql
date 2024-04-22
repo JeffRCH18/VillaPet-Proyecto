@@ -4,13 +4,12 @@
 --Encabezado del paquete de crud cliente 
 CREATE OR REPLACE PACKAGE CRUD_cliente_PKG AS
     --Insertar cliente 
-    PROCEDURE Inserta_Cliente_SP(
+    PROCEDURE INSERTAR_CLIENTE_SP(
     nombre_cliente IN VARCHAR2,
     apellido IN VARCHAR2,
     direccion_cliente IN VARCHAR2,
     correo_cliente IN VARCHAR2,
-    telefono_cliente IN NUMBER
-    );
+    telefono_cliente IN NUMBER);
     --Eliminar cliente
     PROCEDURE Eliminar_Cliente_SP(p_IDCLI IN NUMBER);
     --Actualizar cliente
@@ -20,8 +19,7 @@ CREATE OR REPLACE PACKAGE CRUD_cliente_PKG AS
     p_APELLIDO IN VARCHAR2,
     p_DIRECCION IN VARCHAR2,
     p_TELEFONO IN VARCHAR2,
-    p_CORREO IN VARCHAR2
-    );
+    p_CORREO IN VARCHAR2);
     --Listar cliente
     PROCEDURE Listar_Cliente_SP(p_cursor OUT SYS_REFCURSOR);
 END CRUD_cliente_PKG;
@@ -29,7 +27,7 @@ END CRUD_cliente_PKG;
 --Cuerpo del paquete de insertar paquete
 CREATE OR REPLACE PACKAGE BODY CRUD_cliente_PKG AS
 --PS de insertar cliente
-    PROCEDURE Inserta_Cliente_SP(
+    PROCEDURE Insertar_Cliente_SP(
     nombre_cliente IN VARCHAR2,
     apellido IN VARCHAR2,
     direccion_cliente IN VARCHAR2,
@@ -40,8 +38,7 @@ CREATE OR REPLACE PACKAGE BODY CRUD_cliente_PKG AS
     BEGIN
         INSERT INTO Tab_Cliente(Nombre_Cliente, Apellido, Direccion_Cliente, Correo_Cliente, Telefono_Cliente)
         VALUES (nombre_cliente, apellido, direccion_cliente, correo_cliente, telefono_cliente);
-        COMMIT;
-    END Inserta_Cliente_SP;
+    END Insertar_Cliente_SP;
 --PS de eliminar cliente 
     PROCEDURE Eliminar_Cliente_SP(p_IDCLI IN NUMBER)
     IS 
@@ -85,6 +82,7 @@ END CRUD_cliente_PKG;
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+--Encabezado del paquete de crud empleado
 CREATE OR REPLACE PACKAGE CRUD_empleados_PKG AS
 --Encabezado para eliminar empleado
     PROCEDURE ELIMINAR_EMPLEADO_SP(p_IDEMP IN NUMBER);
@@ -196,7 +194,6 @@ END CRUD_empleados_PKG;
 CREATE OR REPLACE PACKAGE CRUD_sucursal_PKG AS
 --Encabezado para insertar una sucursal
     PROCEDURE INSERTAR_SUCURSAL_SP(
-    p_ID IN NUMBER,
     p_CORREO IN VARCHAR2, 
     p_TELEFONO IN VARCHAR2, 
     p_NOMBRE_SUCURSAL IN VARCHAR2,
@@ -220,7 +217,6 @@ END CRUD_sucursal_PKG;
 CREATE OR REPLACE PACKAGE BODY CRUD_sucursal_PKG AS
 --PS para insertar sucursal
     PROCEDURE INSERTAR_SUCURSAL_SP(
-    p_ID IN NUMBER,
     p_CORREO IN VARCHAR2, 
     p_TELEFONO IN VARCHAR2, 
     p_NOMBRE_SUCURSAL IN VARCHAR2,
@@ -228,12 +224,11 @@ CREATE OR REPLACE PACKAGE BODY CRUD_sucursal_PKG AS
     IS 
     BEGIN
     INSERT INTO TAB_SUCURSAL(
-    ID_SUCURSAL, 
     CORREO_SUCURSAL, 
     TELEFONO_SUCURSAL, 
     NOMBRE_SUCURSAL, 
     DIRECCION_SUCURSAL)
-    VALUES (p_ID, p_CORREO, p_TELEFONO, p_NOMBRE_SUCURSAL, p_DIRECCION_SUCURSAL);
+    VALUES (p_CORREO, p_TELEFONO, p_NOMBRE_SUCURSAL, p_DIRECCION_SUCURSAL);
         EXCEPTION 
         WHEN OTHERS THEN
             DBMS_OUTPUT.PUT_LINE('No se pudo ingresar la sucursal, intente de nuevo');
@@ -450,10 +445,9 @@ END CRUD_producto_PKG;
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 --Encabezado del paquete CRUD servicio 
-CREATE OR REPLACE PACKAGE CRUD_servicio_PKG AS 
+CREATE OR REPLACE PACKAGE CRUD_servicios_PKG AS 
 --Encabezado para insertar servicio
     PROCEDURE INSERTAR_SERVICIO_SP(
-    p_ID IN NUMBER,
     p_ID_EMP IN NUMBER, 
     p_NOMBRE_SERV IN VARCHAR2,
     p_DESCRIPCION_SERV IN VARCHAR2,
@@ -469,13 +463,12 @@ CREATE OR REPLACE PACKAGE CRUD_servicio_PKG AS
     p_PRECIO IN NUMBER);
 --Encabezado para listar servicio  
     PROCEDURE LISTAR_SERVICIO_SP(p_cursor OUT SYS_REFCURSOR);
-END CRUD_servicio_PKG;
+END CRUD_servicios_PKG;
 
 --Cuerpo del paquete CRUD servicio 
-CREATE OR REPLACE PACKAGE BODY CRUD_servicio_PKG AS
+CREATE OR REPLACE PACKAGE BODY CRUD_servicios_PKG AS
 --SP para insertar servicio
     PROCEDURE INSERTAR_SERVICIO_SP(
-    p_ID IN NUMBER,
     p_ID_EMP IN NUMBER, 
     p_NOMBRE_SERV IN VARCHAR2,
     p_DESCRIPCION_SERV IN VARCHAR2,
@@ -483,12 +476,11 @@ CREATE OR REPLACE PACKAGE BODY CRUD_servicio_PKG AS
     IS 
     BEGIN
     INSERT INTO TAB_SERVICIO(
-    ID_SERVICIO, 
     ID_EMPLEADO, 
     NOMBRE_SERVICIOS, 
     DESCRIPCION_SERVICIO,
     PRECIO)
-    VALUES (p_ID, p_ID_EMP, p_NOMBRE_SERV, p_DESCRIPCION_SERV, p_PRECIO);
+    VALUES (p_ID_EMP, p_NOMBRE_SERV, p_DESCRIPCION_SERV, p_PRECIO);
     EXCEPTION 
         WHEN NO_DATA_FOUND THEN
             DBMS_OUTPUT.PUT_LINE('No se pudo ingresar el servicio, intente de nuevo');
@@ -530,7 +522,7 @@ CREATE OR REPLACE PACKAGE BODY CRUD_servicio_PKG AS
     SELECT ID_SERVICIO, ID_EMPLEADO, NOMBRE_SERVICIOS, DESCRIPCION_SERVICIO, PRECIO
     FROM SERVICIO_VIEW;
     END LISTAR_SERVICIO_SP;
-END CRUD_servicio_PKG; 
+END CRUD_servicios_PKG; 
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -538,7 +530,6 @@ END CRUD_servicio_PKG;
 CREATE OR REPLACE PACKAGE CRUD_puestos_PKG AS 
 --Encabezado para insertar puesto
     PROCEDURE INSERTAR_PUESTO_SP(
-    p_ID IN NUMBER,
     p_DESCRIPCION_P IN VARCHAR2);
 --Encabezado para eliminar puesto
     PROCEDURE ELIMINAR_PUESTO_SP(p_IDP IN NUMBER);
@@ -554,16 +545,15 @@ END CRUD_puestos_PKG;
 CREATE OR REPLACE PACKAGE BODY CRUD_puestos_PKG AS 
 --PS para insertar puesto
     PROCEDURE INSERTAR_PUESTO_SP(
-    p_ID IN NUMBER,
     p_DESCRIPCION_P IN VARCHAR2)
 IS 
 BEGIN
-    INSERT INTO TAB_PUESTO(ID_PUESTO, DESCRIPCION_PUESTO)
-    VALUES (p_ID, p_DESCRIPCION_P);
+    INSERT INTO TAB_PUESTO(DESCRIPCION_PUESTO)
+    VALUES (p_DESCRIPCION_P);
 EXCEPTION 
     WHEN NO_DATA_FOUND THEN
         DBMS_OUTPUT.PUT_LINE('No se pudo ingresar el puesto, intente de nuevo');
-END INSERTAR_Puesto_SP;
+END INSERTAR_PUESTO_SP;
 --PS para eliminar puesto
     PROCEDURE ELIMINAR_PUESTO_SP(p_IDP IN NUMBER)
     IS 
@@ -608,7 +598,7 @@ CREATE OR REPLACE PACKAGE CRUD_roles_PKG AS
     PROCEDURE ELIMINAR_ROL_SP(p_IDRol IN NUMBER);
 --Encabezado para actualizar rol 
     PROCEDURE ACTUALIZAR_ROL_SP(
-    p_ID_ROL     IN NUMBER,
+    p_ID_ROL IN NUMBER,
     p_NOMBRE IN VARCHAR2);
 --Encabezado para listar rol
     PROCEDURE LISTAR_ROL_SP(p_cursor OUT SYS_REFCURSOR);
@@ -792,7 +782,7 @@ END CRUD_pago_PKG;
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 --Encabezado del paquete CRUD venta 
-CREATE OR REPLACE PACKAGE CRUD_venta_PKG AS 
+CREATE OR REPLACE PACKAGE CRUD_ventas_PKG AS 
 --Encabezado para insertar venta
     PROCEDURE INSERTAR_VENTA_SP(
     p_id_cliente IN NUMBER,
@@ -801,12 +791,13 @@ CREATE OR REPLACE PACKAGE CRUD_venta_PKG AS
     p_fecha IN DATE);
 --Encabezado para listar venta
     PROCEDURE LISTAR_VENTA_SP(p_cursor OUT SYS_REFCURSOR);
+--Encabezado de venta 
     PROCEDURE VENTA_ID_SP (
     p_venta_id OUT NUMBER);
-END CRUD_venta_PKG;
+END CRUD_ventas_PKG;
 
 --Cuerpo del pakcage CRUD venta
-CREATE OR REPLACE PACKAGE BODY CRUD_venta_PKG AS
+CREATE OR REPLACE PACKAGE BODY CRUD_ventas_PKG AS
 --PS para insertar venta
     PROCEDURE INSERTAR_VENTA_SP(
     p_id_cliente IN NUMBER,
@@ -827,16 +818,11 @@ CREATE OR REPLACE PACKAGE BODY CRUD_venta_PKG AS
     SELECT NUM_FACTURA, ID_CLIENTE, ID_SUCURSAL, MONTO_VENTA, FECHA
     FROM VENTA_VIEW;
     END LISTAR_VENTA_SP;
-
+--PS
     PROCEDURE VENTA_ID_SP (
     p_venta_id OUT NUMBER)
     AS
     BEGIN
     SELECT MAX(num_factura) INTO p_venta_id FROM TAB_VENTA;
     END VENTA_ID_SP ;
-END CRUD_venta_PKG;
-
-
-
-
-
+END CRUD_ventas_PKG;
