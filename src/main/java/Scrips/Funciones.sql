@@ -122,7 +122,8 @@ IS
         FROM Tab_Venta v
         INNER JOIN Tab_Empleado e ON v.ID_Sucursal = e.ID_Sucursal
         INNER JOIN Tab_Sucursal s ON v.ID_Sucursal = s.ID_Sucursal
-        GROUP BY e.Nombre_Empleado, e.Apellido, s.Nombre_Sucursal;
+        GROUP BY e.Nombre_Empleado, e.Apellido, s.Nombre_Sucursal
+        ORDER BY s.Nombre_Sucursal, Total_Venta DESC;
 BEGIN
     lista_ventas := '';
     FOR venta IN c_ventas 
@@ -131,7 +132,9 @@ BEGIN
         apellido_empleado := venta.Apellido;
         sucursal_venta := venta.Nombre_Sucursal;
         total_venta := venta.Total_Venta;
-        lista_ventas := lista_ventas || nombre_empleado || ' ' || apellido_empleado || ' en ' || sucursal_venta || ': Total de Ventas - ' || total_venta || CHR(10);
+        lista_ventas := lista_ventas || 'Empleado: ' || nombre_empleado || ' ' || apellido_empleado || CHR(10) ||
+                                         'Sucursal: ' || sucursal_venta || CHR(10) ||
+                                         'Total de Ventas: ' || total_venta || CHR(10) || '-----------------------------------' || CHR(10);
     END LOOP;
     RETURN lista_ventas;
 EXCEPTION
@@ -148,17 +151,18 @@ IS
     nombre_proveedor Tab_Proveedor.Nombre_Proveedor%TYPE;
     producto_suministrado Tab_Producto.Descripcion%TYPE;
     CURSOR c_proveedores IS
-        SELECT p.Nombre_Proveedor, pr.Descripcion
+        SELECT p.Nombre_Proveedor, LISTAGG(pr.Descripcion, ', ') WITHIN GROUP (ORDER BY pr.Descripcion) AS Productos
         FROM Tab_Proveedor p
         INNER JOIN Tab_Producto pr ON p.ID_Proveedor = pr.ID_Proveedor
+        GROUP BY p.Nombre_Proveedor
         ORDER BY p.Nombre_Proveedor;
 BEGIN
     lista_proveedores := '';
     FOR proveedor IN c_proveedores 
     LOOP
         nombre_proveedor := proveedor.Nombre_Proveedor;
-        producto_suministrado := proveedor.Descripcion;
-        lista_proveedores := lista_proveedores || nombre_proveedor || ': Producto --> ' || producto_suministrado || CHR(10);
+        producto_suministrado := proveedor.Productos;
+        lista_proveedores := lista_proveedores || nombre_proveedor || ': ' || producto_suministrado || CHR(10);
     END LOOP;
     RETURN lista_proveedores;
 EXCEPTION
@@ -172,6 +176,7 @@ CREATE OR REPLACE FUNCTION ListarClientesConCompras_FN
 RETURN VARCHAR2 
 IS
     lista_clientes VARCHAR2(4000); 
+    lista_vacia VARCHAR2(4000); 
     nombre_cliente Tab_Cliente.Nombre_Cliente%TYPE;
     apellido_cliente Tab_Cliente.Apellido%TYPE;
     producto_comprado Tab_Producto.Descripcion%TYPE;
@@ -193,13 +198,15 @@ BEGIN
     END LOOP;
     
     IF lista_clientes = '' THEN
-        RETURN 'No se encontraron clientes con compras el día de hoy';
+        lista_vacia := 'No se encontraron clientes con compras el día de hoy';
+        RETURN lista_vacia;
     ELSE
         RETURN lista_clientes;
     END IF;
 EXCEPTION
     WHEN NO_DATA_FOUND THEN
-        RETURN 'No se encontraron clientes con compras el día de hoy';
+        lista_vacia := 'No se encontraron clientes con compras el día de hoy';
+        RETURN lista_vacia;
 END ListarClientesConCompras_FN;
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -214,7 +221,9 @@ IS
         SELECT p.Nombre_Proveedor, SUM(pa.Monto) AS TotalPagos
         FROM Tab_Proveedor p
         LEFT JOIN Tab_Pago pa ON p.ID_Proveedor = pa.ID_Proveedor
-        GROUP BY p.Nombre_Proveedor;
+        GROUP BY p.Nombre_Proveedor
+        HAVING SUM(pa.Monto) IS NOT NULL
+        ORDER BY TotalPagos DESC; 
 BEGIN
     lista_proveedores := '';
     FOR proveedor IN c_proveedores 
@@ -222,6 +231,7 @@ BEGIN
         nombre_proveedor := proveedor.Nombre_Proveedor;
         total_pagos := proveedor.TotalPagos;
         lista_proveedores := lista_proveedores || nombre_proveedor || ': Total de Pagos - ' || total_pagos || CHR(10);
+        lista_proveedores := lista_proveedores || '---------------------------------------------------------' || CHR(10);
     END LOOP;
     RETURN lista_proveedores;
 EXCEPTION
@@ -236,19 +246,22 @@ RETURN VARCHAR2
 IS
     lista_clientes VARCHAR2(4000); 
     nombre_cliente Tab_Cliente.Nombre_Cliente%TYPE;
+    apellido_cliente Tab_Cliente.Apellido%TYPE;
     total_compras NUMBER;
     CURSOR c_clientes IS
-        SELECT c.Nombre_Cliente, SUM(v.Monto_Venta) AS TotalCompras
+        SELECT c.Nombre_Cliente, c.Apellido, SUM(v.Monto_Venta) AS TotalCompras
         FROM Tab_Cliente c
         LEFT JOIN Tab_Venta v ON c.ID_Cliente = v.ID_Cliente
-        GROUP BY c.Nombre_Cliente;
+        GROUP BY c.Nombre_Cliente, c.Apellido
+        ORDER BY TotalCompras DESC;
 BEGIN
     lista_clientes := '';
     FOR cliente IN c_clientes 
     LOOP
         nombre_cliente := cliente.Nombre_Cliente;
+        apellido_cliente := cliente.Apellido;
         total_compras := cliente.TotalCompras;
-        lista_clientes := lista_clientes || nombre_cliente || ': Total de Compras - ' || total_compras || CHR(10);
+        lista_clientes := lista_clientes || nombre_cliente || ' ' || apellido_cliente || ': Total de Compras - ' || total_compras || CHR(10);
     END LOOP;
     RETURN lista_clientes;
 EXCEPTION
@@ -262,25 +275,27 @@ CREATE OR REPLACE FUNCTION TotalEmpleadosPorSucursal_FN
 RETURN VARCHAR2 
 IS
     lista_empleados_por_sucursal VARCHAR2(4000); 
-    nombre_sucursal Tab_Sucursal.Nombre_Sucursal%TYPE;
-    cantidad_empleados NUMBER;
-    CURSOR c_sucursales IS
+BEGIN
+    lista_empleados_por_sucursal := '';
+    FOR sucursal IN (
         SELECT s.Nombre_Sucursal, COUNT(e.ID_Empleado) AS CantidadEmpleados
         FROM Tab_Sucursal s
         LEFT JOIN Tab_Empleado e ON s.ID_Sucursal = e.ID_Sucursal
-        GROUP BY s.Nombre_Sucursal;
-BEGIN
-    lista_empleados_por_sucursal := '';
-    FOR sucursal IN c_sucursales 
+        GROUP BY s.Nombre_Sucursal
+        ORDER BY s.Nombre_Sucursal
+    )
     LOOP
-        nombre_sucursal := sucursal.Nombre_Sucursal;
-        cantidad_empleados := sucursal.CantidadEmpleados;
-        lista_empleados_por_sucursal := lista_empleados_por_sucursal || 'Sucursal: ' || nombre_sucursal || ', Empleados: ' || cantidad_empleados || CHR(10);
+        lista_empleados_por_sucursal := lista_empleados_por_sucursal || 'Sucursal: ' || sucursal.Nombre_Sucursal || CHR(10) ||
+                                         'Empleados: ' || sucursal.CantidadEmpleados || CHR(10) ||
+                                         '-----------------------------------------------------' || CHR(10);
     END LOOP;
-    RETURN lista_empleados_por_sucursal;
-EXCEPTION
-    WHEN NO_DATA_FOUND THEN
+    
+    IF lista_empleados_por_sucursal = '' THEN
         RETURN 'No se encontraron sucursales con empleados';
+    ELSE
+        lista_empleados_por_sucursal := 'Total de Empleados por Sucursal:' || CHR(10) || '-----------------------------------------------------' || CHR(10) || lista_empleados_por_sucursal;
+        RETURN lista_empleados_por_sucursal;
+    END IF;
 END TotalEmpleadosPorSucursal_FN;
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -321,16 +336,24 @@ IS
         SELECT p.Descripcion_Puesto, AVG(e.Salario) AS PromedioSalario
         FROM Tab_Empleado e
         INNER JOIN Tab_Puesto p ON e.ID_Puesto = p.ID_Puesto
-        GROUP BY p.Descripcion_Puesto;
+        GROUP BY p.Descripcion_Puesto
+        ORDER BY PromedioSalario DESC; 
 BEGIN
     lista_promedios_salarios := '';
     FOR puesto IN c_puestos 
     LOOP
         puesto_empleado := puesto.Descripcion_Puesto;
         promedio_salario := puesto.PromedioSalario;
-        lista_promedios_salarios := lista_promedios_salarios || 'Puesto: ' || puesto_empleado || ', Promedio de Salario: ' || promedio_salario || CHR(10);
+        lista_promedios_salarios := lista_promedios_salarios || 'Puesto: ' || puesto_empleado || CHR(10) ||
+                                     'Promedio de Salario: ' || promedio_salario || CHR(10) ||
+                                     '------------------------------------------------' || CHR(10);
     END LOOP;
-    RETURN lista_promedios_salarios;
+    IF lista_promedios_salarios = '' THEN
+        RETURN 'No se encontraron datos de salarios por puesto';
+    ELSE
+        lista_promedios_salarios := 'Promedio de Salarios por Puesto:' || CHR(10) || '------------------------------------------------' || CHR(10) || lista_promedios_salarios;
+        RETURN lista_promedios_salarios;
+    END IF;
 EXCEPTION
     WHEN NO_DATA_FOUND THEN
         RETURN 'No se encontraron datos de salarios por puesto';
@@ -354,13 +377,12 @@ BEGIN
     OPEN c_empleados_servicio;
     FETCH c_empleados_servicio INTO nombre_empleado, nombre_servicio;
     IF c_empleados_servicio%FOUND THEN
-        lista_empleados_servicio := 'Servicio: ' || nombre_servicio || ', Empleados: ';
+        lista_empleados_servicio := 'Servicio: ' || nombre_servicio || CHR(10) || 'Empleados: ';
         LOOP
-            lista_empleados_servicio := lista_empleados_servicio || nombre_empleado || ', ';
+            lista_empleados_servicio := lista_empleados_servicio || CHR(10) || ' - ' || nombre_empleado;
             FETCH c_empleados_servicio INTO nombre_empleado, nombre_servicio;
             EXIT WHEN c_empleados_servicio%NOTFOUND;
         END LOOP;
-        lista_empleados_servicio := SUBSTR(lista_empleados_servicio, 1, LENGTH(lista_empleados_servicio) - 2);
     ELSE
         lista_empleados_servicio := 'No se encontraron empleados para el servicio especificado';
     END IF;
@@ -380,19 +402,24 @@ IS
         SELECT s.Nombre_Servicios, su.Nombre_Sucursal
         FROM Tab_Servicio s
         INNER JOIN Tab_Empleado e ON s.ID_Empleado = e.ID_Empleado
-        INNER JOIN Tab_Sucursal su ON e.ID_Sucursal = su.ID_Sucursal;
+        INNER JOIN Tab_Sucursal su ON e.ID_Sucursal = su.ID_Sucursal
+        ORDER BY e.ID_Sucursal;
 BEGIN
     lista_servicios_sucursal := '';
+
     FOR servicio_sucursal IN c_servicios_sucursal 
     LOOP
         nombre_servicio := servicio_sucursal.Nombre_Servicios;
         nombre_sucursal := servicio_sucursal.Nombre_Sucursal;
-        lista_servicios_sucursal := lista_servicios_sucursal || 'Servicio: ' || nombre_servicio || ', Sucursal: ' || nombre_sucursal || CHR(10);
+
+        lista_servicios_sucursal := lista_servicios_sucursal || 'Servicio: ' || nombre_servicio || CHR(10) || 'Sucursal: ' || nombre_sucursal || CHR(10) || CHR(10);
     END LOOP;
-    RETURN lista_servicios_sucursal;
-EXCEPTION
-    WHEN NO_DATA_FOUND THEN
+    
+    IF lista_servicios_sucursal = '' THEN
         RETURN 'No se encontraron servicios en las sucursales';
+    ELSE
+        RETURN lista_servicios_sucursal;
+    END IF;
 END ListarServiciosPorTodasSucursales_FN;
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 

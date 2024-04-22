@@ -474,14 +474,14 @@ public class JFProveedor extends javax.swing.JFrame {
         // TODO add your handling code here:
         ProveedorDAO proveedorDAO = new ProveedorDAO();
         String listaProveedores = proveedorDAO.listarProveedoresConProductos();
-        JOptionPane.showMessageDialog(this, listaProveedores, "Listar Proveedores con Productos", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(this, listaProveedores, "Proveedores y sus Productos", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_btnProveedoresconProductosActionPerformed
 
     private void btnProveedoresconTotalPagosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProveedoresconTotalPagosActionPerformed
         // TODO add your handling code here:
         ProveedorDAO proveedorDAO = new ProveedorDAO();
         String listaProveedores = proveedorDAO.listarProveedoresConTotalPagos();
-        JOptionPane.showMessageDialog(this, listaProveedores, "Listar Proveedores con Total de Pagos", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(this, listaProveedores, "Proveedores con Total de Pagos", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_btnProveedoresconTotalPagosActionPerformed
 
     private void tablaProveedorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaProveedorMouseClicked
