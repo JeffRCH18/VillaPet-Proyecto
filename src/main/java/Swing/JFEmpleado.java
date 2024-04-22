@@ -82,7 +82,6 @@ public class JFEmpleado extends javax.swing.JFrame {
         lblmenuEmpleados1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/contents/empleadopeq.png"))); // NOI18N
 
         lblTitulo.setFont(new java.awt.Font("Roboto Black", 1, 18)); // NOI18N
-        lblTitulo.setForeground(new java.awt.Color(0, 0, 0));
         lblTitulo.setText("Villa Pet");
 
         txtContraseña.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
@@ -225,7 +224,6 @@ public class JFEmpleado extends javax.swing.JFrame {
 
         btnRegresar.setBackground(new java.awt.Color(204, 204, 204));
         btnRegresar.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
-        btnRegresar.setForeground(new java.awt.Color(0, 0, 0));
         btnRegresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/contents/regresar peq.png"))); // NOI18N
         btnRegresar.setText("Regresar");
         btnRegresar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -239,7 +237,6 @@ public class JFEmpleado extends javax.swing.JFrame {
         txtSalarioMin.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
 
         btnEmpleadosporRangoSalario.setBackground(new java.awt.Color(204, 204, 204));
-        btnEmpleadosporRangoSalario.setForeground(new java.awt.Color(0, 0, 0));
         btnEmpleadosporRangoSalario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/contents/salario peq.png"))); // NOI18N
         btnEmpleadosporRangoSalario.setText("Rango por Salario");
         btnEmpleadosporRangoSalario.addActionListener(new java.awt.event.ActionListener() {
@@ -316,7 +313,7 @@ public class JFEmpleado extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblSalario4, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(boxSucursal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 291, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(lblTitulo)

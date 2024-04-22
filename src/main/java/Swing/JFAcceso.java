@@ -237,6 +237,7 @@ public class JFAcceso extends javax.swing.JFrame {
                 this.setVisible(false);
                 JFPrincipal principal = new JFPrincipal();
                 principal.setVisible(true);
+                principal.setLocationRelativeTo(null);
             } else
             {
                 // Las credenciales no son válidas o el empleado no fue encontrado

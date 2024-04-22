@@ -5,7 +5,7 @@ CREATE OR REPLACE TRIGGER audit_emp_TRG
     ON Tab_Empleado 
     FOR EACH ROW 
 DECLARE 
-    transaction1 VARCHAR(10);
+    transactionl VARCHAR(10);
 BEGIN 
     transactionl := CASE 
                     WHEN UPDATING THEN 'UPDATE'
@@ -33,7 +33,7 @@ CREATE OR REPLACE TRIGGER audit_prod_TRG
     ON Tab_Producto 
     FOR EACH ROW 
 DECLARE 
-    transaction1 VARCHAR(10);
+    transactionl VARCHAR(10);
 BEGIN 
     transactionl := CASE 
                     WHEN UPDATING THEN 'UPDATE'
@@ -48,13 +48,13 @@ END;
 CREATE OR REPLACE TRIGGER user_login_TRG
     AFTER LOGON ON DATABASE
 BEGIN 
-    INSERT INTO Tab_Login_log(usario, fecha_hora, accion)
+    INSERT INTO Tab_Login_log(usuario, fecha_hora, accion)
     VALUES(USER, SYSDATE, 'Login');
 END;
 
 --Trigger para ver cuando se desconecta un usuario
 CREATE OR REPLACE TRIGGER user_logout_TRG
-    AFTER LOGOFF ON DATABASE 
+    BEFORE LOGOFF ON DATABASE 
 BEGIN
     INSERT INTO Tab_Login_log(usuario, fecha_hora, accion)
     VALUES(USER, SYSDATE, 'LogOut');
@@ -79,4 +79,20 @@ BEGIN
         WHERE ID_PRODUCTO = v_id_elemento;
     END IF;
 END REDUCCION_STOCK_TRG;
+
+--Trigger para autocompletado de la fecha en la Tab_Venta
+CREATE OR REPLACE TRIGGER Autocompletado_Fecha_Venta_TRG
+BEFORE INSERT ON Tab_Venta
+FOR EACH ROW
+BEGIN
+    :NEW.Fecha := SYSDATE;
+END Autocompletado_Fecha_Venta_TRG;
+
+--Trigger para autocompletado de la fecha en la Tab_Pago
+CREATE OR REPLACE TRIGGER Autocompletado_Fecha_Pago_TRG
+BEFORE INSERT ON Tab_Pago
+FOR EACH ROW
+BEGIN
+    :NEW.Fecha := SYSDATE;
+END Autocompletado_Fecha_Pago_TRG;
 

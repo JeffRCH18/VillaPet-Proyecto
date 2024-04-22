@@ -51,7 +51,7 @@ CREATE OR REPLACE PACKAGE BODY CRUD_cliente_PKG AS
     EXCEPTION 
         WHEN NO_DATA_FOUND THEN 
         DBMS_OUTPUT.PUT_LINE('No se pudo borrar el cliente seleccionado');
-    END delete_cliente_PKG;
+    END Eliminar_Cliente_SP;
 --PS de listar cliente 
     PROCEDURE Listar_Cliente_SP(p_cursor OUT SYS_REFCURSOR)
     IS
@@ -83,6 +83,8 @@ CREATE OR REPLACE PACKAGE BODY CRUD_cliente_PKG AS
     END Actualizar_Cliente_SP;
 END CRUD_cliente_PKG;
 
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 CREATE OR REPLACE PACKAGE CRUD_empleados_PKG AS
 --Encabezado para eliminar empleado
     PROCEDURE ELIMINAR_EMPLEADO_SP(p_IDEMP IN NUMBER);
@@ -109,7 +111,7 @@ CREATE OR REPLACE PACKAGE CRUD_empleados_PKG AS
     p_CORREO IN VARCHAR2, 
     p_CONTRASENA IN VARCHAR2,
     p_SALARIO IN NUMBER,
-    p_SUCURSAL IN VARCHAR2
+    p_SUCURSAL IN NUMBER
     );
 END CRUD_empleados_PKG;
 
@@ -158,7 +160,7 @@ CREATE OR REPLACE PACKAGE BODY CRUD_empleados_PKG AS
     BEGIN
     OPEN p_cursor FOR
     SELECT ID_EMPLEADO, ID_PUESTO, ID_ROL, ID_SUCURSAL, NOMBRE_EMPLEADO, APELLIDO, CORREO, SALARIO
-    FROM Empleados_VIEW;
+    FROM Empleado_VIEW;
     END LISTAR_EMPLEADO_SP;
 --PS para insertar empleado
     PROCEDURE INSERTAR_EMPLEADO_SP(
@@ -169,7 +171,7 @@ CREATE OR REPLACE PACKAGE BODY CRUD_empleados_PKG AS
     p_CORREO IN VARCHAR2, 
     p_CONTRASENA IN VARCHAR2,
     p_SALARIO IN NUMBER,
-    p_SUCURSAL IN VARCHAR2)
+    p_SUCURSAL IN NUMBER)
     IS 
     BEGIN
     INSERT INTO TAB_EMPLEADO(
@@ -187,6 +189,8 @@ CREATE OR REPLACE PACKAGE BODY CRUD_empleados_PKG AS
         DBMS_OUTPUT.PUT_LINE('No se pudo ingresar el empleado, intente de nuevo');
     END INSERTAR_EMPLEADO_SP;  
 END CRUD_empleados_PKG;
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 --Encabezado del paquete crud de sucursales 
 CREATE OR REPLACE PACKAGE CRUD_sucursal_PKG AS
@@ -273,6 +277,8 @@ CREATE OR REPLACE PACKAGE BODY CRUD_sucursal_PKG AS
     END LISTAR_SUCURSAL_SP;
 END CRUD_sucursal_PKG;
 
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 --Encabezado del paquete CRUD proveedor
 CREATE OR REPLACE PACKAGE CRUD_proveedor_PKG AS
 --Encabezado de insertar proveedor
@@ -329,11 +335,10 @@ CREATE OR REPLACE PACKAGE BODY CRUD_proveedor_PKG AS
     IS 
     BEGIN
     UPDATE TAB_PROVEEDOR
-    SET ID_PROVEEDOR = p_ID_EMPLEADO,
-        NOMBRE_PROVEEDOR = p_NOMBRE_PROVEEDOR,
+    SET NOMBRE_PROVEEDOR = p_NOMBRE_PROVEEDOR,
         TELEFONO_PROVEEDOR = p_TELEFONO,
         DIRECCION_PROVEEDOR = p_DIRECCION
-    WHERE ID_SERVICIO = p_ID_SERVICIO;
+    WHERE ID_PROVEEDOR = p_ID_PROVEEDOR;
         EXCEPTION 
         WHEN NO_DATA_FOUND THEN 
             DBMS_OUTPUT.PUT_LINE('Error al actualizar tabla');
@@ -343,10 +348,12 @@ CREATE OR REPLACE PACKAGE BODY CRUD_proveedor_PKG AS
     IS
     BEGIN
     OPEN s_cursor FOR
-    SELECT ID_PROVEEDRO, NOMBRE_PROVEEDOR, TELEFONO_SUCURSAL, DIRECCION_PROVEEDOR
+    SELECT ID_PROVEEDOR, NOMBRE_PROVEEDOR, TELEFONO_PROVEEDOR, DIRECCION_PROVEEDOR
     FROM PROVEEDOR_VIEW;
     END LISTAR_PROVEEDOR_SP;
 END CRUD_proveedor_PKG;
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 --Encabezado del paquete CRUD producto
 CREATE OR REPLACE PACKAGE CRUD_producto_PKG AS
@@ -371,7 +378,7 @@ CREATE OR REPLACE PACKAGE CRUD_producto_PKG AS
     );
 --Encabezado para listar producto   
     PROCEDURE LISTAR_PRODUCTO_SP(p_cursor OUT SYS_REFCURSOR);
-END CRUD_proveedor_PKG;
+END CRUD_producto_PKG;
 
 --Cuerpo del paquete CRUD productos 
 CREATE OR REPLACE PACKAGE BODY CRUD_producto_PKG AS
@@ -439,6 +446,8 @@ CREATE OR REPLACE PACKAGE BODY CRUD_producto_PKG AS
     FROM PRODUCTO_VIEW;
     END LISTAR_PRODUCTO_SP;
 END CRUD_producto_PKG;
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 --Encabezado del paquete CRUD servicio 
 CREATE OR REPLACE PACKAGE CRUD_servicio_PKG AS 
@@ -523,6 +532,8 @@ CREATE OR REPLACE PACKAGE BODY CRUD_servicio_PKG AS
     END LISTAR_SERVICIO_SP;
 END CRUD_servicio_PKG; 
 
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 --Encabezado del paquete CRUD puestos 
 CREATE OR REPLACE PACKAGE CRUD_puestos_PKG AS 
 --Encabezado para insertar puesto
@@ -582,9 +593,11 @@ END INSERTAR_Puesto_SP;
     BEGIN
     OPEN p_cursor FOR
     SELECT ID_Puesto,Descripcion_Puesto
-    FROM Puestos_VIEW;
+    FROM Puesto_VIEW;
     END Listar_Puesto_SP;
 END CRUD_puestos_PKG;
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 --Encabezado del package CRUD roles
 CREATE OR REPLACE PACKAGE CRUD_roles_PKG AS
@@ -646,11 +659,12 @@ CREATE OR REPLACE PACKAGE BODY CRUD_roles_PKG AS
     END LISTAR_ROL_SP;
 END CRUD_roles_PKG;
  
+ -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ 
 --Encabezado para CRUD categorias 
 CREATE OR REPLACE PACKAGE CRUD_categorias_PKG AS
 --Encabezado para insertar categoria 
     PROCEDURE INSERTAR_CATEGORIA_SP(
-    p_ID IN NUMBER,
     p_DESCRIPCION_CAT IN VARCHAR2);
 --Encabezado para eliminar categoria
     PROCEDURE ELIMINAR_CATEGORIA_SP(p_IDCATEGORIA IN NUMBER);
@@ -666,14 +680,12 @@ END CRUD_categorias_PKG;
 CREATE OR REPLACE PACKAGE BODY CRUD_categorias_PKG AS 
 --PS para insertar categoria 
     PROCEDURE INSERTAR_CATEGORIA_SP(
-    p_ID IN NUMBER,
     p_DESCRIPCION_CAT IN VARCHAR2)
     IS 
     BEGIN
     INSERT INTO TAB_CATEGORIA(
-    ID_CATEGORIA,  
     DESCRIPCION_CATEGORIA)
-    VALUES (p_ID, DESCRIPCION_CATEGORIA);
+    VALUES (p_DESCRIPCION_CAT);
         EXCEPTION 
             WHEN NO_DATA_FOUND THEN
             DBMS_OUTPUT.PUT_LINE('No se pudo ingresar la categoria, intente de nuevo');
@@ -710,19 +722,7 @@ CREATE OR REPLACE PACKAGE BODY CRUD_categorias_PKG AS
     END LISTAR_CATEGORIA_SP;
 END CRUD_categorias_PKG;
 
---Encabezado del paquete CRUD venta 
-CREATE OR REPLACE PACKAGE CRUD_venta_PKG AS 
-    PROCEDURE INSERTAR_VENTA_SP(
-    p_id_cliente IN NUMBER,
-    p_id_sucursal IN NUMBER,
-    p_monto_venta IN NUMBER,
-    p_fecha IN DATE);
-    
-    PROCEDURE LISTAR_VENTA_SP(p_cursor OUT SYS_REFCURSOR);
-    
-    PROCEDURE VENTA_ID_SP (
-    p_venta_id OUT NUMBER);
-END CRUD_venta_PKG;
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 --Encabezado del package CRUD pago
 CREATE OR REPLACE PACKAGE CRUD_pago_PKG AS 
@@ -788,6 +788,22 @@ CREATE OR REPLACE PACKAGE BODY CRUD_pago_PKG AS
     FROM PAGO_VIEW;
     END LISTAR_PAGO_SP;
 END CRUD_pago_PKG;
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+--Encabezado del paquete CRUD venta 
+CREATE OR REPLACE PACKAGE CRUD_venta_PKG AS 
+--Encabezado para insertar venta
+    PROCEDURE INSERTAR_VENTA_SP(
+    p_id_cliente IN NUMBER,
+    p_id_sucursal IN NUMBER,
+    p_monto_venta IN NUMBER,
+    p_fecha IN DATE);
+--Encabezado para listar venta
+    PROCEDURE LISTAR_VENTA_SP(p_cursor OUT SYS_REFCURSOR);
+    PROCEDURE VENTA_ID_SP (
+    p_venta_id OUT NUMBER);
+END CRUD_venta_PKG;
 
 --Cuerpo del pakcage CRUD venta
 CREATE OR REPLACE PACKAGE BODY CRUD_venta_PKG AS
