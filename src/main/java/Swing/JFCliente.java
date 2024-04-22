@@ -62,7 +62,6 @@ public class JFCliente extends javax.swing.JFrame {
         jPanel1.setPreferredSize(new java.awt.Dimension(1007, 740));
 
         lblTitulo.setFont(new java.awt.Font("Roboto Black", 1, 18)); // NOI18N
-        lblTitulo.setForeground(new java.awt.Color(0, 0, 0));
         lblTitulo.setText("Villa Pet");
 
         lblmenuClientes.setFont(new java.awt.Font("Roboto", 0, 15)); // NOI18N
@@ -199,7 +198,6 @@ public class JFCliente extends javax.swing.JFrame {
 
         btnRegresar.setBackground(new java.awt.Color(204, 204, 204));
         btnRegresar.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
-        btnRegresar.setForeground(new java.awt.Color(0, 0, 0));
         btnRegresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/contents/regresar peq.png"))); // NOI18N
         btnRegresar.setText("Regresar");
         btnRegresar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -211,9 +209,8 @@ public class JFCliente extends javax.swing.JFrame {
         });
 
         btnClientesconCompras.setBackground(new java.awt.Color(204, 204, 204));
-        btnClientesconCompras.setForeground(new java.awt.Color(0, 0, 0));
         btnClientesconCompras.setIcon(new javax.swing.ImageIcon(getClass().getResource("/contents/compras mas peq.png"))); // NOI18N
-        btnClientesconCompras.setText("Compras de Hoy");
+        btnClientesconCompras.setText("Compras Hoy");
         btnClientesconCompras.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnClientesconComprasActionPerformed(evt);
@@ -221,7 +218,6 @@ public class JFCliente extends javax.swing.JFrame {
         });
 
         btnClientesconTotalCompras.setBackground(new java.awt.Color(204, 204, 204));
-        btnClientesconTotalCompras.setForeground(new java.awt.Color(0, 0, 0));
         btnClientesconTotalCompras.setIcon(new javax.swing.ImageIcon(getClass().getResource("/contents/total peq.png"))); // NOI18N
         btnClientesconTotalCompras.setText("Total de Compras");
         btnClientesconTotalCompras.addActionListener(new java.awt.event.ActionListener() {
@@ -501,7 +497,7 @@ public class JFCliente extends javax.swing.JFrame {
         // TODO add your handling code here:
         ClienteDAO clienteDAO = new ClienteDAO();
         String listaClientes = clienteDAO.listarClientesConCompras();
-        JOptionPane.showMessageDialog(this, listaClientes, "Compras de Hoy", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(this, listaClientes, "Compras Hoy", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_btnClientesconComprasActionPerformed
 
     private void btnClientesconTotalComprasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClientesconTotalComprasActionPerformed

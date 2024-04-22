@@ -179,14 +179,17 @@ IS
     lista_vacia VARCHAR2(4000); 
     nombre_cliente Tab_Cliente.Nombre_Cliente%TYPE;
     apellido_cliente Tab_Cliente.Apellido%TYPE;
-    producto_comprado Tab_Producto.Descripcion%TYPE;
+    producto_comprado VARCHAR2(200);  -- Cambiado a VARCHAR2
+    cantidad_comprada NUMBER;          -- Nueva variable para almacenar la cantidad
     CURSOR c_clientes IS
-        SELECT c.Nombre_Cliente, c.Apellido, p.Descripcion
-        FROM Tab_Cliente c
-        INNER JOIN Tab_Venta v ON c.ID_Cliente = v.ID_Cliente
-        INNER JOIN Tab_Producto p ON v.ID_Sucursal = p.ID_Sucursal
-        WHERE TRUNC(v.Fecha) = TRUNC(SYSDATE)
-        ORDER BY c.Nombre_Cliente; 
+        SELECT c.Nombre_Cliente, c.Apellido, p.Descripcion, COUNT(d.ID_Detalle) AS Cantidad
+            FROM Tab_Cliente c
+            INNER JOIN Tab_Venta v ON c.ID_Cliente = v.ID_Cliente
+            INNER JOIN Tab_Detalle d ON v.Num_Factura = d.ID_Venta
+            INNER JOIN Tab_Producto p ON d.ID_Elemento = p.ID_Producto
+            WHERE TRUNC(v.Fecha) = TRUNC(SYSDATE)
+            GROUP BY c.Nombre_Cliente, c.Apellido, p.Descripcion  -- Agrupar por cliente y producto
+            ORDER BY c.Nombre_Cliente;
 BEGIN
     lista_clientes := '';
     FOR cliente IN c_clientes 
@@ -194,9 +197,10 @@ BEGIN
         nombre_cliente := cliente.Nombre_Cliente;
         apellido_cliente := cliente.Apellido;
         producto_comprado := cliente.Descripcion;
-        lista_clientes := lista_clientes || nombre_cliente || ' ' || apellido_cliente || ': Producto --> ' || producto_comprado || CHR(10);
+        cantidad_comprada := cliente.Cantidad;
+        lista_clientes := lista_clientes || nombre_cliente || ' ' || apellido_cliente || ': ' || producto_comprado || ' (' || cantidad_comprada || ')' || CHR(10);
     END LOOP;
-    
+
     IF lista_clientes = '' THEN
         lista_vacia := 'No se encontraron clientes con compras el día de hoy';
         RETURN lista_vacia;

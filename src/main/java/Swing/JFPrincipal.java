@@ -458,6 +458,7 @@ public class JFPrincipal extends javax.swing.JFrame {
     private void btnIngresarEmpleadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarEmpleadosActionPerformed
         // TODO add your handling code here:
         JFEmpleado empleado = new JFEmpleado();
+        this.setVisible(false);
         empleado.setVisible(true);
         empleado.setLocationRelativeTo(null);
     }//GEN-LAST:event_btnIngresarEmpleadosActionPerformed
@@ -465,6 +466,7 @@ public class JFPrincipal extends javax.swing.JFrame {
     private void btnIngresarProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarProductosActionPerformed
         // TODO add your handling code here:
         JFProducto producto = new JFProducto();
+        this.setVisible(false);
         producto.setVisible(true);
         producto.setLocationRelativeTo(null);
     }//GEN-LAST:event_btnIngresarProductosActionPerformed
@@ -472,6 +474,7 @@ public class JFPrincipal extends javax.swing.JFrame {
     private void btnIngresarVentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarVentasActionPerformed
         // TODO add your handling code here:
         JFVenta venta = new JFVenta();
+        this.setVisible(false);
         venta.setVisible(true);
         venta.setLocationRelativeTo(null);
     }//GEN-LAST:event_btnIngresarVentasActionPerformed
@@ -479,6 +482,7 @@ public class JFPrincipal extends javax.swing.JFrame {
     private void btnIngresarClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarClientesActionPerformed
         // TODO add your handling code here:
         JFCliente cliente = new JFCliente();
+        this.setVisible(false);
         cliente.setVisible(true);
         cliente.setLocationRelativeTo(null);
     }//GEN-LAST:event_btnIngresarClientesActionPerformed
@@ -486,6 +490,7 @@ public class JFPrincipal extends javax.swing.JFrame {
     private void btnIngresarProveedoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarProveedoresActionPerformed
         // TODO add your handling code here:
         JFProveedor proveedor = new JFProveedor();
+        this.setVisible(false);
         proveedor.setVisible(true);
         proveedor.setLocationRelativeTo(null);
     }//GEN-LAST:event_btnIngresarProveedoresActionPerformed
@@ -493,6 +498,7 @@ public class JFPrincipal extends javax.swing.JFrame {
     private void btnIngresarPagoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarPagoActionPerformed
         // TODO add your handling code here:
         JFPago pago = new JFPago();
+        this.setVisible(false);
         pago.setVisible(true);
         pago.setLocationRelativeTo(null);
     }//GEN-LAST:event_btnIngresarPagoActionPerformed
@@ -500,6 +506,7 @@ public class JFPrincipal extends javax.swing.JFrame {
     private void btnIngresarCategoriasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarCategoriasActionPerformed
         // TODO add your handling code here:
         JFCategoria categoria = new JFCategoria();
+        this.setVisible(false);
         categoria.setVisible(true);
         categoria.setLocationRelativeTo(null);
     }//GEN-LAST:event_btnIngresarCategoriasActionPerformed
@@ -507,6 +514,7 @@ public class JFPrincipal extends javax.swing.JFrame {
     private void btnIngresarRolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarRolActionPerformed
         // TODO add your handling code here:
         JFRol rol = new JFRol();
+        this.setVisible(false);
         rol.setVisible(true);
         rol.setLocationRelativeTo(null);
     }//GEN-LAST:event_btnIngresarRolActionPerformed
@@ -514,6 +522,7 @@ public class JFPrincipal extends javax.swing.JFrame {
     private void btnIngresarServicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarServicioActionPerformed
         // TODO add your handling code here:
         JFServicio servicio = new JFServicio();
+        this.setVisible(false);
         servicio.setVisible(true);
         servicio.setLocationRelativeTo(null);
     }//GEN-LAST:event_btnIngresarServicioActionPerformed
@@ -521,6 +530,7 @@ public class JFPrincipal extends javax.swing.JFrame {
     private void btnIngresarSucursalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarSucursalActionPerformed
         // TODO add your handling code here:
         JFSucursal sucursal = new JFSucursal();
+        this.setVisible(false);
         sucursal.setVisible(true);
         sucursal.setLocationRelativeTo(null);
     }//GEN-LAST:event_btnIngresarSucursalActionPerformed
@@ -539,6 +549,7 @@ public class JFPrincipal extends javax.swing.JFrame {
     private void btnIngresarListaVentas1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarListaVentas1ActionPerformed
         // TODO add your handling code here:
         JFVenta_Lista listaVenta = new JFVenta_Lista();
+        this.setVisible(false);
         listaVenta.setVisible(true);
         listaVenta.setLocationRelativeTo(null);
     }//GEN-LAST:event_btnIngresarListaVentas1ActionPerformed
@@ -546,6 +557,7 @@ public class JFPrincipal extends javax.swing.JFrame {
     private void btnIngresarPuestoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarPuestoActionPerformed
         // TODO add your handling code here:
         JFPuesto Puesto = new JFPuesto();
+        this.setVisible(false);
         Puesto.setVisible(true);
         Puesto.setLocationRelativeTo(null);
     }//GEN-LAST:event_btnIngresarPuestoActionPerformed

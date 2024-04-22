@@ -19,6 +19,7 @@ public class JFPago extends javax.swing.JFrame {
     public JFPago() {
         initComponents();
         llenarComboBoxProveedor();
+        listar();
     }
 
     @SuppressWarnings("unchecked")
@@ -555,7 +556,7 @@ public class JFPago extends javax.swing.JFrame {
         modelo = new DefaultTableModel();
         /*Agregar nombres de columna que coincidan con las columnas de salida 
         del procedimiento aunque se puede hacer directo en tabla*/
-        modelo.addColumn("COF_Pago");
+        modelo.addColumn("COD_Pago");
         modelo.addColumn("ID_Proveedor");
         modelo.addColumn("Monto");
         modelo.addColumn("Fecha");

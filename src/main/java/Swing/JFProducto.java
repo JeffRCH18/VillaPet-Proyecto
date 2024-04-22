@@ -23,6 +23,7 @@ public class JFProducto extends javax.swing.JFrame {
         initComponents();
         llenarComboBoxCategoria(); 
         llenarComboBoxProveedor();
+        listar();
     }
 
     @SuppressWarnings("unchecked")
